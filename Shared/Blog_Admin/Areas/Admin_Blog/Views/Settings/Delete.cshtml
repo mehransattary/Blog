@@ -1,0 +1,146 @@
+﻿
+
+@model Entities.Settings
+
+@{
+    ViewData["Title"] = $"  حذف  تنظیم  ✨ {Model.Settings_Sitename} ";
+}
+
+
+
+
+<div class="row justify-content-center">
+
+    <div class="col-xl-10">
+
+        <div class="row">
+            <div class="col-xl-1">
+            </div>
+            <div class="col-xl-10">
+
+
+                <div class="d-flex align-items-center mb-3">
+                    <div>
+
+                        <h1 class="page-header mb-0">
+
+                            آیا میخواهید
+                            ❌  @Model.Settings_Sitename   ❌
+                            را حذف کنید؟
+
+                        </h1>
+                    </div>
+
+                </div>
+                <br />
+                <div id="formControls" class="mb-5">
+
+                    <div class="card">
+                        <div class="card-body pb-2">
+
+                            <div>
+                                <dl class="row">
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.Settings_Sitename)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.Settings_Sitename)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.Settings_Questions)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.Settings_Questions)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.Settings_HelperSell)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.Settings_HelperSell)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.Settings_Address)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.Settings_Address)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.Settings_Tell)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.Settings_Tell)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.Settings_Mobile)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.Settings_Mobile)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.Settings_Email)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.Settings_Email)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.Settings_ImageFooter)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        <img alt="@(Model.Settings_Sitename )" class="mw-100 mh-100" src="@Model.Settings_ImageFooter"width="150"height="150">
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.Settings_ImageTopMain)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        <img alt="@(Model.Settings_Sitename )" class="mw-100 mh-100" src="@Model.Settings_ImageTopMain"width="150"height="150">
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.IsDelete)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.IsDelete)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.CreateDate)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.CreateDate)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.LastUpdateDate)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.LastUpdateDate)
+                                    </dd>
+                                </dl>
+
+
+                                <form asp-action="Delete">
+                                    <input type="hidden" asp-for="Id" />
+                                    <input type="submit" value="حذف" class="btn btn-outline-danger" /> |
+                                    <a class="btn btn-outline-info" asp-action="Index">بازگشت</a>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="card-arrow">
+                            <div class="card-arrow-top-left"></div>
+                            <div class="card-arrow-top-right"></div>
+                            <div class="card-arrow-bottom-left"></div>
+                            <div class="card-arrow-bottom-right"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+            <div class="col-xl-1">
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

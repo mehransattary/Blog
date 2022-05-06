@@ -1,0 +1,172 @@
+﻿using Common;
+using Data.Context;
+using Data.Dto;
+using Data.ViewModel;
+using Entities;
+
+using Microsoft.AspNetCore.Identity;
+using Repositories;
+using Service.Repository.Interface;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using X.PagedList;
+
+namespace Service.Repository
+{
+    public class SettingsLogoService : Repository<SettingsLogo>, ISettingsLogoesService
+    {
+        public SettingsLogoService(AppDbContext context) : base(context)
+        {
+        }
+
+        public  async Task AddSettingsLogoAsync(SettingsLogoDto SettingsLogoDto, CancellationToken cancellationToken)
+        {
+            try
+            {
+                #region Image
+                string filePathSettings_Image_Logo = "/images/default.png";
+                string filePathSettings_Image_Logo_Footer = "/images/default.png";
+
+
+                //check is exist AvatarImage
+                if (SettingsLogoDto?.Settings_Image_Logo?.Length > 0)
+                {
+                    filePathSettings_Image_Logo = AddImage("noname", "settingsLogo", SettingsLogoDto?.Settings_Image_Logo, cancellationToken);
+                }
+
+                if (SettingsLogoDto?.Settings_Image_Logo_Footer?.Length > 0)
+                {
+                    filePathSettings_Image_Logo_Footer = AddImage("noname", "settingsLogo", SettingsLogoDto?.Settings_Image_Logo_Footer, cancellationToken);
+                }
+
+                #endregion
+                #region Save Customerpage
+                var SettingsLogo = new SettingsLogo()
+                {
+                    Settings_alt_Logo= SettingsLogoDto.Settings_alt_Logo,
+                    Settings_Icon_Path= SettingsLogoDto.Settings_Icon_Path,
+                    Settings_title_Logo= SettingsLogoDto.Settings_title_Logo,
+                    Settings_Image_Logo= filePathSettings_Image_Logo,
+                    Settings_Image_Logo_Footer= filePathSettings_Image_Logo_Footer,
+                    UserId = SettingsLogoDto.UserId,
+                    CreateDate = DateTime.Now,
+                    LastUpdateDate = DateTime.Now
+
+                };
+                await AddAsync(SettingsLogo, cancellationToken);
+                #endregion
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }   
+
+        public async Task UpdateSettingsLogoAsync(SettingsLogoDto SettingsLogoDto, string _Settings_Image_Logo,string _Settings_Image_Logo_Footer, CancellationToken cancellationToken)
+        {
+            var _SettingsLogo = await GetByIdAsync(cancellationToken, SettingsLogoDto.Id);
+
+            #region Save Image
+            string filePathSettings_Image_Logo = "/images/default.png";
+            string filePathSettings_Image_LogoBefore = "/images/default.png";
+            //===============================================//
+            string filePathSettings_Image_Logo_Footer = "/images/default.png";
+            string filePathSettings_Image_Logo_FooterBefore = "/images/default.png";
+            //check is exist AvatarImage
+
+            if (SettingsLogoDto?.Settings_Image_Logo?.Length > 0)
+            {
+                filePathSettings_Image_Logo = AddImage("noname", "settingsLogo", SettingsLogoDto?.Settings_Image_Logo, cancellationToken);
+                MyImages.RemoveDuplicatePhotos(MyImages.CurrentDirectory(_SettingsLogo.Settings_Image_Logo));
+            }
+            if (SettingsLogoDto?.Settings_Image_Logo == null && _Settings_Image_Logo != null)
+                filePathSettings_Image_LogoBefore = _Settings_Image_Logo;
+            //============================================================//
+            if (SettingsLogoDto?.Settings_Image_Logo_Footer?.Length > 0)
+            {
+                filePathSettings_Image_Logo_Footer = AddImage("noname", "settingsLogo", SettingsLogoDto?.Settings_Image_Logo_Footer, cancellationToken);
+                MyImages.RemoveDuplicatePhotos(MyImages.CurrentDirectory(_SettingsLogo.Settings_Image_Logo_Footer));
+            }
+            if (SettingsLogoDto?.Settings_Image_Logo_Footer == null && _Settings_Image_Logo_Footer != null)
+                filePathSettings_Image_Logo_FooterBefore = _Settings_Image_Logo_Footer;
+
+
+            #endregion
+            #region Save Customerpage
+
+            #region Properties
+            _SettingsLogo.Settings_alt_Logo = SettingsLogoDto.Settings_alt_Logo;
+            _SettingsLogo.Settings_Icon_Path = SettingsLogoDto.Settings_Icon_Path;
+            _SettingsLogo.Settings_Image_Logo = filePathSettings_Image_Logo;
+            _SettingsLogo.Settings_title_Logo = SettingsLogoDto.Settings_title_Logo;
+            _SettingsLogo.Settings_Image_Logo_Footer = filePathSettings_Image_Logo_Footer;
+            _SettingsLogo.UserId = SettingsLogoDto.UserId;
+            _SettingsLogo.CreateDate = _SettingsLogo.CreateDate;
+            _SettingsLogo.LastUpdateDate = DateTime.Now;
+            #endregion
+
+            #region Save Image
+            if (SettingsLogoDto.Settings_Image_Logo != null)
+                _SettingsLogo.Settings_Image_Logo = filePathSettings_Image_Logo;
+            else if (SettingsLogoDto.Settings_Image_Logo == null && !string.IsNullOrEmpty(_Settings_Image_Logo))
+                _SettingsLogo.Settings_Image_Logo = filePathSettings_Image_LogoBefore;
+            else
+                _SettingsLogo.Settings_Image_Logo = filePathSettings_Image_Logo;
+            //==============================================//
+            if (SettingsLogoDto.Settings_Image_Logo_Footer != null)
+                _SettingsLogo.Settings_Image_Logo_Footer = filePathSettings_Image_Logo_Footer;
+            else if (SettingsLogoDto.Settings_Image_Logo_Footer == null && !string.IsNullOrEmpty(_Settings_Image_Logo_Footer))
+                _SettingsLogo.Settings_Image_Logo_Footer = filePathSettings_Image_Logo_FooterBefore;
+            else
+                _SettingsLogo.Settings_Image_Logo_Footer = filePathSettings_Image_Logo_Footer;
+            #endregion
+
+
+
+            await UpdateAsync(_SettingsLogo, cancellationToken);
+            #endregion       
+        }
+
+        public async Task<IList<SettingsLogo>> ShowAllSettingsLogoAsync(CancellationToken cancellationToken, string UserId)
+        {
+            var result = await TableNoTracking.Where(x => x.UserId == UserId).Select(x =>
+                   new SettingsLogo()
+                   {
+
+                       UserId = x.UserId,
+                       Id = x.Id,
+                       LastUpdateDate = x.LastUpdateDate,
+                       CreateDate = x.CreateDate,
+                       Settings_title_Logo=x.Settings_title_Logo,
+                       Settings_Image_Logo=x.Settings_Image_Logo,
+                       Settings_Image_Logo_Footer=x.Settings_Image_Logo_Footer
+
+                   }).ToListAsync(cancellationToken);
+            return result;
+        }
+
+        public  IPagedList<SettingsLogo> ShowAllSettingsLogo_PagingAsync(CancellationToken cancellationToken, string UserId, int currentPage = 0, int number_showproduct = 10)
+        {
+            var result = TableNoTracking.Where(x => x.UserId == UserId).Select(x =>
+               new SettingsLogo()
+               {
+                   UserId = x.UserId,
+                   Id = x.Id,
+                   LastUpdateDate = x.LastUpdateDate,
+                   CreateDate = x.CreateDate,
+                   Settings_title_Logo = x.Settings_title_Logo,
+                   Settings_Image_Logo = x.Settings_Image_Logo,
+                   Settings_Image_Logo_Footer = x.Settings_Image_Logo_Footer
+
+               }).ToPagedList(currentPage, number_showproduct);
+                    return result;
+        }
+ 
+    }
+}

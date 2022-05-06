@@ -1,0 +1,188 @@
+﻿@model Entities.Person
+
+@{
+    ViewData["Title"] = $"حذف {Model.FirstName} {Model.LastName}";
+}
+
+
+
+<div class="row justify-content-center">
+
+    <div class="col-xl-10">
+
+        <div class="row">
+            <div class="col-xl-1">
+            </div>
+            <div class="col-xl-10">
+
+
+                <div class="d-flex align-items-center mb-3">
+                    <div>
+
+                        <h1 class="page-header mb-0">
+
+                            آیا میخواهید
+                            ❌  @Model.FirstName  @Model.LastName ❌
+                            را حذف کنید؟
+
+                        </h1>
+                    </div>
+
+                </div>
+                <br />
+                <div id="formControls" class="mb-5">
+
+                    <div class="card">
+                        <div class="card-body pb-2">
+
+                            <div>
+                                <dl>
+
+
+
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.FirstName)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.FirstName)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.LastName)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.LastName)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.Mobile)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.Mobile)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.Tellphone)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.Tellphone)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.Address)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.Address)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.ShortDescription)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.ShortDescription)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.Description)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.Description)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.AvatarImage)
+
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        <img alt="@(Model.FirstName + Model.LastName)" class="mw-100 mh-100" src="@Model.AvatarImage"height="200">
+
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.IconImage)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        <img alt="@(Model.FirstName + Model.LastName)" class="mw-100 mh-100" src="@Model.IconImage"height="200">
+
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.Email)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.Email)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.WhatsApp)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.WhatsApp)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.Telegram)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.Telegram)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.Instagram)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.Instagram)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.Linkdin)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.Linkdin)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.Youtube)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.Youtube)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.Learn)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.Learn)
+                                    </dd>
+                                    <dt class="col-sm-2">
+حذف                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.IsDelete)
+                                    </dd>
+                                    <dt class="col-sm-2">
+تاریخ درج
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Model.CreateDate.ToShamsi()
+                                    </dd>
+                                    <dt class="col-sm-2">
+تاریخ آپدیت                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Model.LastUpdateDate.ToShamsi()
+
+                                    </dd>
+                                </dl>
+                                <form asp-action="Delete">
+                                    <input type="hidden" asp-for="Id" />
+                                    <input type="submit" value="حذف" class="btn btn-outline-danger" /> |
+                                    <a class="btn btn-outline-info" asp-action="Index">بازگشت</a>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="card-arrow">
+                            <div class="card-arrow-top-left"></div>
+                            <div class="card-arrow-top-right"></div>
+                            <div class="card-arrow-bottom-left"></div>
+                            <div class="card-arrow-bottom-right"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+            <div class="col-xl-1">
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

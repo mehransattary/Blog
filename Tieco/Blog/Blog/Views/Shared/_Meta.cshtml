@@ -1,0 +1,152 @@
+﻿@model string
+@inject ISettingsMetasService metaservice
+@inject IPersonService personsevice
+
+@{
+    var meta = metaservice.TableNoTracking.FirstOrDefault();
+    var person = personsevice.TableNoTracking.FirstOrDefault(x => x.UserId == Model);
+
+}
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="content-language" content="fa" />
+<meta name="document-type" content="Public" />
+<meta name="document-rating" content="General" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+@if (meta != null)
+{
+
+
+    @if (ViewData["keywords"] != null)
+    {
+        <meta name="keywords" content="@ViewData["keywords"]" />
+    }
+    else
+    {
+        <meta name="keywords" content="@(meta.Settings_keywords??"") " />
+    }
+
+
+
+    @if (ViewData["description"] != null)
+    {
+        <meta name="description" content="@ViewData["description"]" />
+    }
+    else
+    {
+        @if (meta.Settings_ogurl != null)
+        {
+            <meta name="description" content=" @(meta.Settings_ogtitle??"")  " />
+        }
+    }
+
+
+
+
+    <meta name="googlebot" content="index,follow">
+    <meta name="author" content="@(meta?.Settings_author??"")">
+    <meta name="robots" content="noodp,noydir">
+    @if (person != null)
+    {
+        if (person.IconImage != null)
+        {
+            <link rel="shortcut icon" type="ico" href="@(person.IconImage??"")" />
+            <link rel="apple-touch-icon" href="@(person.IconImage??"")">
+        }
+    }
+    <meta property="og:type" content="website">
+    @if (ViewData["Title"] != null)
+    {
+
+        <meta property="og:title" content="@ViewData["Title"]">
+    }
+    else
+    {
+        @if (meta.Settings_ogurl != null)
+        {
+
+            <meta property="og:title" content="@meta.Settings_ogtitle">
+        }
+
+    }
+    @if (ViewData["description"] != null)
+    {
+
+        <meta property="og:description" content="@ViewData["description"]">
+    }
+    else
+    {
+        @if (meta.Settings_ogurl != null)
+        {
+
+            <meta property="og:description" content="@meta.Settings_ogdescription">
+        }
+    }
+
+    @if (ViewData["ogurl"] != null)
+    {
+
+        <meta property="og:url" content="@ViewData["ogurl"]">
+    }
+    else
+    {
+        @if (meta.Settings_ogurl != null)
+        {
+
+            <meta property="og:url" content="@meta.Settings_ogurl">
+        }
+
+    }
+
+    @if (ViewData["imageOg"] != null)
+    {
+
+        <meta property="og:image" content="@ViewData["imageOg"]">
+    }
+    else
+    {
+        @if (meta.Settings_ogurl != null)
+        {
+
+            <meta property="og:image" content="@meta.Settings_twitter_image">
+        }
+
+    }
+    @if (meta.Settings_ogsite_name != null)
+    {
+
+        <meta property="og:site_name" content="@meta.Settings_ogsite_name">
+    }
+    <meta property="og:price:currency" content="IRR">
+    <meta property="og:locale" content="ir_FA">
+    @if (meta.Settings_ogsite_name != null)
+    {
+        <meta name="twitter:title" content="@meta.Settings_ogsite_name">
+    }
+
+    @if (ViewData["description"] != null)
+    {
+        <meta name="twitter:description" content="@ViewData["description"]">
+    }
+    else
+    {
+        @if (meta.Settings_ogurl != null)
+        {
+
+            <meta property="twitter:description" content="@meta.Settings_description">
+        }
+    }
+    @if (meta.Settings_ogsite_name != null)
+    {
+        <meta name="twitter:image" content="@meta.Settings_ogimage">
+
+    }
+    <meta name="twitter:card" content=summary_large_image>
+
+
+    @Html.Raw(meta.Settings_Google_Analytics ?? "<meta name='googlebot' content='index,follow'>")
+    @Html.Raw(meta.Settings_Search_Console ?? " <meta name='googlebot' content='index,follow'>")
+    @Html.Raw(meta.Settings_Service_Adver_1 ?? "<meta name='googlebot' content='index,follow'>")
+    @Html.Raw(meta.Settings_Service_Adver_2 ?? "<meta name='googlebot' content='index,follow'>")
+    @Html.Raw(meta.Settings_Service_Adver_3 ?? "<meta name='googlebot' content='index,follow'>")
+    @Html.Raw(meta.Settings_Service_Adver_4 ?? "<meta name='googlebot' content='index,follow'>")
+}

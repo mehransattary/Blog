@@ -1,0 +1,37 @@
+﻿
+@inject ISocialService socialService
+@inject IPersonService personService
+@inject UserManager<IdentityUser> userManager
+@{
+    var userId = userManager.GetUserId(User);
+    var socials = socialService.TableNoTracking.Where(x => x.UserId == userId).Select(x =>
+                  new Social()
+                  {
+                      Name = x.Name,
+                      Link = x.Link,
+                      FontAwseome = x.FontAwseome,
+                      UserId = x.UserId,
+                      Image = x.Image,
+                      Id = x.Id,
+                      LastUpdateDate = x.LastUpdateDate,
+                      CreateDate = x.CreateDate
+                  }).ToList();
+    var person = personService.TableNoTracking.FirstOrDefault(x => x.UserId == userId);
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <partial name="_Meta"model="userId" />
+    <partial name="_Style" />
+    @RenderSection("Style", required: false)
+</head>
+<body id="blog">
+    <partial name="_TopMenu" />
+    <partial name="_Menu" />
+    @RenderBody()
+    <partial name="_Footer" />
+    <partial name="_Script" />
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

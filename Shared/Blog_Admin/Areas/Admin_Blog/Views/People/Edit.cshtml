@@ -1,0 +1,180 @@
+﻿@model PersonDto
+
+@{
+    ViewData["Title"] = $"  ویرایش  اطلاعات من ✨ {Model.FirstName} {Model.LastName}";
+}
+
+
+<div class="row justify-content-center">
+
+    <div class="col-xl-10">
+
+        <div class="row">
+            <div class="col-xl-1">
+            </div>
+            <div class="col-xl-10">
+
+
+                <div class="d-flex align-items-center mb-3">
+                    <div>
+
+                        <h1 class="page-header mb-0">@ViewData["Title"]</h1>
+                    </div>
+                    <div class="ms-auto">
+                        <a asp-action="Index" class="btn btn-outline-danger">
+                            بازگشت
+                            <i class="fa fa-fast-backward fa-fw me-1"></i>
+
+                        </a>
+                    </div>
+                </div>
+                <br />
+                <div id="formControls" class="mb-5">
+
+                    <div class="card">
+                        <div class="card-body pb-2">
+                            <form asp-action="Edit" method="post" class="was-validated" enctype="multipart/form-data">
+                                <input hidden asp-for="Id"/>
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="row">
+                                    <div class="col-xl-6">
+                                        <div class="form-group">
+                                            <input hidden value="@ViewBag.AvatarImage" name="_AvatarImage" />
+                                            <img src="@ViewBag.AvatarImage" width="150" height="150" />
+                                            <label asp-for="AvatarImage" class="control-label"></label>
+                                            <input asp-for="AvatarImage" class="form-control" />
+                                            <span asp-validation-for="AvatarImage" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6">
+                                        <div class="form-group">
+                                            <input hidden value="@ViewBag.IconImage" name="_IconImage" />
+                                            <img src="@ViewBag.IconImage" width="150" height="150" />
+                                            <label asp-for="IconImage" class="control-label"></label>
+                                            <input asp-for="IconImage" class="form-control" />
+                                            <span asp-validation-for="IconImage" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xl-6">
+
+
+                                        <div class="form-group">
+                                            <label asp-for="FirstName" class="control-label"></label>
+                                            <input asp-for="FirstName" class="form-control is-invalid" required/>
+                                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="LastName" class="control-label"></label>
+                                            <input asp-for="LastName" class="form-control is-invalid" required/>
+                                            <span asp-validation-for="LastName" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="Email" class="control-label"></label>
+                                            <input asp-for="Email" class="form-control" />
+                                            <span asp-validation-for="Email" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="Tellphone" class="control-label"></label>
+                                            <input asp-for="Tellphone" class="form-control" />
+                                            <span asp-validation-for="Tellphone" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="Mobile" class="control-label"></label>
+                                            <input asp-for="Mobile" class="form-control is-invalid" required/>
+                                            <span asp-validation-for="Mobile" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6">
+
+
+                               
+                                        <div class="form-group">
+                                            <label asp-for="WhatsApp" class="control-label"></label>
+                                            <input asp-for="WhatsApp" class="form-control" />
+                                            <span asp-validation-for="WhatsApp" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="Instagram" class="control-label"></label>
+                                            <input asp-for="Instagram" class="form-control" />
+                                            <span asp-validation-for="Instagram" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="Linkdin" class="control-label"></label>
+                                            <input asp-for="Linkdin" class="form-control" />
+                                            <span asp-validation-for="Linkdin" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="Youtube" class="control-label"></label>
+                                            <input asp-for="Youtube" class="form-control" />
+                                            <span asp-validation-for="Youtube" class="text-danger"></span>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-xl-12">
+
+                                        <div class="form-group">
+                                            <label asp-for="Address" class="control-label"></label>
+                                            <textarea asp-for="Address" class="form-control"rows="10"></textarea>
+                                            <span asp-validation-for="Address" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="ShortDescription" class="control-label"></label>
+                                            <textarea asp-for="ShortDescription" class="form-control"rows="10"></textarea>
+                                            <span asp-validation-for="ShortDescription" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="Description" class="control-label"></label>
+                                            <textarea asp-for="Description" class="form-control"rows="10"></textarea>
+                                            <span asp-validation-for="Description" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="Learn" class="control-label"></label>
+                                            <textarea asp-for="Learn" class="form-control"rows="10"></textarea>
+                                            <span asp-validation-for="Learn" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <button type="submit" class="btn btn-lg btn-outline-indigo">
+                                        <i class="fa fa-plus-square fa-fw me-1"></i>
+
+                                        ویرایش تغییرات
+                                    </button>
+                                </div>
+                            </form>
+
+                        </div>
+                        <div class="card-arrow">
+                            <div class="card-arrow-top-left"></div>
+                            <div class="card-arrow-top-right"></div>
+                            <div class="card-arrow-bottom-left"></div>
+                            <div class="card-arrow-bottom-right"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+            <div class="col-xl-1">
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
