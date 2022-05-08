@@ -1,0 +1,40 @@
+﻿@model Data.ViewModel.LoginViewModel
+
+@{
+    ViewData["Title"] = "ورود";
+}
+
+
+<section class="container-fluid p-5 pb-lg-0">
+
+    <section class="text-center m-3 ">
+        <div id="login" class="box shadow text-center border-top-0 p-lg-4 p-3">
+            <img src="/assets/Images/Svg/login.svg" style="width:45px" />
+            <h5 class="IRANSansWeb_Bold text-grad pt-3">ورود به سایت </h5>
+            <form asp-action="Login" asp-controller="Account" class="contact__form" method="post">
+                <p class="mb-3">جهت ورود ، ایمیل خود را وراد نمایید</p>
+                <div class="contact__form-div">
+                    <input type="text" placeholder="ایمیل خود را وارد کنید" class="form-control mb-3"  asp-for="Email">
+
+                </div>
+                <p class="mb-3">جهت ورود ، رمز عبور خود را وراد نمایید</p>
+
+                <div class="contact__form-div">
+                    <input type="password" placeholder="رمز عبور خود را وارد کنید" class="form-control mb-3"  asp-for="Password">
+
+                </div>
+
+                <div class="contact__form-div">
+                    مرا بخاطر بسپار                    <input type="checkbox" class="form-control mb-3"  asp-for="RememberMe">
+
+                </div>
+                <div asp-validation-summary="All" class="contact__title"></div>
+
+
+                <button class="btn btn-grad btn-block text-white mb-3 py-2" type="submit">ورود به سایت<i class="fa fa-chevron-left mr-2"></i></button>
+            </form>
+
+
+        </div>
+    </section>
+</section>

@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace ProMe_Admin.Controllers
 {
-    [Area("Admin")]
+    [Area("Admin_Blog")]
     [Authorize(Policy ="admin")]
     public class DefaultController : Controller
     {
@@ -30,19 +30,23 @@ namespace ProMe_Admin.Controllers
 
         }
 
-        public async Task< IActionResult> Index()
+        public  IActionResult Index()
         {
-            ViewBag.isActive_User_Menu = "DefaultController";
-            var userId = userManager.GetUserId(User);
-              var person=await  personService.TableNoTracking.Where(x => x.UserId == userId).Select(x => new Person()
-                {
-                    FirstName=x.FirstName,
-                    LastName=x.LastName,
-                    Description=x.Description,
-                    AvatarImage=x.AvatarImage
-                }).FirstOrDefaultAsync();
-            
-            return View(person);
+            //ViewBag.isActive_User_Menu = "DefaultController";
+            //var userId = userManager.GetUserId(User);
+            //  var person=await  personService.TableNoTracking.Where(x => x.UserId == userId).Select(x => new Person()
+            //    {
+            //        FirstName=x.FirstName,
+            //        LastName=x.LastName,
+            //        Description=x.Description,
+            //        AvatarImage=x.AvatarImage
+            //    }).FirstOrDefaultAsync();
+            //if(person!=null)
+            //{
+            //    return View(person);
+
+            //}
+            return View();
         }
 
        

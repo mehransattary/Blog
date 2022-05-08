@@ -21,7 +21,7 @@ namespace Service.Repository.Interface
 
         Task AddSettingsLogoAsync(SettingsLogoDto SettingsLogoDto, CancellationToken cancellationToken);
         Task UpdateSettingsLogoAsync(SettingsLogoDto SettingsLogoDto, string _Settings_Image_Logo, string _Settings_Image_Logo_Footer, CancellationToken cancellationToken);
-        Task<IList<SettingsLogo>> ShowAllSettingsLogoAsync(CancellationToken cancellationToken, string UserId);
+        SettingsLogo ShowAllSettingsLogo( string UserId);
         IPagedList<SettingsLogo> ShowAllSettingsLogo_PagingAsync(CancellationToken cancellationToken, string UserId, int currentPage = 0, int number_showproduct = 10);
 
 

@@ -133,21 +133,18 @@ namespace Service.Repository
             #endregion       
         }
 
-        public async Task<IList<SettingsLogo>> ShowAllSettingsLogoAsync(CancellationToken cancellationToken, string UserId)
+        public SettingsLogo ShowAllSettingsLogo( string UserId)
         {
-            var result = await TableNoTracking.Where(x => x.UserId == UserId).Select(x =>
+            var result =  TableNoTracking.Where(x => x.UserId == UserId).Select(x =>
                    new SettingsLogo()
                    {
 
-                       UserId = x.UserId,
-                       Id = x.Id,
-                       LastUpdateDate = x.LastUpdateDate,
-                       CreateDate = x.CreateDate,
+                                UserId=x.UserId,          
                        Settings_title_Logo=x.Settings_title_Logo,
                        Settings_Image_Logo=x.Settings_Image_Logo,
                        Settings_Image_Logo_Footer=x.Settings_Image_Logo_Footer
 
-                   }).ToListAsync(cancellationToken);
+                   }).FirstOrDefault();
             return result;
         }
 

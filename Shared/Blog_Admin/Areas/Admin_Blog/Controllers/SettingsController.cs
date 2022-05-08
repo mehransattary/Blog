@@ -17,7 +17,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace ProMe_Admin.Controllers
 {
-    [Area("Admin")]
+    [Area("Admin_Blog")]
     [Authorize]
     [AutoValidateAntiforgeryToken]
     public class SettingsController : Controller

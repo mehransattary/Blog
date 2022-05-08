@@ -15,7 +15,7 @@ using Data.Dto;
 
 namespace ProMe_Admin.Controllers
 {
-    [Area("Admin")]
+    [Area("Admin_Blog")]
     [Authorize(Policy = "admin")]
     [AutoValidateAntiforgeryToken]
 
