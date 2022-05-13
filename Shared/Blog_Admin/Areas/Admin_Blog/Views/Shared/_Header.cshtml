@@ -39,7 +39,7 @@
             <!--begin::Page title-->
             <div class="page-title d-flex flex-column align-items-start justify-content-center flex-wrap me-lg-20 pb-2 pb-lg-0" data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', lg: '#kt_header_wrapper'}">
                 <!--begin::Heading-->
-                <h1 class="text-dark fw-bolder my-1 fs-3 lh-1">پنل مدیریت</h1>
+                <h1 class="text-dark fw-bolder my-1 fs-3 lh-1"> @ViewData["Title"]</h1>
                 <!--end::Heading-->
             </div>
             <!--end::Page title=-->
@@ -144,7 +144,7 @@
                             </span>
                             <div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
                                 <div class="menu-item">
-                                    <a class="menu-link py-3" asp-action="Index" asp-controller="Settings" asp-area="Admin_Blog">
+                                    <a class="menu-link py-3" asp-action="Index" asp-controller="WebLogCategory" asp-area="Admin_Blog">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
@@ -153,7 +153,7 @@
                                 </div>
 
                                 <div class="menu-item">
-                                    <a class="menu-link py-3" asp-action="Index" asp-controller="SettingAdvertisings" asp-area="Admin_Blog">
+                                    <a class="menu-link py-3" asp-action="Index" asp-controller="WebLog_Group" asp-area="Admin_Blog">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
@@ -161,7 +161,7 @@
                                     </a>
                                 </div>
                                 <div class="menu-item">
-                                    <a class="menu-link py-3" asp-action="Index" asp-controller="SettingsLogoes" asp-area="Admin_Blog">
+                                    <a class="menu-link py-3" asp-action="Index" asp-controller="WebLog_Label" asp-area="Admin_Blog">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>

@@ -7,132 +7,298 @@
 }
 
 
-<div class="row justify-content-center">
-
-    <div class="col-xl-10">
-
-        <div class="row">
-            <div class="col-xl-1">
-            </div>
-            <div class="col-xl-10">
 
 
-                <div class="d-flex align-items-center mb-3">
-                    <div>
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Container-->
+    <div class="container-xxl" id="kt_content_container">
+        <!--begin::Form-->
+        <form id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row was-validated"
+              asp-action="Edit" method="post" enctype="multipart/form-data">
+            <input hidden asp-for="Id" />
+            <input hidden value="@ViewBag.Settings_ImageTopMain" name="_Settings_ImageTopMain" />
+            <input hidden value="@ViewBag.Settings_ImageFooter" name="_Settings_ImageFooter" />
 
-                        <h1 class="page-header mb-0">@ViewData["Title"]</h1>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <!--begin::کناری column-->
+            <div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
+                <!--begin::Thumbnail settings-->
+                <div class="card card-flush py-4">
+                    <!--begin::Card header-->
+                    <div class="card-header">
+                        <!--begin::Card title-->
+                        <div class="card-title">
+                            <h2>تصویر جدید برای بالای صفحه</h2>
+                        </div>
+                        <!--end::Card title-->
                     </div>
-                    <div class="ms-auto">
-                        <a asp-action="Index" class="btn btn-outline-danger">
-                            بازگشت
-                            <i class="fa fa-fast-backward fa-fw me-1"></i>
+                    <!--end::Card header-->
+                    <!--begin::Card body-->
+                    <div class="card-body text-center pt-0">
+                        <!--begin::Image input-->
+                        <div class="image-input image-input-empty image-input-outline mb-3" data-kt-image-input="true" style="background-image: url(assets/media/svg/files/blank-image.svg)">
+                            <!--begin::نمایش existing avatar-->
+                            <div class="image-input-wrapper w-150px h-150px"></div>
 
-                        </a>
+                            <!--end::نمایش existing avatar-->
+                            <!--begin::Tags-->
+                            <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="تعویض آواتار">
+                                <i class="bi bi-pencil-fill fs-7"></i>
+                                <!--begin::Inputs-->
+                                <input type="file" asp-for="Settings_ImageTopMain" accept=".png, .jpg, .jpeg" />
+                                <input type="hidden" name="avatar_remove" />
+                                <!--end::Inputs-->
+                            </label>
+                            <!--end::Tags-->
+                            <!--begin::انصراف-->
+                            <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title="انصراف avatar">
+                                <i class="bi bi-x fs-2"></i>
+                            </span>
+                            <!--end::انصراف-->
+                            <!--begin::حذف-->
+                            <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="حذف آواتار">
+                                <i class="bi bi-x fs-2"></i>
+                            </span>
+                            <!--end::حذف-->
+                        </div>
+                        <!--end::Image input-->
+                        <!--begin::توضیحات-->
+                        <div class="text-muted fs-7">تصویر بندانگشتی محصول را تنظیم کنید. فقط فایل های تصویری *.png، *.jpg و *.jpeg پذیرفته می شوند</div>
+                        <!--end::توضیحات-->
                     </div>
+                    <!--end::Card body-->
                 </div>
-                <br />
-                <div id="formControls" class="mb-5">
+                <!--end::Thumbnail settings-->
+                <!--begin::Thumbnail settings-->
+                <div class="card card-flush py-4">
+                    <!--begin::Card header-->
+                    <div class="card-header">
+                        <!--begin::Card title-->
+                        <div class="card-title">
+                            <h2>تصویر جاری برای بالای صفحه</h2>
+                        </div>
+                        <!--end::Card title-->
+                    </div>
+                    <!--end::Card header-->
+                    <!--begin::Card body-->
+                    <div class="card-body text-center pt-0">
+                        <!--begin::Image input-->
+                        <div class="image-input image-input-empty image-input-outline mb-3" data-kt-image-input="true" style="background-image: url(assets/media/svg/files/blank-image.svg)">
+                            <img src="@ViewBag.Settings_ImageTopMain" height="200" width="250" />
+                        </div>
 
-                    <div class="card">
-                        <div class="card-body pb-2">
-                            <form asp-action="Edit" method="post" class="was-validated" enctype="multipart/form-data">
-                                <input hidden asp-for="Id" />
-                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    </div>
+                    <!--end::Card body-->
+                </div>
+                <!--end::Thumbnail settings-->
 
-                                <div class="row">
-                                    <div class="col-xl-12">
+                <hr />
+                <!--begin::Thumbnail settings-->
+                <div class="card card-flush py-4">
+                    <!--begin::Card header-->
+                    <div class="card-header">
+                        <!--begin::Card title-->
+                        <div class="card-title">
+                            <h2>تصویر جدید برای پایین صفحه</h2>
+                        </div>
+                        <!--end::Card title-->
+                    </div>
+                    <!--end::Card header-->
+                    <!--begin::Card body-->
+                    <div class="card-body text-center pt-0">
+                        <!--begin::Image input-->
+                        <div class="image-input image-input-empty image-input-outline mb-3" data-kt-image-input="true" style="background-image: url(assets/media/svg/files/blank-image.svg)">
+                            <!--begin::نمایش existing avatar-->
+                            <div class="image-input-wrapper w-150px h-150px"></div>
 
+                            <!--end::نمایش existing avatar-->
+                            <!--begin::Tags-->
+                            <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="تعویض آواتار">
+                                <i class="bi bi-pencil-fill fs-7"></i>
+                                <!--begin::Inputs-->
+                                <input type="file" asp-for="Settings_ImageFooter" accept=".png, .jpg, .jpeg" />
+                                <input type="hidden" name="avatar_remove" />
+                                <!--end::Inputs-->
+                            </label>
+                            <!--end::Tags-->
+                            <!--begin::انصراف-->
+                            <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title="انصراف avatar">
+                                <i class="bi bi-x fs-2"></i>
+                            </span>
+                            <!--end::انصراف-->
+                            <!--begin::حذف-->
+                            <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="حذف آواتار">
+                                <i class="bi bi-x fs-2"></i>
+                            </span>
+                            <!--end::حذف-->
+                        </div>
+                        <!--end::Image input-->
+                        <!--begin::توضیحات-->
+                        <div class="text-muted fs-7">تصویر بندانگشتی محصول را تنظیم کنید. فقط فایل های تصویری *.png، *.jpg و *.jpeg پذیرفته می شوند</div>
+                        <!--end::توضیحات-->
+                    </div>
+                    <!--end::Card body-->
+                </div>
+                <!--end::Thumbnail settings-->
+                <!--begin::Thumbnail settings-->
+                <div class="card card-flush py-4">
+                    <!--begin::Card header-->
+                    <div class="card-header">
+                        <!--begin::Card title-->
+                        <div class="card-title">
+                            <h2>تصویر جاری برای پایین صفحه</h2>
+                        </div>
+                        <!--end::Card title-->
+                    </div>
+                    <!--end::Card header-->
+                    <!--begin::Card body-->
+                    <div class="card-body text-center pt-0">
+                        <!--begin::Image input-->
+                        <div class="image-input image-input-empty image-input-outline mb-3" data-kt-image-input="true" style="background-image: url(assets/media/svg/files/blank-image.svg)">
+                            <img src="@ViewBag.Settings_ImageFooter" height="200" width="250" />
+                        </div>
 
-                                        <div class="form-group">
-                                            <label asp-for="Settings_Sitename" class="control-label"></label>
-                                            <input asp-for="Settings_Sitename" class="form-control" />
-                                            <span asp-validation-for="Settings_Sitename" class="text-danger"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <label asp-for="Settings_Questions" class="control-label"></label>
-                                            <textarea asp-for="Settings_Questions" class="form-control"></textarea>
-                                            <span asp-validation-for="Settings_Questions" class="text-danger"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <label asp-for="Settings_HelperSell" class="control-label"></label>
-                                            <textarea asp-for="Settings_HelperSell" class="form-control"></textarea>
-                                            <span asp-validation-for="Settings_HelperSell" class="text-danger"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <label asp-for="Settings_Address" class="control-label"></label>
-                                            <textarea asp-for="Settings_Address" class="form-control"></textarea>
-                                            <span asp-validation-for="Settings_Address" class="text-danger"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <label asp-for="Settings_Tell" class="control-label"></label>
-                                            <input asp-for="Settings_Tell" class="form-control" />
-                                            <span asp-validation-for="Settings_Tell" class="text-danger"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <label asp-for="Settings_Mobile" class="control-label"></label>
-                                            <input asp-for="Settings_Mobile" class="form-control" />
-                                            <span asp-validation-for="Settings_Mobile" class="text-danger"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <label asp-for="Settings_Email" class="control-label"></label>
-                                            <input asp-for="Settings_Email" class="form-control" />
-                                            <span asp-validation-for="Settings_Email" class="text-danger"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <input hidden value="@ViewBag.Settings_ImageFooter" name="_Settings_ImageFooter" />
-                                            <img src="@ViewBag.Settings_ImageFooter" width="150" height="150" />
-                                            <label asp-for="Settings_ImageFooter" class="control-label"></label>
-                                            <input asp-for="Settings_ImageFooter" class="form-control" />
-                                            <span asp-validation-for="Settings_ImageFooter" class="text-danger"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <input hidden value="@ViewBag.Settings_ImageTopMain" name="_Settings_ImageTopMain" />
-                                            <img src="@ViewBag.Settings_ImageTopMain" width="150" height="150" />
-                                            <label asp-for="Settings_ImageTopMain" class="control-label"></label>
-                                            <input asp-for="Settings_ImageTopMain" class="form-control" />
-                                            <span asp-validation-for="Settings_ImageTopMain" class="text-danger"></span>
-                                        </div>
+                    </div>
+                    <!--end::Card body-->
+                </div>
+                <!--end::Thumbnail settings-->
+            </div>
+            <!--end::کناری column-->
+            <!--begin::Main column-->
+            <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
+
+                <!--end:::Tabs-->
+                <!--begin::Tab content-->
+                <div class="tab-content">
+                    <!--begin::Tab pane-->
+                    <div class="tab-pane fade show active" id="kt_ecommerce_add_product_general" role="tab-panel">
+                        <div class="d-flex flex-column gap-7 gap-lg-10">
+                            <!--begin::عمومی options-->
+                            <div class="card card-flush py-4">
+
+                                <!--end::Card header-->
+                                <!--begin::Card body-->
+                                <div class="card-body pt-0">
+                                    <!--begin::Input group-->
+                                    <div class="mb-10 fv-row">
+                                        <!--begin::Tags-->
+                                        <label class="required form-label"> نام سایت </label>
+                                        <!--end::Tags-->
+                                        <!--begin::Input-->
+                                        <input type="text" class="form-control mb-2 is-invalid" placeholder="نام سایت  " asp-for="Settings_Sitename" required />
+                                        <!--end::Input-->
+                                        <span asp-validation-for="Settings_Sitename" class="text-danger"></span>
+
                                     </div>
+                                    <!--end::Input group-->
+                                    <!--begin::Input group-->
+                                    <div class="mb-10 fv-row">
+                                        <!--begin::Tags-->
+                                        <label class="required form-label"> سوالات متدوال سایت </label>
 
+                                        <textarea asp-for="Settings_Questions" class="form-control"></textarea>
+
+                                        <span asp-validation-for="Settings_Questions" class="text-danger"></span>
+
+                                    </div>
+                                    <!--end::Input group-->
+                                    <!--begin::Input group-->
+                                    <div class="mb-10 fv-row">
+                                        <!--begin::Tags-->
+                                        <label class="required form-label">راهنمای استفاده از سایت</label>
+                                        <!--end::Tags-->
+
+                                        <textarea asp-for="Settings_HelperSell" class="form-control"></textarea>
+
+                                        <span asp-validation-for="Settings_HelperSell" class="text-danger"></span>
+
+                                    </div>
+                                    <!--end::Input group-->
+                                    <!--begin::Input group-->
+                                    <div class="mb-10 fv-row">
+                                        <!--begin::Tags-->
+                                        <label class="required form-label"> آدرس </label>
+                                        <!--end::Tags-->
+
+                                        <textarea asp-for="Settings_Address" class="form-control"></textarea>
+
+                                        <span asp-validation-for="Settings_Address" class="text-danger"></span>
+
+                                    </div>
+                                    <!--end::Input group-->
+                                    <!--begin::Input group-->
+                                    <div class="mb-10 fv-row">
+                                        <!--begin::Tags-->
+                                        <label class="required form-label">
+                                            تلفن
+                                        </label>
+                                        <!--end::Tags-->
+
+                                        <input type="text" class="form-control mb-2 is-invalid" placeholder="تلفن  " asp-for="Settings_Tell" required />
+
+                                        <span asp-validation-for="Settings_Tell" class="text-danger"></span>
+
+                                    </div>
+                                    <!--end::Input group-->
+                                    <!--begin::Input group-->
+                                    <div class="mb-10 fv-row">
+                                        <!--begin::Tags-->
+                                        <label class="required form-label"> موبایل</label>
+                                        <!--end::Tags-->
+
+                                        <input type="text" class="form-control mb-2 is-invalid" placeholder="موبایل  " asp-for="Settings_Mobile" required />
+
+                                        <span asp-validation-for="Settings_Mobile" class="text-danger"></span>
+
+                                    </div>
+                                    <!--end::Input group-->
+                                    <!--begin::Input group-->
+                                    <div class="mb-10 fv-row">
+                                        <!--begin::Tags-->
+                                        <label class="required form-label"> ایمیل</label>
+                                        <!--end::Tags-->
+
+                                        <input type="text" class="form-control mb-2 is-invalid" placeholder="ایمیل  " asp-for="Settings_Email" required />
+
+                                        <span asp-validation-for="Settings_Email" class="text-danger"></span>
+
+                                    </div>
+                                    <!--end::Input group-->
+              
 
                                 </div>
+                                <!--end::Card header-->
+                            </div>
+                            <!--end::عمومی options-->
 
-
-
-
-                                <div class="row">
-                                    <button type="submit" class="btn btn-lg btn-outline-indigo">
-                                        <i class="fa fa-plus-square fa-fw me-1"></i>
-
-                                        ویرایش تغییرات
-                                    </button>
-                                </div>
-                            </form>
-
-                        </div>
-                        <div class="card-arrow">
-                            <div class="card-arrow-top-left"></div>
-                            <div class="card-arrow-top-right"></div>
-                            <div class="card-arrow-bottom-left"></div>
-                            <div class="card-arrow-bottom-right"></div>
                         </div>
                     </div>
+                    <!--end::Tab pane-->
+
                 </div>
-
-
-
-
+                <!--end::Tab content-->
+                <div class="d-flex justify-content-end">
+                    <!--begin::Button-->
+                    <a asp-action="Index" id="kt_ecommerce_add_product_cancel"
+                       class="btn btn-light me-5">انصراف</a>
+                    <!--end::Button-->
+                    <!--begin::Button-->
+                    <button type="submit" id="kt_ecommerce_add_product_submit" class="btn btn-primary">
+                        <span class="indicator-label">ذخیره تغییرات</span>
+                        <span class="indicator-progress">
+                            لطفا صبر کنید...
+                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                        </span>
+                    </button>
+                    <!--end::Button-->
+                </div>
             </div>
-
-            <div class="col-xl-1">
-            </div>
-
-        </div>
-
+            <!--end::Main column-->
+        </form>
+        <!--end::Form-->
     </div>
-
+    <!--end::Container-->
 </div>
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

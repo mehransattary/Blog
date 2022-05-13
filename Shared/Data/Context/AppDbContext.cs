@@ -18,7 +18,7 @@ namespace Data.Context
         }
 
         #region Weblogs
-        public DbSet<Entities.WebLog> Weblogs { get; set; }
+        public DbSet<WebLog> Weblogs { get; set; }
         public DbSet<WebLog_Category> webLog_Categories { get; set; }
         public DbSet<WebLog_Comment> webLog_Comments { get; set; }
 
@@ -29,6 +29,12 @@ namespace Data.Context
         public DbSet<WebLog_Label_Blog> WebLog_Label_Blogs { get; set; }
         public DbSet<WebLog_SelectedBlogs> WebLog_SelectedBlogs { get; set; }
         public DbSet<WebLog_Slider> WebLog_Sliders { get; set; }
+
+        public DbSet<WebLog_Category_Views> WebLog_Category_Views { get; set; }
+        public DbSet<WebLog_Group_Views> WebLog_Group_Views { get; set; }
+        public DbSet<WebLog_Label_Views>  WebLog_Label_Views { get; set; }
+        public DbSet<WebLog_Views>  WebLog_Views { get; set; }
+
         #endregion
 
         #region Settings

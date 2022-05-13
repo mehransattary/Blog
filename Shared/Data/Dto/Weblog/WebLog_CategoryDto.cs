@@ -1,4 +1,5 @@
 ﻿using Entities;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -9,7 +10,7 @@ using System.Text;
 
 namespace Data.Dto
 {
-    public class WebLog_CategoryDto : BaseView
+    public class WebLog_CategoryDto : BaseMetaTagDto
     {
         #region Properties
         //***====================================================================================***//
@@ -24,16 +25,13 @@ namespace Data.Dto
         public string WebLog_Category_Title_Two { get; set; }
         //***====================================================================================***//
         [Display(Name = "تصویر")]
-        [MaxLength(700, ErrorMessage = "نباید بیشتر از {1} کاراکتر وارد شه")]
-        public string WebLog_Category_Image { get; set; }
+        public IFormFile WebLog_Category_Image { get; set; }
         //***====================================================================================***//
         [Display(Name = "تصویرکوچک")]
-        [MaxLength(700, ErrorMessage = "نباید بیشتر از {1} کاراکتر وارد شه")]
-        public string WebLog_Category_ThumbnaillImage { get; set; }
+        public IFormFile WebLog_Category_ThumbnaillImage { get; set; }
         //***====================================================================================***//
         [Display(Name = "تصویر برای صفحه اصلی")]
-        [MaxLength(700, ErrorMessage = "نباید بیشتر از {1} کاراکتر وارد شه")]
-        public string WebLog_Category_ImageHome { get; set; }
+        public IFormFile WebLog_Category_ImageHome { get; set; }
         //***====================================================================================***//
         [Display(Name = "مرتب سازی  ")]
         public short? WebLog_Category_Order { get; set; }

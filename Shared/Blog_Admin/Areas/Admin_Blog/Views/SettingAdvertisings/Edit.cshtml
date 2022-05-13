@@ -7,104 +7,120 @@
 }
 
 
-<div class="row justify-content-center">
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Container-->
+    <div class="container-xxl" id="kt_content_container">
+        <!--begin::Form-->
+        <form id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row was-validated"
+              asp-action="Edit" method="post" enctype="multipart/form-data">
+            <input hidden asp-for="Id" />
+       
 
-    <div class="col-xl-10">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <!--begin::کناری column-->
+  
+            <!--end::کناری column-->
+            <!--begin::Main column-->
+            <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
 
-        <div class="row">
-            <div class="col-xl-1">
-            </div>
-            <div class="col-xl-10">
+                <!--end:::Tabs-->
+                <!--begin::Tab content-->
+                <div class="tab-content">
+                    <!--begin::Tab pane-->
+                    <div class="tab-pane fade show active" id="kt_ecommerce_add_product_general" role="tab-panel">
+                        <div class="d-flex flex-column gap-7 gap-lg-10">
+                            <!--begin::عمومی options-->
+                            <div class="card card-flush py-4">
 
-
-                <div class="d-flex align-items-center mb-3">
-                    <div>
-
-                        <h1 class="page-header mb-0">@ViewData["Title"]</h1>
-                    </div>
-                    <div class="ms-auto">
-                        <a asp-action="Index" class="btn btn-outline-danger">
-                            بازگشت
-                            <i class="fa fa-fast-backward fa-fw me-1"></i>
-
-                        </a>
-                    </div>
-                </div>
-                <br />
-                <div id="formControls" class="mb-5">
-
-                    <div class="card">
-                        <div class="card-body pb-2">
-                            <form asp-action="Edit" method="post" class="was-validated" enctype="multipart/form-data">
-                                <input hidden asp-for="Id" />
-                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-                                <div class="row">
-                                    <div class="col-xl-12">
-
-
-                                        <div class="form-group">
-                                            <label asp-for="Settings_Advertising_Title" class="control-label"></label>
-                                            <input asp-for="Settings_Advertising_Title" class="form-control" />
-                                            <span asp-validation-for="Settings_Advertising_Title" class="text-danger"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <label asp-for="Settings_href_Title" class="control-label"></label>
-                                            <input asp-for="Settings_href_Title" class="form-control" />
-                                            <span asp-validation-for="Settings_href_Title" class="text-danger"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <label asp-for="Settings_alt_Title" class="control-label"></label>
-                                            <input asp-for="Settings_alt_Title" class="form-control" />
-                                            <span asp-validation-for="Settings_alt_Title" class="text-danger"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <label asp-for="Settings_title_Title" class="control-label"></label>
-                                            <input asp-for="Settings_title_Title" class="form-control" />
-                                            <span asp-validation-for="Settings_title_Title" class="text-danger"></span>
-                                        </div>
+                                <!--end::Card header-->
+                                <!--begin::Card body-->
+                                <div class="card-body pt-0">
+                                    <!--begin::Input group-->
+                                    <div class="mb-10 fv-row">
+                                        <!--begin::Tags-->
+                                        <label class="required form-label"> عنوان تبلیغ </label>
+                                        <!--end::Tags-->
+                                        <!--begin::Input-->
+                                        <input type="text" class="form-control mb-2 is-invalid" placeholder="عنوان تبلیغ " asp-for="Settings_Advertising_Title" required />
+                                        <!--end::Input-->
+                                        <span asp-validation-for="Settings_Advertising_Title" class="text-danger"></span>
 
                                     </div>
+                                    <!--end::Input group-->
+                                 
+                                    <!--begin::Input group-->
+                                    <div class="mb-10 fv-row">
+                                        <!--begin::Tags-->
+                                        <label class="required form-label">
+                                            لینک تبلیغ
+                                        </label>
+                                        <!--end::Tags-->
+
+                                        <input type="text" class="form-control mb-2 is-invalid" placeholder="لینک تبلیغ  " asp-for="Settings_href_Title" required />
+
+                                        <span asp-validation-for="Settings_href_Title" class="text-danger"></span>
+
+                                    </div>
+                                    <!--end::Input group-->
+                                    <!--begin::Input group-->
+                                    <div class="mb-10 fv-row">
+                                        <!--begin::Tags-->
+                                        <label class="required form-label"> عنوان جایگزین لینک</label>
+                                        <!--end::Tags-->
+
+                                        <input type="text" class="form-control mb-2 is-invalid" placeholder="عنوان جایگزین لینک  " asp-for="Settings_alt_Title" required />
+
+                                        <span asp-validation-for="Settings_alt_Title" class="text-danger"></span>
+
+                                    </div>
+                                    <!--end::Input group-->
+                                    <!--begin::Input group-->
+                                    <div class="mb-10 fv-row">
+                                        <!--begin::Tags-->
+                                        <label class="required form-label"> نوان دوم جایگزین برای لینک</label>
+                                        <!--end::Tags-->
+
+                                        <input type="text" class="form-control mb-2 is-invalid" placeholder="عنوان دوم جایگزین برای لینک  " asp-for="Settings_title_Title" required />
+
+                                        <span asp-validation-for="Settings_title_Title" class="text-danger"></span>
+
+                                    </div>
+                                    <!--end::Input group-->
 
 
                                 </div>
+                                <!--end::Card header-->
+                            </div>
+                            <!--end::عمومی options-->
 
-
-
-
-                                <div class="row">
-                                    <button type="submit" class="btn btn-lg btn-outline-indigo">
-                                        <i class="fa fa-plus-square fa-fw me-1"></i>
-
-                                        ویرایش تغییرات
-                                    </button>
-                                </div>
-                            </form>
-
-                        </div>
-                        <div class="card-arrow">
-                            <div class="card-arrow-top-left"></div>
-                            <div class="card-arrow-top-right"></div>
-                            <div class="card-arrow-bottom-left"></div>
-                            <div class="card-arrow-bottom-right"></div>
                         </div>
                     </div>
+                    <!--end::Tab pane-->
+
                 </div>
-
-
-
-
+                <!--end::Tab content-->
+                <div class="d-flex justify-content-end">
+                    <!--begin::Button-->
+                    <a asp-action="Index" id="kt_ecommerce_add_product_cancel"
+                       class="btn btn-light me-5">انصراف</a>
+                    <!--end::Button-->
+                    <!--begin::Button-->
+                    <button type="submit" id="kt_ecommerce_add_product_submit" class="btn btn-primary">
+                        <span class="indicator-label">ذخیره تغییرات</span>
+                        <span class="indicator-progress">
+                            لطفا صبر کنید...
+                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                        </span>
+                    </button>
+                    <!--end::Button-->
+                </div>
             </div>
-
-            <div class="col-xl-1">
-            </div>
-
-        </div>
-
+            <!--end::Main column-->
+        </form>
+        <!--end::Form-->
     </div>
-
+    <!--end::Container-->
 </div>
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

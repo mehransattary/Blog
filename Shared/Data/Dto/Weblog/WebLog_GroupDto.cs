@@ -1,4 +1,5 @@
 ﻿using Entities;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -10,7 +11,7 @@ using System.Text;
 
 namespace Data.Dto
 {
-    public class WebLog_GroupDto : BaseView
+    public class WebLog_GroupDto : BaseMetaTagDto
     {
         #region Properties
         //***====================================================================================***//
@@ -25,16 +26,13 @@ namespace Data.Dto
         public string WebLog_Group_Title_Two { get; set; }
         //***====================================================================================***//
         [Display(Name = "تصویر")]
-        [MaxLength(700, ErrorMessage = "نباید بیشتر از{1}کاراکتر وارد شه")]
-        public string WebLog_Group_Image { get; set; }
+        public IFormFile  WebLog_Group_Image { get; set; }
         //***====================================================================================***//
         [Display(Name = "تصویرکوچک")]
-        [MaxLength(700, ErrorMessage = "نباید بیشتر از{1}کاراکتر وارد شه")]
-        public string WebLog_Group_ThumbnaillImage { get; set; }
+        public IFormFile WebLog_Group_ThumbnaillImage { get; set; }
         //***====================================================================================***//
         [Display(Name = "تصویر برای صفحه اصلی")]
-        [MaxLength(700, ErrorMessage = "نباید بیشتر از{1}کاراکتر وارد شه")]
-        public string WebLog_Group_ImageHome { get; set; }
+        public IFormFile WebLog_Group_ImageHome { get; set; }
         //***====================================================================================***//
         [Display(Name = "مرتب سازی  ")]
         public short? WebLog_Group_Order { get; set; }

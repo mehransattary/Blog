@@ -10,7 +10,7 @@ using System.Text;
 
 namespace Data.Dto
 {
-    public class WebLog_SliderDto : BaseEntity
+    public class WebLog_SliderDto : BaseDto
     {
 
 

@@ -1,0 +1,489 @@
+﻿
+
+@model WebLog_LabelDto
+
+@{
+    ViewData["Title"] = $"    برچسب وبلاگ جدید  ";
+}
+
+@section Style
+{
+    <link rel="stylesheet" href="/summernote/dist/summernote-lite.css" />
+
+}
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Container-->
+    <div class="container-xxl" id="kt_content_container">
+        <!--begin::Form-->
+        <form id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row was-validated"
+              asp-action="Create" method="post" enctype="multipart/form-data">
+
+
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <!--begin::کناری column-->
+            <div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
+                <!--begin::Thumbnail settings-->
+                <div class="card card-flush py-4">
+                    <!--begin::Card header-->
+                    <div class="card-header">
+                        <!--begin::Card title-->
+                        <div class="card-title">
+                            <h2>تصویر جدید برای برچسب</h2>
+                        </div>
+                        <!--end::Card title-->
+                    </div>
+                    <!--end::Card header-->
+                    <!--begin::Card body-->
+                    <div class="card-body text-center pt-0">
+                        <!--begin::Image input-->
+                        <div class="image-input image-input-empty image-input-outline mb-3" data-kt-image-input="true" style="background-image: url(assets/media/svg/files/blank-image.svg)">
+                            <!--begin::نمایش existing avatar-->
+                            <div class="image-input-wrapper w-150px h-150px"></div>
+
+                            <!--end::نمایش existing avatar-->
+                            <!--begin::Tags-->
+                            <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="تعویض آواتار">
+                                <i class="bi bi-pencil-fill fs-7"></i>
+                                <!--begin::Inputs-->
+                                <input type="file" asp-for="WebLog_Label_Image" accept=".png, .jpg, .jpeg" />
+                                <input type="hidden" name="avatar_remove" />
+                                <!--end::Inputs-->
+                            </label>
+                            <!--end::Tags-->
+                            <!--begin::انصراف-->
+                            <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title="انصراف avatar">
+                                <i class="bi bi-x fs-2"></i>
+                            </span>
+                            <!--end::انصراف-->
+                            <!--begin::حذف-->
+                            <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="حذف آواتار">
+                                <i class="bi bi-x fs-2"></i>
+                            </span>
+                            <!--end::حذف-->
+                        </div>
+                        <!--end::Image input-->
+                        <!--begin::توضیحات-->
+                        <div class="text-muted fs-7">تصویر بندانگشتی محصول را تنظیم کنید. فقط فایل های تصویری *.png، *.jpg و *.jpeg پذیرفته می شوند</div>
+                        <!--end::توضیحات-->
+                    </div>
+                    <!--end::Card body-->
+                </div>
+                <!--end::Thumbnail settings-->
+
+
+                <hr />
+                <!--begin::Thumbnail settings-->
+                <div class="card card-flush py-4">
+                    <!--begin::Card header-->
+                    <div class="card-header">
+                        <!--begin::Card title-->
+                        <div class="card-title">
+                            <h2>تصویر جدید برای برچسب سایز کوچک</h2>
+                        </div>
+                        <!--end::Card title-->
+                    </div>
+                    <!--end::Card header-->
+                    <!--begin::Card body-->
+                    <div class="card-body text-center pt-0">
+                        <!--begin::Image input-->
+                        <div class="image-input image-input-empty image-input-outline mb-3" data-kt-image-input="true" style="background-image: url(assets/media/svg/files/blank-image.svg)">
+                            <!--begin::نمایش existing avatar-->
+                            <div class="image-input-wrapper w-150px h-150px"></div>
+
+                            <!--end::نمایش existing avatar-->
+                            <!--begin::Tags-->
+                            <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="تعویض آواتار">
+                                <i class="bi bi-pencil-fill fs-7"></i>
+                                <!--begin::Inputs-->
+                                <input type="file" asp-for="WebLog_Label_ThumbnaillImage" accept=".png, .jpg, .jpeg" />
+                                <input type="hidden" name="avatar_remove" />
+                                <!--end::Inputs-->
+                            </label>
+                            <!--end::Tags-->
+                            <!--begin::انصراف-->
+                            <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title="انصراف avatar">
+                                <i class="bi bi-x fs-2"></i>
+                            </span>
+                            <!--end::انصراف-->
+                            <!--begin::حذف-->
+                            <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="حذف آواتار">
+                                <i class="bi bi-x fs-2"></i>
+                            </span>
+                            <!--end::حذف-->
+                        </div>
+                        <!--end::Image input-->
+                        <!--begin::توضیحات-->
+                        <div class="text-muted fs-7">تصویر بندانگشتی محصول را تنظیم کنید. فقط فایل های تصویری *.png، *.jpg و *.jpeg پذیرفته می شوند</div>
+                        <!--end::توضیحات-->
+                    </div>
+                    <!--end::Card body-->
+                </div>
+                <!--end::Thumbnail settings-->
+
+
+                <hr />
+                <!--begin::Thumbnail settings-->
+                <div class="card card-flush py-4">
+                    <!--begin::Card header-->
+                    <div class="card-header">
+                        <!--begin::Card title-->
+                        <div class="card-title">
+                            <h2>تصویر جدید برای برچسب صفحه اصلی</h2>
+                        </div>
+                        <!--end::Card title-->
+                    </div>
+                    <!--end::Card header-->
+                    <!--begin::Card body-->
+                    <div class="card-body text-center pt-0">
+                        <!--begin::Image input-->
+                        <div class="image-input image-input-empty image-input-outline mb-3" data-kt-image-input="true" style="background-image: url(assets/media/svg/files/blank-image.svg)">
+                            <!--begin::نمایش existing avatar-->
+                            <div class="image-input-wrapper w-150px h-150px"></div>
+
+                            <!--end::نمایش existing avatar-->
+                            <!--begin::Tags-->
+                            <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="تعویض آواتار">
+                                <i class="bi bi-pencil-fill fs-7"></i>
+                                <!--begin::Inputs-->
+                                <input type="file" asp-for="WebLog_Label_ImageHome" accept=".png, .jpg, .jpeg" />
+                                <input type="hidden" name="avatar_remove" />
+                                <!--end::Inputs-->
+                            </label>
+                            <!--end::Tags-->
+                            <!--begin::انصراف-->
+                            <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title="انصراف avatar">
+                                <i class="bi bi-x fs-2"></i>
+                            </span>
+                            <!--end::انصراف-->
+                            <!--begin::حذف-->
+                            <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="حذف آواتار">
+                                <i class="bi bi-x fs-2"></i>
+                            </span>
+                            <!--end::حذف-->
+                        </div>
+                        <!--end::Image input-->
+                        <!--begin::توضیحات-->
+                        <div class="text-muted fs-7">تصویر بندانگشتی محصول را تنظیم کنید. فقط فایل های تصویری *.png، *.jpg و *.jpeg پذیرفته می شوند</div>
+                        <!--end::توضیحات-->
+                    </div>
+                    <!--end::Card body-->
+                </div>
+                <!--end::Thumbnail settings-->
+
+                <hr />
+                <!--begin::Thumbnail settings-->
+                <div class="card card-flush py-4">
+                    <!--begin::Card header-->
+                    <div class="card-header">
+                        <!--begin::Card title-->
+                        <div class="card-title">
+                            <h2>تصویر جدید برای متا تگ</h2>
+                        </div>
+                        <!--end::Card title-->
+                    </div>
+                    <!--end::Card header-->
+                    <!--begin::Card body-->
+                    <div class="card-body text-center pt-0">
+                        <!--begin::Image input-->
+                        <div class="image-input image-input-empty image-input-outline mb-3" data-kt-image-input="true" style="background-image: url(assets/media/svg/files/blank-image.svg)">
+                            <!--begin::نمایش existing avatar-->
+                            <div class="image-input-wrapper w-150px h-150px"></div>
+
+                            <!--end::نمایش existing avatar-->
+                            <!--begin::Tags-->
+                            <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="تعویض آواتار">
+                                <i class="bi bi-pencil-fill fs-7"></i>
+                                <!--begin::Inputs-->
+                                <input type="file" asp-for="Image_Meta" accept=".png, .jpg, .jpeg" />
+                                <input type="hidden" name="avatar_remove" />
+                                <!--end::Inputs-->
+                            </label>
+                            <!--end::Tags-->
+                            <!--begin::انصراف-->
+                            <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title="انصراف avatar">
+                                <i class="bi bi-x fs-2"></i>
+                            </span>
+                            <!--end::انصراف-->
+                            <!--begin::حذف-->
+                            <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="حذف آواتار">
+                                <i class="bi bi-x fs-2"></i>
+                            </span>
+                            <!--end::حذف-->
+                        </div>
+                        <!--end::Image input-->
+                        <!--begin::توضیحات-->
+                        <div class="text-muted fs-7">تصویر بندانگشتی محصول را تنظیم کنید. فقط فایل های تصویری *.png، *.jpg و *.jpeg پذیرفته می شوند</div>
+                        <!--end::توضیحات-->
+                    </div>
+                    <!--end::Card body-->
+                </div>
+                <!--end::Thumbnail settings-->
+
+            </div>
+            <!--end::کناری column-->
+            <!--begin::Main column-->
+            <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
+                <div class="d-flex justify-content-end">
+                    <!--begin::Button-->
+                    <a asp-action="Index" id="kt_ecommerce_add_product_cancel"
+                       class="btn btn-light me-5">انصراف</a>
+                    <!--end::Button-->
+                    <!--begin::Button-->
+                    <button type="submit" id="kt_ecommerce_add_product_submit" class="btn btn-primary">
+                        <span class="indicator-label">ذخیره تغییرات</span>
+                        <span class="indicator-progress">
+                            لطفا صبر کنید...
+                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                        </span>
+                    </button>
+                    <!--end::Button-->
+
+
+                </div>
+                @if (ViewBag.error_Url_Meta != null)
+                {
+                    <div class="text-center ">
+                        <span class=" badge rounded-pill bg-danger  text-white p-5">
+                            @ViewBag.error_Url_Meta
+                        </span>
+                    </div>
+                }
+                @if (ViewBag.error_RepeatOrder != null)
+                {
+                    <div class="text-center ">
+                        <span class=" badge rounded-pill bg-danger  text-white p-5">
+                            @ViewBag.error_RepeatOrder
+                        </span>
+                    </div>
+                }
+                <!--end:::Tabs-->
+                <!--begin::Tab content-->
+                <div class="tab-content">
+                    <!--begin::Tab pane-->
+                    <div class="tab-pane fade show active" id="kt_ecommerce_add_product_general" role="tab-panel">
+                        <div class="d-flex flex-column gap-7 gap-lg-10">
+
+                            <div class="container mt-3">
+                                <div id="accordion">
+                                    <div class="card">
+                                        <div class="card-header bg-info " data-bs-toggle="collapse" href="#collapseOne">
+                                            <a class="btn text-white">
+                                                ورودی های عمومی
+
+                                            </a>
+                                        </div>
+                                        <div id="collapseOne" class="collapse show" data-bs-parent="#accordion">
+                                            <div class="card-body">
+                                                <!--begin::عمومی options-->
+                                                <div class="card card-flush py-4">
+
+                                                    <!--end::Card header-->
+                                                    <!--begin::Card body-->
+                                                    <div class="card-body pt-0">
+
+
+                                                  
+                                                        <!--begin::Input Label-->
+                                                        <div class="mb-10 fv-row">
+                                                            <!--begin::Tags-->
+                                                            <label class="required form-label" asp-for="WebLog_Label_Title_One"> </label>
+                                                            <!--end::Tags-->
+                                                            <!--begin::Input-->
+                                                            <input type="text" class="form-control mb-2 is-invalid" placeholder="عنوان اول " asp-for="WebLog_Label_Title_One" required />
+                                                            <!--end::Input-->
+                                                            <span asp-validation-for="WebLog_Label_Title_One" class="text-danger"></span>
+
+                                                        </div>
+                                                        <!--end::Input Label-->
+                                                        <!--begin::Input Label-->
+                                                        <div class="mb-10 fv-row">
+                                                            <!--begin::Tags-->
+                                                            <label class="required form-label" asp-for="WebLog_Label_Title_Two"> </label>
+                                                            <!--end::Tags-->
+                                                            <!--begin::Input-->
+                                                            <input type="text" class="form-control mb-2 is-invalid" placeholder="عنوان دوم " asp-for="WebLog_Label_Title_Two" required />
+                                                            <!--end::Input-->
+
+                                                            <span asp-validation-for="WebLog_Label_Title_Two" class="text-danger"></span>
+
+                                                        </div>
+                                                        <!--end::Input Label-->
+                                                        <!--begin::Input Label-->
+                                                        <div class="mb-10 fv-row">
+                                                            <!--begin::Tags-->
+                                                            <label class="required form-label" asp-for="WebLog_Label_Order"> </label>
+                                                            <!--end::Tags-->
+                                                            <!--begin::Input-->
+                                                            <input class="form-control mb-2 is-invalid" placeholder="مرتب سازی " asp-for="WebLog_Label_Order" required />
+                                                            <!--end::Input-->
+
+                                                            <span asp-validation-for="WebLog_Label_Order" class="text-danger"></span>
+
+                                                        </div>
+                                                        <!--end::Input Label-->
+                                                        <!--begin::Input Label-->
+                                                        <div class="mb-10 fv-row">
+                                                            <!--begin::Tags-->
+                                                            <label class="required form-label" asp-for="WebLog_Label_Description"> </label>
+                                                            <!--end::Tags-->
+                                                            <!--begin::Input-->
+                                                            <textarea class="summernote  WebLog_Label_Description" asp-for="WebLog_Label_Description" required></textarea>                                        <!--end::Input-->
+
+                                                            <span asp-validation-for="WebLog_Label_Description" class="text-danger"></span>
+
+                                                        </div>
+                                                        <!--end::Input Label-->
+                                                        <!--begin::Input Label-->
+                                                        <div class="mb-10 fv-row">
+                                                            <!--begin::Tags-->
+                                                            <label class=" form-label" asp-for="WebLog_Label_ShortDescription"> </label>
+                                                            <!--end::Tags-->
+                                                            <!--begin::Input-->
+                                                            <textarea class="form-control mb-2" asp-for="WebLog_Label_ShortDescription"></textarea>                                        <!--end::Input-->
+
+                                                            <span asp-validation-for="WebLog_Label_ShortDescription" class="text-danger"></span>
+
+                                                        </div>
+                                                        <!--end::Input Label-->
+                                                        <!--begin::Input Label-->
+                                                        <div class="mb-10 fv-row">
+                                                            <!--begin::Tags-->
+                                                            <label class="required form-label" asp-for="WebLog_Label_IsShow"> </label>
+                                                            <!--end::Tags-->
+                                                            <!--begin::Input-->
+                                                            <input class="form-check-input" type="checkbox" asp-for="WebLog_Label_IsShow">
+                                                            <!--end::Input-->
+
+                                                            <span asp-validation-for="WebLog_Label_IsShow" class="text-danger"></span>
+
+                                                        </div>
+                                                        <!--end::Input Label-->
+                                                        <hr />
+
+                                                    </div>
+                                                    <!--end::Card header-->
+                                                </div>
+                                                <!--end::عمومی options-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header bg-danger " data-bs-toggle="collapse" href="#collapseTwo">
+                                            <a class="collapsed btn text-white">
+                                                ورودی های سئو
+                                            </a>
+                                        </div>
+                                        <div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
+                                            <div class="card-body">
+                                                <div class="card-body">
+                                                    <!--begin::عمومی options-->
+                                                    <div class="card card-flush py-4">
+
+
+                                                        <div class="card-body pt-0">
+
+                                                            <div class="mb-10 fv-row">
+                                                                <label class="required form-label" asp-for="Title_Meta"> </label>
+                                                                <input type="text" class="form-control mb-2 is-invalid" placeholder="عنوان متا تگ " asp-for="Title_Meta" required />
+                                                                <span asp-validation-for="Title_Meta" class="text-danger"></span>
+                                                            </div>
+
+                                                            <div class="mb-10 fv-row">
+                                                                <label class=" form-label" asp-for="TitleEnglish_Meta"> </label>
+                                                                <input type="text" class="form-control mb-2 " placeholder="عنوان انگلیسی متا تگ " asp-for="TitleEnglish_Meta" />
+                                                                <span asp-validation-for="TitleEnglish_Meta" class="text-danger"></span>
+                                                            </div>
+                                                            <div class="mb-10 fv-row">
+                                                                <label class="required form-label" asp-for="Url_Meta"> </label>
+                                                                <input type="text" class="form-control mb-2 is-invalid" placeholder="لینک متا تگ " asp-for="Url_Meta" required />
+                                                                <span asp-validation-for="Url_Meta" class="text-danger"></span>
+                                                            </div>
+                                                            <div class="mb-10 fv-row">
+                                                                <label class="required form-label" asp-for="Desc_Meta"> </label>
+                                                                <input type="text" class="form-control mb-2 is-invalid" placeholder="توضیحات متاتگ " asp-for="Desc_Meta" required />
+                                                                <span asp-validation-for="Desc_Meta" class="text-danger"></span>
+                                                            </div>
+                                                            <div class="mb-10 fv-row">
+                                                                <label class=" form-label" asp-for="Canonical_Meta"> </label>
+                                                                <input type="text" class="form-control mb-2 " placeholder="کنو نیکال یا لینک اصلی  برای این دسته " asp-for="Canonical_Meta" />
+                                                                <span asp-validation-for="Canonical_Meta" class="text-danger"></span>
+                                                            </div>
+                                                            <div class="mb-10 fv-row">
+                                                                <label class=" form-label" asp-for="Keyword_Meta"> </label>
+                                                                <input type="text" class="form-control mb-2 " placeholder="کلمات کلیدی متا تگ " asp-for="Keyword_Meta" />
+                                                                <span asp-validation-for="Keyword_Meta" class="text-danger"></span>
+                                                            </div>
+
+                                                        </div>
+                                                        <!--end::Card header-->
+                                                    </div>
+                                                    <!--end::عمومی options-->
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--end::Tab pane-->
+
+                </div>
+                <!--end::Tab content-->
+                <div class="d-flex justify-content-end">
+                    <!--begin::Button-->
+                    <a asp-action="Index" id="kt_ecommerce_add_product_cancel"
+                       class="btn btn-light me-5">انصراف</a>
+                    <!--end::Button-->
+                    <!--begin::Button-->
+                    <button type="submit" id="kt_ecommerce_add_product_submit" class="btn btn-primary">
+                        <span class="indicator-label">ذخیره تغییرات</span>
+                        <span class="indicator-progress">
+                            لطفا صبر کنید...
+                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                        </span>
+                    </button>
+                    <!--end::Button-->
+                </div>
+            </div>
+            <!--end::Main column-->
+
+
+
+        </form>
+        <!--end::Form-->
+    </div>
+    <!--end::Container-->
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="/summernote/dist/summernote-lite.min.js"></script>
+    <script>
+        $('.WebLog_Label_Description').summernote({
+            toolbar: [
+                ['style', ['style']],
+                ['fontsize', ['fontsize']],
+                ['font', ['bold', 'italic', 'underline', 'clear']],
+                ['fontname', ['fontname']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['height', ['height']],
+                ['insert', ['link','picture', 'hr','video']],
+                ['table', ['table']],
+                ['view', ['fullscreen', 'codeview', 'help']],
+            ],
+            focus: false,
+            height: 400,
+            fontSizeUnits: ['px', 'pt'],
+            fontSizes: ['8', '9', '10', '11', '12', '14', '18', '24', '36', '48', '64', '82', '150']
+        });
+   
+ 
+    </script>
+}
+

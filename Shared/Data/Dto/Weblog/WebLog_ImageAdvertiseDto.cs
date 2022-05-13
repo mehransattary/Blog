@@ -10,7 +10,7 @@ using System.Text;
 
 namespace Data.Dto
 {
-    public class WebLog_WebLog_ImageAdvertise : BaseEntity
+    public class WebLog_WebLog_ImageAdvertise : BaseDto
     {
 
         #region Properties

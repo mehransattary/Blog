@@ -10,7 +10,14 @@
                     @if (accountService.IsSignin(User))
                     {
                         <li>
-                            <a id="loginbtn"  asp-action="LogOut"asp-controller="Account" class="btn btn-link p-1 ml-2">
+                            <a id="loginbtn" asp-action="Index" asp-controller="Default" asp-area="Admin_Blog" class="btn btn-link p-1 ml-2">
+                                <img src="/tieco/Images/Svg/account-user-profile-gui-web.svg" />
+                                پنل مدیریت
+                            </a>
+                        </li>
+                        <li>
+                            <a id="loginbtn" asp-action="LogOut" asp-controller="Account" class="btn btn-link p-1 ml-2">
+                                <img src="/tieco/Images/Svg/account-user-delete-profile-gui-web.svg" />
                                 خروج
                             </a>
                         </li>

@@ -11,182 +11,469 @@
 }
 
 
-<div class="row justify-content-center">
 
-    <div class="col-xl-10">
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Container-->
+    <div class="container-xxl" id="kt_content_container">
+        <!--begin::Form-->
+        <form id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row was-validated"
+              asp-action="Edit" method="post" enctype="multipart/form-data">
+            <input hidden asp-for="Id" />
+            <input hidden value="@ViewBag.Settings_ogimage" name="_Settings_ogimage" />
+            <input hidden value="@ViewBag.Settings_twitter_image" name="_Settings_twitter_image" />
 
-        <div class="row">
-            <div class="col-xl-1">
-            </div>
-            <div class="col-xl-10">
-
-
-                <div class="d-flex align-items-center mb-3">
-                    <div>
-
-                        <h1 class="page-header mb-0">@ViewData["Title"]</h1>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <!--begin::کناری column-->
+            <div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
+                <!--begin::Thumbnail settings-->
+                <div class="card card-flush py-4">
+                    <!--begin::Card header-->
+                    <div class="card-header">
+                        <!--begin::Card title-->
+                        <div class="card-title">
+                            <h2>تصویر جدید در شبکه های اجتماعی</h2>
+                        </div>
+                        <!--end::Card title-->
                     </div>
-                    <div class="ms-auto">
-                        <a asp-action="Index" class="btn btn-outline-danger">
-                            بازگشت
-                            <i class="fa fa-fast-backward fa-fw me-1"></i>
+                    <!--end::Card header-->
+                    <!--begin::Card body-->
+                    <div class="card-body text-center pt-0">
+                        <!--begin::Image input-->
+                        <div class="image-input image-input-empty image-input-outline mb-3" data-kt-image-input="true" style="background-image: url(assets/media/svg/files/blank-image.svg)">
+                            <!--begin::نمایش existing avatar-->
+                            <div class="image-input-wrapper w-150px h-150px"></div>
 
-                        </a>
+                            <!--end::نمایش existing avatar-->
+                            <!--begin::Tags-->
+                            <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="تعویض آواتار">
+                                <i class="bi bi-pencil-fill fs-7"></i>
+                                <!--begin::Inputs-->
+                                <input type="file" asp-for="Settings_ogimage" accept=".png, .jpg, .jpeg" />
+                                <input type="hidden" name="avatar_remove" />
+                                <!--end::Inputs-->
+                            </label>
+                            <!--end::Tags-->
+                            <!--begin::انصراف-->
+                            <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title="انصراف avatar">
+                                <i class="bi bi-x fs-2"></i>
+                            </span>
+                            <!--end::انصراف-->
+                            <!--begin::حذف-->
+                            <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="حذف آواتار">
+                                <i class="bi bi-x fs-2"></i>
+                            </span>
+                            <!--end::حذف-->
+                        </div>
+                        <!--end::Image input-->
+                        <!--begin::توضیحات-->
+                        <div class="text-muted fs-7">تصویر بندانگشتی محصول را تنظیم کنید. فقط فایل های تصویری *.png، *.jpg و *.jpeg پذیرفته می شوند</div>
+                        <!--end::توضیحات-->
                     </div>
+                    <!--end::Card body-->
                 </div>
-                <br />
-                <div id="formControls" class="mb-5">
+                <!--end::Thumbnail settings-->
+                <!--begin::Thumbnail settings-->
+                <div class="card card-flush py-4">
+                    <!--begin::Card header-->
+                    <div class="card-header">
+                        <!--begin::Card title-->
+                        <div class="card-title">
+                            <h2>تصویر جاری در شبکه های اجتماعی</h2>
+                        </div>
+                        <!--end::Card title-->
+                    </div>
+                    <!--end::Card header-->
+                    <!--begin::Card body-->
+                    <div class="card-body text-center pt-0">
+                        <!--begin::Image input-->
+                        <div class="image-input image-input-empty image-input-outline mb-3" data-kt-image-input="true" style="background-image: url(assets/media/svg/files/blank-image.svg)">
+                            <img src="@ViewBag.Settings_ogimage" height="200"  width="250"/>
+                        </div>
 
-                    <div class="card">
-                        <div class="card-body pb-2">
-                            <form asp-action="Edit" method="post" class="was-validated" enctype="multipart/form-data">
-                                <input hidden asp-for="Id" />
-                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    </div>
+                    <!--end::Card body-->
+                </div>
+                <!--end::Thumbnail settings-->
+                <hr />
+                <!--begin::Thumbnail settings-->
+                <div class="card card-flush py-4">
+                    <!--begin::Card header-->
+                    <div class="card-header">
+                        <!--begin::Card title-->
+                        <div class="card-title">
+                            <h2>تصویر جدید در توییتر</h2>
+                        </div>
+                        <!--end::Card title-->
+                    </div>
+                    <!--end::Card header-->
+                    <!--begin::Card body-->
+                    <div class="card-body text-center pt-0">
+                        <!--begin::Image input-->
+                        <div class="image-input image-input-empty image-input-outline mb-3" data-kt-image-input="true" style="background-image: url(assets/media/svg/files/blank-image.svg)">
+                            <!--begin::نمایش existing avatar-->
+                            <div class="image-input-wrapper w-150px h-150px"></div>
 
-                                <div class="row">
-                                    <div class="col-xl-6">
+                            <!--end::نمایش existing avatar-->
+                            <!--begin::Tags-->
+                            <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="تعویض آواتار">
+                                <i class="bi bi-pencil-fill fs-7"></i>
+                                <!--begin::Inputs-->
+                                <input type="file" asp-for="Settings_twitter_image" accept=".png, .jpg, .jpeg" />
+                                <input type="hidden" name="avatar_remove" />
+                                <!--end::Inputs-->
+                            </label>
+                            <!--end::Tags-->
+                            <!--begin::انصراف-->
+                            <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title="انصراف avatar">
+                                <i class="bi bi-x fs-2"></i>
+                            </span>
+                            <!--end::انصراف-->
+                            <!--begin::حذف-->
+                            <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="حذف آواتار">
+                                <i class="bi bi-x fs-2"></i>
+                            </span>
+                            <!--end::حذف-->
+                        </div>
+                        <!--end::Image input-->
+                        <!--begin::توضیحات-->
+                        <div class="text-muted fs-7">تصویر بندانگشتی محصول را تنظیم کنید. فقط فایل های تصویری *.png، *.jpg و *.jpeg پذیرفته می شوند</div>
+                        <!--end::توضیحات-->
+                    </div>
+                    <!--end::Card body-->
+                </div>
+                <!--end::Thumbnail settings-->
+                <!--begin::Thumbnail settings-->
+                <div class="card card-flush py-4">
+                    <!--begin::Card header-->
+                    <div class="card-header">
+                        <!--begin::Card title-->
+                        <div class="card-title">
+                            <h2>تصویر جاری در توییتر</h2>
+                        </div>
+                        <!--end::Card title-->
+                    </div>
+                    <!--end::Card header-->
+                    <!--begin::Card body-->
+                    <div class="card-body text-center pt-0">
+                        <!--begin::Image input-->
+                        <div class="image-input image-input-empty image-input-outline mb-3" data-kt-image-input="true" style="background-image: url(assets/media/svg/files/blank-image.svg)">
+                            <img src="@ViewBag.Settings_twitter_image" height="200" width="250" />
+                        </div>
 
+                    </div>
+                    <!--end::Card body-->
+                </div>
+                <!--end::Thumbnail settings-->
+            </div>
+            <!--end::کناری column-->
+            <!--begin::Main column-->
+            <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
 
-                                        <div class="form-group">
-                                            <label asp-for="Settings_keywords" class="control-label"></label>
-                                            <input asp-for="Settings_keywords" class="form-control" />
-                                            <span asp-validation-for="Settings_keywords" class="text-danger"></span>
+                <!--end:::Tabs-->
+                <!--begin::Tab content-->
+                <div class="tab-content">
+                    <!--begin::Tab pane-->
+                    <div class="tab-pane fade show active" id="kt_ecommerce_add_product_general" role="tab-panel">
+                        <div class="d-flex flex-column gap-7 gap-lg-10">
+                            <!--begin::عمومی options-->
+                            <div class="card card-flush py-4">
+
+                                <div class="card-body pt-0">
+                                    <!--Settings_keywords-->
+                                    <div class="mb-10 fv-row">
+                                        <!--begin::Tags-->
+                                        <label class="required form-label"> کلمات کلیدی</label>
+                                        <!--end::Tags-->
+                                        <!--begin::Input-->
+                                        <input type="text" class="form-control mb-2 is-invalid" placeholder="کلمات کلیدی " asp-for="Settings_keywords" required />
+                                        <!--end::Input-->
+                                        <div class="text-muted fs-7">
+                                            کلمات کلیدی را در این قسمت وارد نمائید
+                                            که بیشتر از 5 تا نباشد.
                                         </div>
-                                        <div class="form-group">
-                                            <label asp-for="Settings_description" class="control-label"></label>
-                                            <input asp-for="Settings_description" class="form-control" />
-                                            <span asp-validation-for="Settings_description" class="text-danger"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <label asp-for="Settings_canonical" class="control-label"></label>
-                                            <input asp-for="Settings_canonical" class="form-control" />
-                                            <span asp-validation-for="Settings_canonical" class="text-danger"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <label asp-for="Settings_author" class="control-label"></label>
-                                            <input asp-for="Settings_author" class="form-control" />
-                                            <span asp-validation-for="Settings_author" class="text-danger"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <label asp-for="Settings_ogtitle" class="control-label"></label>
-                                            <input asp-for="Settings_ogtitle" class="form-control" />
-                                            <span asp-validation-for="Settings_ogtitle" class="text-danger"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <label asp-for="Settings_ogdescription" class="control-label"></label>
-                                            <input asp-for="Settings_ogdescription" class="form-control" />
-                                            <span asp-validation-for="Settings_ogdescription" class="text-danger"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <input hidden value="@ViewBag.Settings_ogimage" name="_Settings_ogimage" />
-                                            <img src="@ViewBag.Settings_ogimage" width="150" height="150" />
-                                            <label asp-for="Settings_ogimage" class="control-label"></label>
-                                            <input asp-for="Settings_ogimage" class="form-control" />
-                                            <span asp-validation-for="Settings_ogimage" class="text-danger"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <label asp-for="Settings_ogurl" class="control-label"></label>
-                                            <input asp-for="Settings_ogurl" class="form-control" />
-                                            <span asp-validation-for="Settings_ogurl" class="text-danger"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <label asp-for="Settings_ogsite_name" class="control-label"></label>
-                                            <input asp-for="Settings_ogsite_name" class="form-control" />
-                                            <span asp-validation-for="Settings_ogsite_name" class="text-danger"></span>
-                                        </div>
-                                       
+                                        <span asp-validation-for="Settings_keywords" class="text-danger"></span>
+
                                     </div>
+                                    <!--Settings_description-->
+                                    <div class="mb-10 fv-row">
+                                        <!--begin::Tags-->
+                                        <label class="required form-label"> توضیحات</label>
+                                        <!--end::Tags-->
+                                        <!--begin::Input-->
+                                        <input type="text" class="form-control mb-2 is-invalid" placeholder="توضیحات " asp-for="Settings_description" required />
+                                        <!--end::Input-->
+                                        <!--begin::توضیحات-->
+                                        <div class="text-muted fs-7">
+                                            توضیحات متا باید کمتر از 170 کاراکتر باشد
+                                            .
+                                        </div>
+                                        <!--end::توضیحات-->
+                                        <span asp-validation-for="Settings_description" class="text-danger"></span>
 
-                                    <div class="col-xl-6">
+                                    </div>
+                                    <!--Settings_canonical-->
+                                    <div class="mb-10 fv-row">
+                                        <!--begin::Tags-->
+                                        <label class="required form-label"> کنونیکال </label>
+                                        <!--end::Tags-->
+                                        <!--begin::Input-->
+                                        <input type="text" class="form-control mb-2" placeholder="کنونیکال  " asp-for="Settings_canonical" />
+                                        <!--end::Input-->
+                                        <!--begin::توضیحات-->
+                                        <div class="text-muted fs-7">
+                                            کنونیکال یا لینک اصلی صفحه اصلی را وارد نمائید .
+                                        </div>
+                                        <!--end::توضیحات-->
+                                        <span asp-validation-for="Settings_canonical" class="text-danger"></span>
 
+                                    </div>
+                                    <!--Settings_author-->
+                                    <div class="mb-10 fv-row">
+                                        <!--begin::Tags-->
+                                        <label class="required form-label"> نام نویسنده</label>
+                                        <!--end::Tags-->
+                                        <!--begin::Input-->
+                                        <input type="text" class="form-control mb-2" placeholder="نام نویسنده  " asp-for="Settings_author" />
+                                        <!--end::Input-->
+                                        <!--begin::توضیحات-->
+                                        <div class="text-muted fs-7">
+                                            نام نویسنده در صفحه اصلی را وارد نمائید.
+                                        </div>
+                                        <!--end::توضیحات-->
+                                        <span asp-validation-for="Settings_author" class="text-danger"></span>
 
-                                      
-                                        <div class="form-group">
-                                            <label asp-for="Settings_twitter_title" class="control-label"></label>
-                                            <input asp-for="Settings_twitter_title" class="form-control" />
-                                            <span asp-validation-for="Settings_twitter_title" class="text-danger"></span>
+                                    </div>
+                                    <!--Settings_ogtitle-->
+                                    <div class="mb-10 fv-row">
+                                        <!--begin::Tags-->
+                                        <label class="required form-label"> عنوان </label>
+                                        <!--end::Tags-->
+                                        <!--begin::Input-->
+                                        <input type="text" class="form-control mb-2" placeholder="عنوان  در شبکه های اجتماعی  " asp-for="Settings_ogtitle" />
+                                        <!--end::Input-->
+                                        <!--begin::توضیحات-->
+                                        <div class="text-muted fs-7">
+                                            عنوان که در شبکه های اجتماعی قابل نمایش باشد را وارد نمائید.
                                         </div>
-                                        <div class="form-group">
-                                            <label asp-for="Settings_twitter_description" class="control-label"></label>
-                                            <input asp-for="Settings_twitter_description" class="form-control" />
-                                            <span asp-validation-for="Settings_twitter_description" class="text-danger"></span>
+                                        <!--end::توضیحات-->
+                                        <span asp-validation-for="Settings_ogtitle" class="text-danger"></span>
+
+                                    </div>
+                                    <!--Settings_ogdescription-->
+                                    <div class="mb-10 fv-row">
+                                        <!--begin::Tags-->
+                                        <label class="required form-label"> توضیحات سایت .</label>
+                                        <!--end::Tags-->
+                                        <!--begin::Input-->
+                                        <input type="text" class="form-control mb-2" placeholder="توضیحات سایت   " asp-for="Settings_ogdescription" />
+                                        <!--end::Input-->
+                                        <!--begin::توضیحات-->
+                                        <div class="text-muted fs-7">
+                                            توضیحات سایت در شبکه های اجتماعی
+                                            را وارد نمائید.
                                         </div>
-                                        <div class="form-group">
-                                            <input hidden value="@ViewBag.Settings_twitter_image" name="_Settings_twitter_image" />
-                                            <img src="@ViewBag.Settings_twitter_image" width="150" height="150" />
-                                            <label asp-for="Settings_twitter_image" class="control-label"></label>
-                                            <input asp-for="Settings_twitter_image" class="form-control" />
-                                            <span asp-validation-for="Settings_twitter_image" class="text-danger"></span>
+                                        <!--end::توضیحات-->
+                                        <span asp-validation-for="Settings_ogdescription" class="text-danger"></span>
+
+                                    </div>
+                                    <!--Settings_ogurl-->
+                                    <div class="mb-10 fv-row">
+                                        <!--begin::Tags-->
+                                        <label class="required form-label"> لینک نمایش شبکه اجتماعی  </label>
+                                        <!--end::Tags-->
+                                        <!--begin::Input-->
+                                        <input type="text" class="form-control mb-2" placeholder="لینک قابل نمایش شبکه اجتماعی   " asp-for="Settings_ogurl" />
+                                        <!--end::Input-->
+                                        <!--begin::توضیحات-->
+                                        <div class="text-muted fs-7">
+                                            لینک قابل نمایش شبکه اجتماعی را وارد نمائید.
                                         </div>
-                                        <div class="form-group">
-                                            <label asp-for="Settings_Search_Console" class="control-label"></label>
-                                            <input asp-for="Settings_Search_Console" class="form-control" />
-                                            <span asp-validation-for="Settings_Search_Console" class="text-danger"></span>
+                                        <!--end::توضیحات-->
+                                        <span asp-validation-for="Settings_ogurl" class="text-danger"></span>
+
+                                    </div>
+                                    <!--Settings_ogsite_name-->
+                                    <div class="mb-10 fv-row">
+                                        <!--begin::Tags-->
+                                        <label class="required form-label"> نام سایت .</label>
+                                        <!--end::Tags-->
+                                        <!--begin::Input-->
+                                        <input type="text" class="form-control mb-2" placeholder="نام سایت در شبکه اجتماعی   " asp-for="Settings_ogsite_name" />
+                                        <!--end::Input-->
+                                        <!--begin::توضیحات-->
+                                        <div class="text-muted fs-7">
+                                            نام سایت در شبکه اجتماعی را وارد نمائید.
                                         </div>
-                                        <div class="form-group">
-                                            <label asp-for="Settings_Google_Analytics" class="control-label"></label>
-                                            <input asp-for="Settings_Google_Analytics" class="form-control" />
-                                            <span asp-validation-for="Settings_Google_Analytics" class="text-danger"></span>
+                                        <!--end::توضیحات-->
+                                        <span asp-validation-for="Settings_ogsite_name" class="text-danger"></span>
+
+                                    </div>
+                                    <!--Settings_twitter_title-->
+                                    <div class="mb-10 fv-row">
+                                        <!--begin::Tags-->
+                                        <label class="required form-label"> عنوان توئیتر</label>
+                                        <!--end::Tags-->
+                                        <!--begin::Input-->
+                                        <input type="text" class="form-control mb-2" placeholder="عنوان توئیتر   " asp-for="Settings_twitter_title" />
+                                        <!--end::Input-->
+                                        <!--begin::توضیحات-->
+                                        <div class="text-muted fs-7">
+                                            عنوان توئیتر را وارد نمائید.
                                         </div>
-                                        <div class="form-group">
-                                            <label asp-for="Settings_Service_Adver_1" class="control-label"></label>
-                                            <input asp-for="Settings_Service_Adver_1" class="form-control" />
-                                            <span asp-validation-for="Settings_Service_Adver_1" class="text-danger"></span>
+                                        <!--end::توضیحات-->
+                                        <span asp-validation-for="Settings_twitter_title" class="text-danger"></span>
+
+                                    </div>
+                                    <!--Settings_twitter_description-->
+                                    <div class="mb-10 fv-row">
+                                        <!--begin::Tags-->
+                                        <label class="required form-label"> توضیحات توئیتر</label>
+                                        <!--end::Tags-->
+                                        <!--begin::Input-->
+                                        <input type="text" class="form-control mb-2" placeholder="توضیحات توئیتر   " asp-for="Settings_twitter_description" />
+                                        <!--end::Input-->
+                                        <!--begin::توضیحات-->
+                                        <div class="text-muted fs-7">
+                                            توضیحات توئیتر را وارد نمائید.
                                         </div>
-                                        <div class="form-group">
-                                            <label asp-for="Settings_Service_Adver_2" class="control-label"></label>
-                                            <input asp-for="Settings_Service_Adver_2" class="form-control" />
-                                            <span asp-validation-for="Settings_Service_Adver_2" class="text-danger"></span>
+                                        <!--end::توضیحات-->
+                                        <span asp-validation-for="Settings_twitter_description" class="text-danger"></span>
+
+                                    </div>
+                                    <!--Settings_Search_Console-->
+                                    <div class="mb-10 fv-row">
+                                        <!--begin::Tags-->
+                                        <label class="required form-label"> سرچ کنسول</label>
+                                        <!--end::Tags-->
+                                        <!--begin::Input-->
+                                        <input type="text" class="form-control mb-2" placeholder="سرچ کنسول   " asp-for="Settings_Search_Console" />
+                                        <!--end::Input-->
+                                        <!--begin::توضیحات-->
+                                        <div class="text-muted fs-7">
+                                            لینکی که در سرچ کنسول
+                                            هست راوارد نمائید.
                                         </div>
-                                        <div class="form-group">
-                                            <label asp-for="Settings_Service_Adver_3" class="control-label"></label>
-                                            <input asp-for="Settings_Service_Adver_3" class="form-control" />
-                                            <span asp-validation-for="Settings_Service_Adver_3" class="text-danger"></span>
+                                        <!--end::توضیحات-->
+                                        <span asp-validation-for="Settings_Search_Console" class="text-danger"></span>
+
+                                    </div>
+                                    <!--Settings_Google_Analytics-->
+                                    <div class="mb-10 fv-row">
+                                        <!--begin::Tags-->
+                                        <label class="required form-label"> گوگل آنالیتیک</label>
+                                        <!--end::Tags-->
+                                        <!--begin::Input-->
+                                        <input type="text" class="form-control mb-2" placeholder="گوگل آنالیتیک   " asp-for="Settings_Google_Analytics" />
+                                        <!--end::Input-->
+                                        <!--begin::توضیحات-->
+                                        <div class="text-muted fs-7">
+                                            لینکی که در گوگل آنالیتیک
+                                            هست راوارد نمائید.
                                         </div>
-                                        <div class="form-group">
-                                            <label asp-for="Settings_Service_Adver_4" class="control-label"></label>
-                                            <input asp-for="Settings_Service_Adver_4" class="form-control" />
-                                            <span asp-validation-for="Settings_Service_Adver_4" class="text-danger"></span>
+                                        <!--end::توضیحات-->
+                                        <span asp-validation-for="Settings_Google_Analytics" class="text-danger"></span>
+
+                                    </div>
+                                    <!--Settings_Service_Adver_1-->
+                                    <div class="mb-10 fv-row">
+                                        <!--begin::Tags-->
+                                        <label class="required form-label"> لینک خالی 1   </label>
+                                        <!--end::Tags-->
+                                        <!--begin::Input-->
+                                        <input type="text" class="form-control mb-2" placeholder="لینک خالی 1      " asp-for="Settings_Service_Adver_1" />
+                                        <!--end::Input-->
+                                        <!--begin::توضیحات-->
+                                        <div class="text-muted fs-7">
+                                            لینک خالی 1
+                                            هست راوارد نمائید.
                                         </div>
+                                        <!--end::توضیحات-->
+                                        <span asp-validation-for="Settings_Service_Adver_1" class="text-danger"></span>
+
+                                    </div>
+                                    <!--Settings_Service_Adver_2-->
+                                    <div class="mb-10 fv-row">
+                                        <!--begin::Tags-->
+                                        <label class="required form-label"> لینک خالی 2   </label>
+                                        <!--end::Tags-->
+                                        <!--begin::Input-->
+                                        <input type="text" class="form-control mb-2" placeholder="لینک خالی 2   " asp-for="Settings_Service_Adver_2" />
+                                        <!--end::Input-->
+                                        <!--begin::توضیحات-->
+                                        <div class="text-muted fs-7">
+                                            لینک خالی 2
+                                            هست راوارد نمائید.
+                                        </div>
+                                        <!--end::توضیحات-->
+                                        <span asp-validation-for="Settings_Service_Adver_2" class="text-danger"></span>
+
+                                    </div>
+                                    <!--Settings_Service_Adver_3-->
+                                    <div class="mb-10 fv-row">
+                                        <!--begin::Tags-->
+                                        <label class="required form-label"> لینک خالی 3</label>
+                                        <!--end::Tags-->
+                                        <!--begin::Input-->
+                                        <input type="text" class="form-control mb-2" placeholder=" لینک خالی 3   " asp-for="Settings_Service_Adver_3" />
+                                        <!--end::Input-->
+                                        <!--begin::توضیحات-->
+                                        <div class="text-muted fs-7">
+                                            لینک خالی 3
+                                            هست راوارد نمائید.
+                                        </div>
+                                        <!--end::توضیحات-->
+                                        <span asp-validation-for="Settings_Service_Adver_3" class="text-danger"></span>
+
+                                    </div>
+                                    <!--Settings_Service_Adver_4-->
+                                    <div class="mb-10 fv-row">
+                                        <!--begin::Tags-->
+                                        <label class="required form-label"> لینک خالی 4</label>
+                                        <!--end::Tags-->
+                                        <!--begin::Input-->
+                                        <input type="text" class="form-control mb-2" placeholder="لینک خالی 4" asp-for="Settings_Service_Adver_4" />
+                                        <!--end::Input-->
+                                        <!--begin::توضیحات-->
+                                        <div class="text-muted fs-7">
+                                            لینک خالی 4
+                                            هست راوارد نمائید.
+                                        </div>
+                                        <!--end::توضیحات-->
+                                        <span asp-validation-for="Settings_Service_Adver_4" class="text-danger"></span>
+
                                     </div>
                                 </div>
+                            </div>
+                            <!--end::عمومی options-->
 
-
-
-
-                                <div class="row">
-                                    <button type="submit" class="btn btn-lg btn-outline-indigo">
-                                        <i class="fa fa-plus-square fa-fw me-1"></i>
-
-                                        ویرایش تغییرات
-                                    </button>
-                                </div>
-                            </form>
-
-                        </div>
-                        <div class="card-arrow">
-                            <div class="card-arrow-top-left"></div>
-                            <div class="card-arrow-top-right"></div>
-                            <div class="card-arrow-bottom-left"></div>
-                            <div class="card-arrow-bottom-right"></div>
                         </div>
                     </div>
+                    <!--end::Tab pane-->
+
                 </div>
-
-
-
-
+                <!--end::Tab content-->
+                <div class="d-flex justify-content-end">
+                    <!--begin::Button-->
+                    <a asp-action="Index" id="kt_ecommerce_add_product_cancel"
+                       class="btn btn-light me-5">انصراف</a>
+                    <!--end::Button-->
+                    <!--begin::Button-->
+                    <button type="submit" id="kt_ecommerce_add_product_submit" class="btn btn-primary">
+                        <span class="indicator-label">ذخیره تغییرات</span>
+                        <span class="indicator-progress">
+                            لطفا صبر کنید...
+                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                        </span>
+                    </button>
+                    <!--end::Button-->
+                </div>
             </div>
-
-            <div class="col-xl-1">
-            </div>
-
-        </div>
-
+            <!--end::Main column-->
+        </form>
+        <!--end::Form-->
     </div>
-
+    <!--end::Container-->
 </div>
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

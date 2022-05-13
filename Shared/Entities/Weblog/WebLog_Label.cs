@@ -9,7 +9,7 @@ using System.Text;
 
 namespace Entities
 {
-    public class WebLog_Label : BaseView
+    public class WebLog_Label : BaseMetaTag
     {
 
 

@@ -9,7 +9,7 @@ using System.Text;
 
 namespace Entities
 {
-    public  class WebLog: BaseView
+    public class WebLog : BaseMetaTag
     {
         #region properties
         //***====================================================================================***//
@@ -40,7 +40,7 @@ namespace Entities
         //***====================================================================================***//
         [Display(Name = "نویسنده  ")]
         [MaxLength(150, ErrorMessage = "تعداد کاراکتر های {0} نمیتواند بیشتر از {1} باشد")]
-        public string Weblog_Writer { get; set; }           
+        public string Weblog_Writer { get; set; }
         //***====================================================================================***//
         [Display(Name = " وضعیت نمایش")]
         public bool Weblog_IsShow { get; set; }
@@ -87,4 +87,6 @@ namespace Entities
 
         }
     }
+
+
 }

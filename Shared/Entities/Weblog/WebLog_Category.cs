@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Entities
 {
-    public class WebLog_Category : BaseView
+    public class WebLog_Category : BaseMetaTag
     {
         #region Properties
         //***====================================================================================***//

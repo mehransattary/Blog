@@ -81,8 +81,8 @@ namespace Service.Repository
                        LastUpdateDate = x.LastUpdateDate,
                        CreateDate = x.CreateDate,
                        Settings_Advertising_Title=x.Settings_Advertising_Title,
-                       Settings_title_Title=x.Settings_title_Title
-
+                       Settings_title_Title=x.Settings_title_Title,
+                       Settings_href_Title=x.Settings_href_Title
 
                    }).ToListAsync(cancellationToken);
             return result;
@@ -93,12 +93,13 @@ namespace Service.Repository
             var result = TableNoTracking.Where(x => x.UserId == UserId).Select(x =>
                new SettingAdvertising()
                {
-                   UserId = x.UserId,
-                   Id = x.Id,
-                   LastUpdateDate = x.LastUpdateDate,
-                   CreateDate = x.CreateDate,
-                   Settings_Advertising_Title = x.Settings_Advertising_Title,
-                   Settings_title_Title = x.Settings_title_Title
+            UserId = x.UserId,
+                       Id = x.Id,
+                       LastUpdateDate = x.LastUpdateDate,
+                       CreateDate = x.CreateDate,
+                       Settings_Advertising_Title=x.Settings_Advertising_Title,
+                       Settings_title_Title=x.Settings_title_Title,
+                       Settings_href_Title=x.Settings_href_Title
 
                }).ToPagedList(currentPage, number_showproduct);
                     return result;

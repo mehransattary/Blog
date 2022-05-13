@@ -1,4 +1,5 @@
 ﻿using Entities;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -10,7 +11,7 @@ using System.Text;
 
 namespace Data.Dto
 {
-    public class WebLog_LabelDto : BaseView
+    public class WebLog_LabelDto : BaseMetaTagDto
     {
 
 
@@ -27,16 +28,13 @@ namespace Data.Dto
         public string WebLog_Label_Title_Two { get; set; }
         //***====================================================================================***//
         [Display(Name = "تصویر")]
-        [MaxLength(700, ErrorMessage = "نباید بیشتر از {1} کاراکتر وارد شه")]
-        public string WebLog_Label_Image { get; set; }
+        public IFormFile WebLog_Label_Image { get; set; }
         //***====================================================================================***//
         [Display(Name = "تصویرکوچک")]
-        [MaxLength(700, ErrorMessage = "نباید بیشتر از {1} کاراکتر وارد شه")]
-        public string WebLog_Label_ThumbnaillImage { get; set; }
+        public IFormFile WebLog_Label_ThumbnaillImage { get; set; }
         //***====================================================================================***//
         [Display(Name = "تصویر برای صفحه اصلی")]
-        [MaxLength(700, ErrorMessage = "نباید بیشتر از {1} کاراکتر وارد شه")]
-        public string WebLog_Label_ImageHome { get; set; }
+        public IFormFile WebLog_Label_ImageHome { get; set; }
         //***====================================================================================***//
         [Display(Name = "مرتب سازی  ")]
         public short? WebLog_Label_Order { get; set; }

@@ -67,6 +67,9 @@ namespace Blog
             services.AddScoped<ISettingsCopyRightsService, SettingsCopyRightService>();
             services.AddScoped<ISettingAdvertisingService, SettingAdvertisingService>();
             services.AddScoped<ISettingsEnemadsService, SettingsEnemadService>();
+            services.AddScoped<IWeblogCategoryService, WeblogCategoryService>();
+            services.AddScoped<IWeblogGroupService, WeblogGroupService>();
+            services.AddScoped<IWeblogLabelService, WeblogLabelService>();
 
 
 

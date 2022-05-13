@@ -135,7 +135,7 @@ namespace Service.Repository
 
         public SettingsLogo ShowAllSettingsLogo( string UserId)
         {
-            var result =  TableNoTracking.Where(x => x.UserId == UserId).Select(x =>
+            var result =  TableNoTracking.Select(x =>
                    new SettingsLogo()
                    {
 

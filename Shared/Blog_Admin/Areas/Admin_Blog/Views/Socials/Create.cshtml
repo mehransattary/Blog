@@ -7,100 +7,161 @@
 }
 
 
-<div class="row justify-content-center">
 
-    <div class="col-xl-10">
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Container-->
+    <div class="container-xxl" id="kt_content_container">
+        <!--begin::Form-->
+        <form id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row was-validated"
+              asp-action="Create" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-        <div class="row">
-            <div class="col-xl-1">
-            </div>
-            <div class="col-xl-10">
-
-
-                <div class="d-flex align-items-center mb-3">
-                    <div>
-
-                        <h1 class="page-header mb-0">@ViewData["Title"]</h1>
+            <!--begin::کناری column-->
+            <div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
+                <!--begin::Thumbnail settings-->
+                <div class="card card-flush py-4">
+                    <!--begin::Card header-->
+                    <div class="card-header">
+                        <!--begin::Card title-->
+                        <div class="card-title">
+                            <h2>تصویر شاخص</h2>
+                        </div>
+                        <!--end::Card title-->
                     </div>
-                    <div class="ms-auto">
-                        <a asp-action="Index" class="btn btn-outline-danger">
-                            بازگشت
-                            <i class="fa fa-fast-backward fa-fw me-1"></i>
-
-                        </a>
+                    <!--end::Card header-->
+                    <!--begin::Card body-->
+                    <div class="card-body text-center pt-0">
+                        <!--begin::Image input-->
+                        <div class="image-input image-input-empty image-input-outline mb-3" data-kt-image-input="true" style="background-image: url(assets/media/svg/files/blank-image.svg)">
+                            <!--begin::نمایش existing avatar-->
+                            <div class="image-input-wrapper w-150px h-150px"></div>
+                            <!--end::نمایش existing avatar-->
+                            <!--begin::Tags-->
+                            <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="تعویض آواتار">
+                                <i class="bi bi-pencil-fill fs-7"></i>
+                                <!--begin::Inputs-->
+                                <input type="file" asp-for="Image" accept=".png, .jpg, .jpeg" />
+                                <input type="hidden" name="avatar_remove" />
+                                <!--end::Inputs-->
+                            </label>
+                            <!--end::Tags-->
+                            <!--begin::انصراف-->
+                            <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title="انصراف avatar">
+                                <i class="bi bi-x fs-2"></i>
+                            </span>
+                            <!--end::انصراف-->
+                            <!--begin::حذف-->
+                            <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="حذف آواتار">
+                                <i class="bi bi-x fs-2"></i>
+                            </span>
+                            <!--end::حذف-->
+                        </div>
+                        <!--end::Image input-->
+                        <!--begin::توضیحات-->
+                        <div class="text-muted fs-7">تصویر بندانگشتی محصول را تنظیم کنید. فقط فایل های تصویری *.png، *.jpg و *.jpeg پذیرفته می شوند</div>
+                        <!--end::توضیحات-->
                     </div>
+                    <!--end::Card body-->
                 </div>
-                <br />
-                <div id="formControls" class="mb-5">
+                <!--end::Thumbnail settings-->
 
-                    <div class="card">
-                        <div class="card-body pb-2">
-                            <form asp-action="Create" method="post" class="was-validated" enctype="multipart/form-data">
-                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            </div>
+            <!--end::کناری column-->
+            <!--begin::Main column-->
+            <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
+            
+                <!--end:::Tabs-->
+                <!--begin::Tab content-->
+                <div class="tab-content">
+                    <!--begin::Tab pane-->
+                    <div class="tab-pane fade show active" id="kt_ecommerce_add_product_general" role="tab-panel">
+                        <div class="d-flex flex-column gap-7 gap-lg-10">
+                            <!--begin::عمومی options-->
+                            <div class="card card-flush py-4">
 
-                                <div class="row">
-                                    <div class="col-xl-12">
-                                        <div class="form-group">
-                                            <label asp-for="Name" class="control-label"></label>
-                                            <input asp-for="Name" class="form-control" />
-                                            <span asp-validation-for="Name" class="text-danger"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <label asp-for="Link" class="control-label"></label>
-                                            <input asp-for="Link" class="form-control" />
-                                            <span asp-validation-for="Link" class="text-danger"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <label asp-for="Image" class="control-label"></label>
-                                            <input asp-for="Image" class="form-control" />
-                                            <span asp-validation-for="Image" class="text-danger"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <label asp-for="FontAwseome" class="control-label"></label>
-                                            <input asp-for="FontAwseome" class="form-control" />
-                                            <span asp-validation-for="FontAwseome" class="text-danger"></span>
-                                        </div>
+                                <!--end::Card header-->
+                                <!--begin::Card body-->
+                                <div class="card-body pt-0">
+                                    <!--begin::Input group-->
+                                    <div class="mb-10 fv-row">
+                                        <!--begin::Tags-->
+                                        <label class="required form-label"> نام</label>
+                                        <!--end::Tags-->
+                                        <!--begin::Input-->
+                                        <input type="text" class="form-control mb-2 is-invalid" placeholder="نام " asp-for="Name" required/>
+                                        <!--end::Input-->
+                                        <span asp-validation-for="Name" class="text-danger"></span>
+
                                     </div>
+                                    <!--end::Input group-->
+                                    <!--begin::Input group-->
+                                    <div class="mb-10 fv-row">
+                                        <!--begin::Tags-->
+                                        <label class="required form-label"> لینک</label>
+                                        <!--end::Tags-->
+                                        <!--begin::Input-->
+                                        <input type="text" class="form-control mb-2 is-invalid" placeholder="لینک " asp-for="Link" required/>
+                                        <!--end::Input-->
+                                        <!--begin::توضیحات-->
+                                        <div class="text-muted fs-7">
+                                            لینک را همراه https بنویسید
+                                        </div>
+                                        <!--end::توضیحات-->
+                                        <span asp-validation-for="Link" class="text-danger"></span>
 
+                                    </div>
+                                    <!--end::Input group-->
+                                    <!--begin::Input group-->
+                                    <div class="mb-10 fv-row">
+                                        <!--begin::Tags-->
+                                        <label class="required form-label"> کد فونت آسوم را وارد نمائید.</label>
+                                        <!--end::Tags-->
+                                        <!--begin::Input-->
+                                        <input type="text" class="form-control mb-2" placeholder="فونت آسوم  " asp-for="FontAwseome" />
+                                        <!--end::Input-->
+                                        <!--begin::توضیحات-->
+                                        <div class="text-muted fs-7">
 
+                                        </div>
+                                        <!--end::توضیحات-->
+                                        <span asp-validation-for="FontAwseome" class="text-danger"></span>
+
+                                    </div>
+                                    <!--end::Input group-->
                                 </div>
+                                <!--end::Card header-->
+                            </div>
+                            <!--end::عمومی options-->
 
-
-
-
-                                <div class="row">
-                                    <button type="submit" class="btn btn-lg btn-outline-indigo">
-                                        <i class="fa fa-plus-square fa-fw me-1"></i>
-
-                                        ذخیره تغییرات
-                                    </button>
-                                </div>
-                            </form>
-
-                        </div>
-                        <div class="card-arrow">
-                            <div class="card-arrow-top-left"></div>
-                            <div class="card-arrow-top-right"></div>
-                            <div class="card-arrow-bottom-left"></div>
-                            <div class="card-arrow-bottom-right"></div>
                         </div>
                     </div>
+                    <!--end::Tab pane-->
+
                 </div>
-
-
-
-
+                <!--end::Tab content-->
+                <div class="d-flex justify-content-end">
+                    <!--begin::Button-->
+                    <a asp-action="Index" id="kt_ecommerce_add_product_cancel"
+                       class="btn btn-light me-5">انصراف</a>
+                    <!--end::Button-->
+                    <!--begin::Button-->
+                    <button type="submit" id="kt_ecommerce_add_product_submit" class="btn btn-primary">
+                        <span class="indicator-label">ذخیره تغییرات</span>
+                        <span class="indicator-progress">
+                            لطفا صبر کنید...
+                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                        </span>
+                    </button>
+                    <!--end::Button-->
+                </div>
             </div>
-
-            <div class="col-xl-1">
-            </div>
-
-        </div>
-
+            <!--end::Main column-->
+        </form>
+        <!--end::Form-->
     </div>
-
+    <!--end::Container-->
 </div>
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+

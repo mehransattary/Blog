@@ -20,6 +20,54 @@ namespace Data.Migrations
                 .HasAnnotation("ProductVersion", "5.0.16")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Entities.BaseView", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Browser_Views")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<int>("Count_Views")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateTime_Views")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IP_Views")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsMobile_Views")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("LastUpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BaseView");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("BaseView");
+                });
+
             modelBuilder.Entity("Entities.Person", b =>
                 {
                     b.Property<int>("Id")
@@ -468,31 +516,44 @@ namespace Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Browser_Views")
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<int>("Count_Views")
-                        .HasColumnType("int");
+                    b.Property<string>("Canonical_Meta")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DateTime_Views")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("Desc_Meta")
+                        .IsRequired()
+                        .HasMaxLength(185)
+                        .HasColumnType("nvarchar(185)");
 
-                    b.Property<string>("IP_Views")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                    b.Property<string>("Image_Meta")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDelete")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("IsMobile_Views")
-                        .HasColumnType("bit");
+                    b.Property<string>("Keyword_Meta")
+                        .HasMaxLength(400)
+                        .HasColumnType("nvarchar(400)");
 
                     b.Property<DateTime>("LastUpdateDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("TitleEnglish_Meta")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Title_Meta")
+                        .IsRequired()
+                        .HasMaxLength(80)
+                        .HasColumnType("nvarchar(80)");
+
+                    b.Property<string>("Url_Meta")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("UserId")
                         .HasMaxLength(450)
@@ -557,31 +618,44 @@ namespace Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Browser_Views")
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<int>("Count_Views")
-                        .HasColumnType("int");
+                    b.Property<string>("Canonical_Meta")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DateTime_Views")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("Desc_Meta")
+                        .IsRequired()
+                        .HasMaxLength(185)
+                        .HasColumnType("nvarchar(185)");
 
-                    b.Property<string>("IP_Views")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                    b.Property<string>("Image_Meta")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDelete")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("IsMobile_Views")
-                        .HasColumnType("bit");
+                    b.Property<string>("Keyword_Meta")
+                        .HasMaxLength(400)
+                        .HasColumnType("nvarchar(400)");
 
                     b.Property<DateTime>("LastUpdateDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("TitleEnglish_Meta")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Title_Meta")
+                        .IsRequired()
+                        .HasMaxLength(80)
+                        .HasColumnType("nvarchar(80)");
+
+                    b.Property<string>("Url_Meta")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("UserId")
                         .HasMaxLength(450)
@@ -629,6 +703,41 @@ namespace Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("webLog_Categories");
+                });
+
+            modelBuilder.Entity("Entities.WebLog_Category_Views", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("LastUpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("ViewId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WebLog_CategoryId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ViewId");
+
+                    b.HasIndex("WebLog_CategoryId");
+
+                    b.ToTable("WebLog_Category_Views");
                 });
 
             modelBuilder.Entity("Entities.WebLog_Comment", b =>
@@ -686,31 +795,44 @@ namespace Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Browser_Views")
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<int>("Count_Views")
-                        .HasColumnType("int");
+                    b.Property<string>("Canonical_Meta")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DateTime_Views")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("Desc_Meta")
+                        .IsRequired()
+                        .HasMaxLength(185)
+                        .HasColumnType("nvarchar(185)");
 
-                    b.Property<string>("IP_Views")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                    b.Property<string>("Image_Meta")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDelete")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("IsMobile_Views")
-                        .HasColumnType("bit");
+                    b.Property<string>("Keyword_Meta")
+                        .HasMaxLength(400)
+                        .HasColumnType("nvarchar(400)");
 
                     b.Property<DateTime>("LastUpdateDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("TitleEnglish_Meta")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Title_Meta")
+                        .IsRequired()
+                        .HasMaxLength(80)
+                        .HasColumnType("nvarchar(80)");
+
+                    b.Property<string>("Url_Meta")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("UserId")
                         .HasMaxLength(450)
@@ -763,6 +885,41 @@ namespace Data.Migrations
                     b.HasIndex("WebLog_Group_CategoryId");
 
                     b.ToTable("WebLog_Groups");
+                });
+
+            modelBuilder.Entity("Entities.WebLog_Group_Views", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("LastUpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("ViewId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WebLog_GroupId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ViewId");
+
+                    b.HasIndex("WebLog_GroupId");
+
+                    b.ToTable("WebLog_Group_Views");
                 });
 
             modelBuilder.Entity("Entities.WebLog_ImageAdvertise", b =>
@@ -859,31 +1016,44 @@ namespace Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Browser_Views")
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<int>("Count_Views")
-                        .HasColumnType("int");
+                    b.Property<string>("Canonical_Meta")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DateTime_Views")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("Desc_Meta")
+                        .IsRequired()
+                        .HasMaxLength(185)
+                        .HasColumnType("nvarchar(185)");
 
-                    b.Property<string>("IP_Views")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                    b.Property<string>("Image_Meta")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDelete")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("IsMobile_Views")
-                        .HasColumnType("bit");
+                    b.Property<string>("Keyword_Meta")
+                        .HasMaxLength(400)
+                        .HasColumnType("nvarchar(400)");
 
                     b.Property<DateTime>("LastUpdateDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("TitleEnglish_Meta")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Title_Meta")
+                        .IsRequired()
+                        .HasMaxLength(80)
+                        .HasColumnType("nvarchar(80)");
+
+                    b.Property<string>("Url_Meta")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("UserId")
                         .HasMaxLength(450)
@@ -933,38 +1103,18 @@ namespace Data.Migrations
                     b.ToTable("WebLog_Labels");
                 });
 
-            modelBuilder.Entity("Entities.WebLog_Label_Blog", b =>
+            modelBuilder.Entity("Entities.WebLog_Label_Views", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Browser_Views")
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<int>("Count_Views")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DateTime_Views")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("IP_Views")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
                     b.Property<bool>("IsDelete")
                         .HasColumnType("bit");
-
-                    b.Property<bool>("IsMobile_Views")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("LabelId")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("LastUpdateDate")
                         .HasColumnType("datetime2");
@@ -973,16 +1123,19 @@ namespace Data.Migrations
                         .HasMaxLength(450)
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("WeblogId")
+                    b.Property<int>("ViewId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WebLog_LabelId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("LabelId");
+                    b.HasIndex("ViewId");
 
-                    b.HasIndex("WeblogId");
+                    b.HasIndex("WebLog_LabelId");
 
-                    b.ToTable("WebLog_Label_Blogs");
+                    b.ToTable("WebLog_Label_Views");
                 });
 
             modelBuilder.Entity("Entities.WebLog_SelectedBlogs", b =>
@@ -1098,6 +1251,41 @@ namespace Data.Migrations
                     b.HasIndex("WebLog_Slider_LabelId");
 
                     b.ToTable("WebLog_Sliders");
+                });
+
+            modelBuilder.Entity("Entities.WebLog_Views", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("LastUpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("ViewId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WebLogId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ViewId");
+
+                    b.HasIndex("WebLogId");
+
+                    b.ToTable("WebLog_Views");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -1296,6 +1484,23 @@ namespace Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("Entities.WebLog_Label_Blog", b =>
+                {
+                    b.HasBaseType("Entities.BaseView");
+
+                    b.Property<int>("LabelId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WeblogId")
+                        .HasColumnType("int");
+
+                    b.HasIndex("LabelId");
+
+                    b.HasIndex("WeblogId");
+
+                    b.HasDiscriminator().HasValue("WebLog_Label_Blog");
+                });
+
             modelBuilder.Entity("Entities.WebLog", b =>
                 {
                     b.HasOne("Entities.WebLog_Group", "WebLog_Groups")
@@ -1305,6 +1510,25 @@ namespace Data.Migrations
                         .IsRequired();
 
                     b.Navigation("WebLog_Groups");
+                });
+
+            modelBuilder.Entity("Entities.WebLog_Category_Views", b =>
+                {
+                    b.HasOne("Entities.BaseView", "BaseView")
+                        .WithMany()
+                        .HasForeignKey("ViewId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Entities.WebLog_Category", "WebLog_Category")
+                        .WithMany()
+                        .HasForeignKey("WebLog_CategoryId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("BaseView");
+
+                    b.Navigation("WebLog_Category");
                 });
 
             modelBuilder.Entity("Entities.WebLog_Comment", b =>
@@ -1327,6 +1551,25 @@ namespace Data.Migrations
                         .IsRequired();
 
                     b.Navigation("WebLog_Category");
+                });
+
+            modelBuilder.Entity("Entities.WebLog_Group_Views", b =>
+                {
+                    b.HasOne("Entities.BaseView", "BaseView")
+                        .WithMany()
+                        .HasForeignKey("ViewId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Entities.WebLog_Group", "WebLog_Group")
+                        .WithMany()
+                        .HasForeignKey("WebLog_GroupId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("BaseView");
+
+                    b.Navigation("WebLog_Group");
                 });
 
             modelBuilder.Entity("Entities.WebLog_ImageAdvertise", b =>
@@ -1364,23 +1607,23 @@ namespace Data.Migrations
                     b.Navigation("webLog_Label");
                 });
 
-            modelBuilder.Entity("Entities.WebLog_Label_Blog", b =>
+            modelBuilder.Entity("Entities.WebLog_Label_Views", b =>
                 {
-                    b.HasOne("Entities.WebLog_Label", "webLog_Label")
+                    b.HasOne("Entities.BaseView", "BaseView")
                         .WithMany()
-                        .HasForeignKey("LabelId")
+                        .HasForeignKey("ViewId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Entities.WebLog", "webLog")
+                    b.HasOne("Entities.WebLog_Label", "WebLog_Category")
                         .WithMany()
-                        .HasForeignKey("WeblogId")
+                        .HasForeignKey("WebLog_LabelId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("webLog");
+                    b.Navigation("BaseView");
 
-                    b.Navigation("webLog_Label");
+                    b.Navigation("WebLog_Category");
                 });
 
             modelBuilder.Entity("Entities.WebLog_Slider", b =>
@@ -1416,6 +1659,25 @@ namespace Data.Migrations
                     b.Navigation("WebLog_Group");
 
                     b.Navigation("webLog_Label");
+                });
+
+            modelBuilder.Entity("Entities.WebLog_Views", b =>
+                {
+                    b.HasOne("Entities.BaseView", "BaseView")
+                        .WithMany()
+                        .HasForeignKey("ViewId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Entities.WebLog", "WebLog_Category")
+                        .WithMany()
+                        .HasForeignKey("WebLogId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("BaseView");
+
+                    b.Navigation("WebLog_Category");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -1467,6 +1729,25 @@ namespace Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Entities.WebLog_Label_Blog", b =>
+                {
+                    b.HasOne("Entities.WebLog_Label", "webLog_Label")
+                        .WithMany()
+                        .HasForeignKey("LabelId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Entities.WebLog", "webLog")
+                        .WithMany()
+                        .HasForeignKey("WeblogId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("webLog");
+
+                    b.Navigation("webLog_Label");
                 });
 
             modelBuilder.Entity("Entities.WebLog_Category", b =>

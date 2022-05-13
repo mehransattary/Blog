@@ -1,0 +1,157 @@
+﻿@model WebLog_Label
+
+@{
+    ViewData["Title"] = $"  حذف  برچسب وبلاگ  ✨ {Model.WebLog_Label_Title_One} ";
+}
+
+
+<div class="row justify-content-center">
+
+    <div class="col-xl-10">
+
+        <div class="row">
+            <div class="col-xl-1">
+            </div>
+            <div class="col-xl-10">
+
+
+                <div class="d-flex align-items-center mb-3">
+                    <div>
+
+                        <h1 class="page-header mb-0 mt-5">
+
+                            آیا میخواهید
+                            ❌  @Model.WebLog_Label_Title_One   ❌
+                            را حذف کنید؟
+
+                        </h1>
+                    </div>
+                    @if (ViewBag.errormessage_ListIsExist_Labels != null)
+                    {
+                        <div class="text-center ">
+                            <span class=" badge rounded-pill bg-danger  text-white p-5">
+                                @ViewBag.errormessage_ListIsExist_Labels
+                            </span>
+                        </div>
+                    }
+                </div>
+                <br />
+                <div id="formControls" class="mb-5">
+
+                    <div class="card">
+                        <div class="card-body pb-2">
+
+                            <div>
+                                <dl>
+
+
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.WebLog_Label_Title_One)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.WebLog_Label_Title_One)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.WebLog_Label_Title_Two)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.WebLog_Label_Title_Two)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.WebLog_Label_Image)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        <img src="@Model.WebLog_Label_Image" width="120" height="80" />
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.WebLog_Label_ThumbnaillImage)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        <img src="@Model.WebLog_Label_ThumbnaillImage" width="120" height="80" />
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.WebLog_Label_ImageHome)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        <img src="@Model.WebLog_Label_ImageHome" width="120" height="80" />
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.WebLog_Label_Order)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.WebLog_Label_Order)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.WebLog_Label_IsShow)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.WebLog_Label_IsShow)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.WebLog_Label_ShortDescription)
+                                    </dt>
+                                    <dd class="col-sm-10">
+@Html.Raw(Model.WebLog_Label_ShortDescription)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.WebLog_Label_Description)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.Raw(Model.WebLog_Label_Description)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.WebLog_Label_ShortLink)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.Raw(Model.WebLog_Label_ShortLink)
+                                    </dd>
+
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.IsDelete)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.IsDelete)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.CreateDate)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.CreateDate)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.LastUpdateDate)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.LastUpdateDate)
+                                    </dd>
+                        
+                                </dl>
+                                <form asp-action="Delete">
+                                    <input type="hidden" asp-for="Id" />
+                                    <input type="submit" value="حذف" class="btn btn-outline-danger" /> |
+                                    <a class="btn btn-outline-info" asp-action="Index">بازگشت</a>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="card-arrow">
+                            <div class="card-arrow-top-left"></div>
+                            <div class="card-arrow-top-right"></div>
+                            <div class="card-arrow-bottom-left"></div>
+                            <div class="card-arrow-bottom-right"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+            <div class="col-xl-1">
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

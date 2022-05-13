@@ -9,7 +9,7 @@ using System.Text;
 
 namespace Entities
 {
-    public class WebLog_Group: BaseView
+    public class WebLog_Group: BaseMetaTag
     {
         #region Properties
         //***====================================================================================***//
