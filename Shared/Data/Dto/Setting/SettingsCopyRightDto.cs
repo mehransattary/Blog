@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Data.Dto
 {
-    public class SettingsCopyRightDto : BaseDto
+    public class SettingsCopyRightDto : BaseEntityDto<byte>
     {
         #region @CopyRight
 

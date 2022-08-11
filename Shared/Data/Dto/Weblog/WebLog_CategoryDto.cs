@@ -10,7 +10,7 @@ using System.Text;
 
 namespace Data.Dto
 {
-    public class WebLog_CategoryDto : BaseMetaTagDto
+    public class WebLog_CategoryDto : BaseMetaTagDto<int>
     {
         #region Properties
         //***====================================================================================***//

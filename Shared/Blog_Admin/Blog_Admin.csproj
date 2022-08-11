@@ -23,35 +23,35 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="Areas\Admin_Blog\Views\WebLog_Group\Create.cshtml">
+    <Content Update="Areas\Admin_Blog\Views\WebLogGroup\Create.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Update="Areas\Admin_Blog\Views\WebLog_Group\Delete.cshtml">
+    <Content Update="Areas\Admin_Blog\Views\WebLogGroup\Delete.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Update="Areas\Admin_Blog\Views\WebLog_Group\Edit.cshtml">
+    <Content Update="Areas\Admin_Blog\Views\WebLogGroup\Edit.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Update="Areas\Admin_Blog\Views\WebLog_Group\Index.cshtml">
+    <Content Update="Areas\Admin_Blog\Views\WebLogGroup\Index.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Update="Areas\Admin_Blog\Views\WebLog_Label\Create.cshtml">
+    <Content Update="Areas\Admin_Blog\Views\WebLogLabel\Create.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Update="Areas\Admin_Blog\Views\WebLog_Label\Delete.cshtml">
+    <Content Update="Areas\Admin_Blog\Views\WebLogLabel\Delete.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Update="Areas\Admin_Blog\Views\WebLog_Label\Edit.cshtml">
+    <Content Update="Areas\Admin_Blog\Views\WebLogLabel\Edit.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Update="Areas\Admin_Blog\Views\WebLog_Label\Index.cshtml">
+    <Content Update="Areas\Admin_Blog\Views\WebLogLabel\Index.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>

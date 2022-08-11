@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
-     public  class SettingAdvertising : BaseEntity
+     public  class SettingAdvertising : BaseEntity<byte>
     {
 
         #region Advertising

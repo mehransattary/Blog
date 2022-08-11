@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Data.Dto
 {
-    public  class SettingsLogoDto : BaseDto
+    public  class SettingsLogoDto : BaseEntityDto<byte>
     {
         #region Logo
 

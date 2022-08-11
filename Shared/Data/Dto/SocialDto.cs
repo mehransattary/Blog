@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Data.Dto
 {
-    public class SocialDto : BaseDto
+    public class SocialDto : BaseEntityDto<int>
     {
 
 

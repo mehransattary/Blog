@@ -49,11 +49,11 @@ namespace Service.Repository
             {
 
                 #region CheckRepeatShortLink
-                string random_shortlink = RandomNumber.RandomChars();
+                string random_shortlink = RandomNumber.Random(100000, 190000).ToString();
                 bool result = TableNoTracking.Any(x => x.WebLog_Group_ShortLink == random_shortlink);         
                 while (result)
                 {
-                   random_shortlink = RandomNumber.RandomChars();
+                   random_shortlink = RandomNumber.Random(100000, 190000).ToString();
                 }
                 #endregion
                 #region Save AvatarImage + IconImage
@@ -86,7 +86,7 @@ namespace Service.Repository
 
                     WebLog_Group_IsShow = WebLog_GroupDto.WebLog_Group_IsShow,
                     WebLog_Group_ShortDescription = WebLog_GroupDto.WebLog_Group_ShortDescription,
-                    WebLog_Group_ShortLink = RandomNumber.RandomChars(),
+                    WebLog_Group_ShortLink = random_shortlink,
                     WebLog_Group_Description = WebLog_GroupDto.WebLog_Group_Description,
                     WebLog_Group_Image = filePathWebLog_Group_Image,
                     WebLog_Group_ImageHome = filePathWebLog_Group_ImageHome,
@@ -127,14 +127,7 @@ namespace Service.Repository
             try
             {
                 var _WebLog_Group = await GetByIdAsync(cancellationToken, WebLog_GroupDto.Id);
-                #region CheckRepeatShortLink
-                string random_shortlink = RandomNumber.RandomChars();
-                bool result = TableNoTracking.Any(x => x.WebLog_Group_ShortLink == random_shortlink);
-                while (result)
-                {
-                    random_shortlink = RandomNumber.RandomChars();
-                }
-                #endregion
+  
                 #region Save AvatarImage + IconImage
                 string filePathWebLog_Group_Image = "/images/default.png";
                 string filePathWebLog_Group_ImageHome = "/images/default.png";
@@ -264,10 +257,10 @@ namespace Service.Repository
             }
         }
 
-        public async Task<IList<WebLog_Group>> ShowAllWeblogGroupAsync(CancellationToken cancellationToken, string UserId)
+        public async Task<IList<WebLog_Group>> ShowAllWeblogGroupAsync(CancellationToken cancellationToken)
         {
 
-            var result = await TableNoTracking.Where(x => x.UserId == UserId).Select(x =>
+            var result = await TableNoTracking.Select(x =>
           new WebLog_Group()
           {
          
@@ -282,7 +275,8 @@ namespace Service.Repository
           
               Id = x.Id,
               LastUpdateDate = x.LastUpdateDate,
-              CreateDate = x.CreateDate
+              CreateDate = x.CreateDate,
+              WebLog_Group_CategoryId = x.WebLog_Group_CategoryId
 
 
           }).ToListAsync(cancellationToken);
@@ -295,9 +289,27 @@ namespace Service.Repository
              {
              
                  WebLog_Group_IsShow = x.WebLog_Group_IsShow,
-                 WebLog_Group_ShortLink = x.WebLog_Group_ShortLink,               
-                 WebLog_Group_Image = x.WebLog_Group_Image,
-                 WebLog_Group_ImageHome = x.WebLog_Group_ImageHome,
+                 WebLog_Group_ShortLink = x.WebLog_Group_ShortLink,            
+                 WebLog_Group_ThumbnaillImage = x.WebLog_Group_ThumbnaillImage,
+                 WebLog_Group_Order = x.WebLog_Group_Order,
+                 WebLog_Group_Title_One = x.WebLog_Group_Title_One,
+                 WebLog_Group_Title_Two = x.WebLog_Group_Title_Two,
+                 Id = x.Id,
+                 LastUpdateDate = x.LastUpdateDate,
+                 CreateDate = x.CreateDate,
+                 WebLog_Group_CategoryId=x.WebLog_Group_CategoryId
+
+             }).ToPagedList(currentPage, number_showproduct);
+            return result;
+        }
+        public IPagedList<WebLog_Group> ShowAllWeblogGroup_PagingAsync(CancellationToken cancellationToken, string UserId, int currentPage = 0, int number_showproduct = 10,int categoryId=0)
+        {
+            var result = TableNoTracking.Where(x => x.UserId == UserId&&x.WebLog_Group_CategoryId== categoryId).Select(x =>
+             new WebLog_Group()
+             {
+
+                 WebLog_Group_IsShow = x.WebLog_Group_IsShow,
+                 WebLog_Group_ShortLink = x.WebLog_Group_ShortLink,              
                  WebLog_Group_ThumbnaillImage = x.WebLog_Group_ThumbnaillImage,
                  WebLog_Group_Order = x.WebLog_Group_Order,
                  WebLog_Group_Title_One = x.WebLog_Group_Title_One,
@@ -307,6 +319,32 @@ namespace Service.Repository
                  CreateDate = x.CreateDate
 
              }).ToPagedList(currentPage, number_showproduct);
+            return result;
+        }
+        public async Task<IList<WebLog_Group>> SelectListAsync(CancellationToken cancellationToken, string UserId)
+        {
+            var result = await TableNoTracking.Where(x => x.UserId == UserId).Select(x =>
+            new WebLog_Group()
+            {
+
+                Id = x.Id,
+                WebLog_Group_Title_One = x.WebLog_Group_Title_One
+
+
+            }).ToListAsync(cancellationToken);
+            return result;
+        }
+        public async Task<IList<WebLog_Group>> SelectListAsync(CancellationToken cancellationToken, string UserId,int groupId=0)
+        {
+            var result = await TableNoTracking.Where(x => x.UserId == UserId && x.Id== groupId).Select(x =>
+            new WebLog_Group()
+            {
+
+                Id = x.Id,
+                WebLog_Group_Title_One = x.WebLog_Group_Title_One
+
+
+            }).ToListAsync(cancellationToken);
             return result;
         }
 

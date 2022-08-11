@@ -1,0 +1,222 @@
+﻿
+@model WebLog
+
+@{
+    ViewData["Title"] = $"  حذف   وبلاگ  ✨ {Model.Weblog_Title_One} ";
+}
+
+
+<div class="row justify-content-center">
+
+    <div class="col-xl-10">
+
+        <div class="row">
+            <div class="col-xl-1">
+            </div>
+            <div class="col-xl-10">
+
+
+                <div class="d-flex align-items-center mb-3">
+                    <div>
+
+                        <h1 class="page-header mb-0 mt-5">
+
+                            آیا میخواهید
+                            ❌  @Model.Weblog_Title_One   ❌
+                            را حذف کنید؟
+
+                        </h1>
+                        @if (ViewBag.errormessage_ListIsExist_Groups != null)
+                        {
+                            <h2 class="page-header mb-0 mt-5 text-danger">
+                                این دسته به گروه های
+                                <b class="text-success">
+                                    @(ViewBag.errormessage_ListIsExist_Groups)
+                                </b>
+                                وابسته اند.
+                                وابتدا باید آن گروه ها حذف شوند.
+                            </h2>
+                        }
+                    </div>
+
+
+
+                </div>
+                <br />
+                <div id="formControls" class="mb-5">
+
+                    <div class="card">
+                        <div class="card-body pb-2">
+
+                            <div>
+                                <dl>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.Weblog_Title_One)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.Weblog_Title_One)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.Weblog_Title_Two)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.Weblog_Title_Two)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.Weblog_Image)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        <img src="@Model.Weblog_Image" width="130"height="100"/>
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.Weblog_Thumbnail_Image)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        <img src="@Model.Weblog_Thumbnail_Image" width="130" height="100" />
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.Weblog_Short_Description)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.Weblog_Short_Description)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.Weblog_Text)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.Raw(Model.Weblog_Text)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.Weblog_Writer)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.Weblog_Writer)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.Weblog_IsShow)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.Weblog_IsShow)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.Weblog_StudyTime)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.Weblog_StudyTime)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.Weblog_Star)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.Weblog_Star)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.Weblog_ShortLink)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.Weblog_ShortLink)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.WebLog_Groups)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.WebLog_Groups.Desc_Meta)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.Title_Meta)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.Title_Meta)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.TitleEnglish_Meta)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.TitleEnglish_Meta)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.Url_Meta)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.Url_Meta)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.Desc_Meta)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.Desc_Meta)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.Canonical_Meta)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.Canonical_Meta)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.Keyword_Meta)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.Keyword_Meta)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.Image_Meta)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        <img src="@Model.Image_Meta" width="130" height="100" />
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.IsDelete)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.IsDelete)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.CreateDate)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.CreateDate)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.LastUpdateDate)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.LastUpdateDate)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.UserId)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.UserId)
+                                    </dd>
+
+                                </dl>
+                                <form asp-action="Delete">
+                                    <input type="hidden" asp-for="Id" />
+                                    <input type="hidden" asp-for="Weblog_GroupId" />
+                                    <input type="submit" value="حذف" class="btn btn-outline-danger" /> |
+                                    <a class="btn btn-outline-info" asp-action="Index">بازگشت</a>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="card-arrow">
+                            <div class="card-arrow-top-left"></div>
+                            <div class="card-arrow-top-right"></div>
+                            <div class="card-arrow-bottom-left"></div>
+                            <div class="card-arrow-bottom-right"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+            <div class="col-xl-1">
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

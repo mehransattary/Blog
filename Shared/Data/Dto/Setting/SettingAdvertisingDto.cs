@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Data.Dto
 {
-    public  class SettingAdvertisingDto: BaseDto
+    public  class SettingAdvertisingDto: BaseEntityDto<byte>
     {
         #region Advertising
     

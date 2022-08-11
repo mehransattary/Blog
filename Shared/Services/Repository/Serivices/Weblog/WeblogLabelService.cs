@@ -49,11 +49,11 @@ namespace Service.Repository
             {
 
                 #region CheckRepeatShortLink
-                string random_shortlink = RandomNumber.RandomChars();
+                string random_shortlink = RandomNumber.Random(100000, 190000).ToString();
                 bool result = TableNoTracking.Any(x => x.WebLog_Label_ShortLink == random_shortlink);         
                 while (result)
                 {
-                   random_shortlink = RandomNumber.RandomChars();
+                   random_shortlink = RandomNumber.Random(100000, 190000).ToString();
                 }
                 #endregion
                 #region Save AvatarImage + IconImage
@@ -86,7 +86,7 @@ namespace Service.Repository
 
                     WebLog_Label_IsShow = WebLog_LabelDto.WebLog_Label_IsShow,
                     WebLog_Label_ShortDescription = WebLog_LabelDto.WebLog_Label_ShortDescription,
-                    WebLog_Label_ShortLink = RandomNumber.RandomChars(),
+                    WebLog_Label_ShortLink = random_shortlink,
                     WebLog_Label_Description = WebLog_LabelDto.WebLog_Label_Description,
                     WebLog_Label_Image = filePathWebLog_Label_Image,
                     WebLog_Label_ImageHome = filePathWebLog_Label_ImageHome,
@@ -126,14 +126,7 @@ namespace Service.Repository
             try
             {
                 var _WebLog_Label = await GetByIdAsync(cancellationToken, WebLog_LabelDto.Id);
-                #region CheckRepeatShortLink
-                string random_shortlink = RandomNumber.RandomChars();
-                bool result = TableNoTracking.Any(x => x.WebLog_Label_ShortLink == random_shortlink);
-                while (result)
-                {
-                    random_shortlink = RandomNumber.RandomChars();
-                }
-                #endregion
+   
                 #region Save AvatarImage + IconImage
                 string filePathWebLog_Label_Image = "/images/default.png";
                 string filePathWebLog_Label_ImageHome = "/images/default.png";

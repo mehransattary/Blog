@@ -9,7 +9,7 @@ using System.Text;
 
 namespace Entities
 {
-    public class WebLog_Label_Blog : BaseView
+    public class WebLog_Label_Blog : BaseEntity<int>
     {
         //***====================================================================================***//
         [Display(Name = "  بلاگ")]

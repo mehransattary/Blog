@@ -18,20 +18,39 @@
                   }).ToList();
     var person = personService.TableNoTracking.FirstOrDefault(x => x.UserId == userId);
 }
-<!DOCTYPE html>
-<html>
+
+
+<!doctype html>
+<html class="no-js" lang="fa">
+
 <head>
     <title>@ViewData["Title"]</title>
-    <partial name="_Meta"model="userId" />
+    <partial name="_Meta" model="userId" />
     <partial name="_Style" />
     @RenderSection("Style", required: false)
+
 </head>
-<body id="blog">
-    <partial name="_TopMenu" />
-    <partial name="_Menu" />
-    @RenderBody()
-    <partial name="_Footer" />
-    <partial name="_Script" />
-    @await RenderSectionAsync("Scripts", required: false)
+
+<body dir="rtl">
+    <div id="preloader">
+        <span class="loader"></span>
+    </div>
+    <div class="main-wrapper">
+        @*<div class="mouse-cursor cursor-outer"></div>
+        <div class="mouse-cursor cursor-inner"></div>*@
+
+        <partial name="_Menu" />
+        @RenderBody()
+        <!-- Start Back To Top  -->
+        <a id="backto-top"></a>
+        <!-- End Back To Top  -->
+        <partial name="_Footer" />
+        <partial name="_Script" />
+        @await RenderSectionAsync("Scripts", required: false)
+    </div>
+
+
+
 </body>
+
 </html>

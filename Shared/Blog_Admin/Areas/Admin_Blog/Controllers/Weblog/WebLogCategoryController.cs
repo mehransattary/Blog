@@ -199,11 +199,18 @@ namespace ProMe_Admin.Controllers
             }
             else if (!(url_meta_New == url_meta_Ago) && (order_New == order_Ago))
             {
-                var isCheckRepeatUrlMeta = await WebLog_CategoryService.CheckRepeatUrlMeta(WebLog_CategoryDto.Url_Meta);
+                var isCheckRepeatUrlMeta = await WebLog_CategoryService.CheckRepeatUrlMeta(url_meta_New);
 
                 if (isCheckRepeatUrlMeta)
                     ViewBag.error_Url_Meta = $"❌  ورودی های سئو /  ✨ {WebLog_CategoryDto.Url_Meta}  ✨ / این آدرس اینترنتی  از قبل موجود می باشد . ";
+                else
+                {
+                    WebLog_CategoryDto.UserId = userManager.GetUserId(User);
+                    await WebLog_CategoryService.UpdateWebLog_CategoryAsync(WebLog_CategoryDto, _WebLog_Category_Image, _WebLog_Category_ImageHome, _WebLog_Category_ThumbnaillImage, _Image_Meta, cancellationToken);
 
+                    return "Index";
+                }
+                       
 
             }
             else if ((url_meta_New == url_meta_Ago) && !(order_New == order_Ago))
@@ -211,14 +218,20 @@ namespace ProMe_Admin.Controllers
                 var isCheckRepeatOrder = await WebLog_CategoryService.CheckRepeatOrder(WebLog_CategoryDto.WebLog_Category_Order.Value);
 
                 if (isCheckRepeatOrder)
-                    ViewBag.error_RepeatOrder = $"❌  ورودی های عمومی /  ✨ {WebLog_CategoryDto.WebLog_Category_Order}  ✨ / این مرتب سازی  از قبل موجود می باشد . ";
+                    ViewBag.error_RepeatOrder = $"❌  ورودی های عمومی /  ✨ {order_New}  ✨ / این مرتب سازی  از قبل موجود می باشد . ";
+                else
+                {
+                    WebLog_CategoryDto.UserId = userManager.GetUserId(User);
+                    await WebLog_CategoryService.UpdateWebLog_CategoryAsync(WebLog_CategoryDto, _WebLog_Category_Image, _WebLog_Category_ImageHome, _WebLog_Category_ThumbnaillImage, _Image_Meta, cancellationToken);
 
-
+                    return "Index";
+                }
             }
             else
             {
-                var isCheckRepeatUrlMeta = await WebLog_CategoryService.CheckRepeatUrlMeta(WebLog_CategoryDto.Url_Meta);
+                var isCheckRepeatUrlMeta = await WebLog_CategoryService.CheckRepeatUrlMeta(url_meta_New);
                 var isCheckRepeatOrder = await WebLog_CategoryService.CheckRepeatOrder(WebLog_CategoryDto.WebLog_Category_Order.Value);
+
                 if (isCheckRepeatOrder && isCheckRepeatUrlMeta)
                 {
                     if (isCheckRepeatOrder)
@@ -243,7 +256,7 @@ namespace ProMe_Admin.Controllers
                 if (!isCheckRepeatOrder && !isCheckRepeatUrlMeta)
                 {
                     WebLog_CategoryDto.UserId = userManager.GetUserId(User);
-                    await WebLog_CategoryService.AddWebLog_CategoryAsync(WebLog_CategoryDto, cancellationToken);
+                    await WebLog_CategoryService.UpdateWebLog_CategoryAsync(WebLog_CategoryDto, _WebLog_Category_Image, _WebLog_Category_ImageHome, _WebLog_Category_ThumbnaillImage, _Image_Meta, cancellationToken);
                     return "Index";
                 }
 

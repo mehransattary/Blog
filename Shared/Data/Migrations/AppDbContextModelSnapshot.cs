@@ -40,10 +40,6 @@ namespace Data.Migrations
                     b.Property<DateTime>("DateTime_Views")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("IP_Views")
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
@@ -64,8 +60,6 @@ namespace Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("BaseView");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("BaseView");
                 });
 
             modelBuilder.Entity("Entities.Person", b =>
@@ -156,10 +150,8 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Entities.SettingAdvertising", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<byte>("Id")
+                        .HasColumnType("tinyint");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
@@ -197,10 +189,8 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Entities.Settings", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<byte>("Id")
+                        .HasColumnType("tinyint");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
@@ -254,10 +244,8 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Entities.SettingsCopyRight", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<byte>("Id")
+                        .HasColumnType("tinyint");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
@@ -302,10 +290,8 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Entities.SettingsEnemad", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<byte>("Id")
+                        .HasColumnType("tinyint");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
@@ -341,10 +327,8 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Entities.SettingsLogo", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<byte>("Id")
+                        .HasColumnType("tinyint");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
@@ -383,10 +367,8 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Entities.SettingsMeta", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<byte>("Id")
+                        .HasColumnType("tinyint");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
@@ -1103,6 +1085,41 @@ namespace Data.Migrations
                     b.ToTable("WebLog_Labels");
                 });
 
+            modelBuilder.Entity("Entities.WebLog_Label_Blog", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("LabelId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("LastUpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("WeblogId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LabelId");
+
+                    b.HasIndex("WeblogId");
+
+                    b.ToTable("WebLog_Label_Blogs");
+                });
+
             modelBuilder.Entity("Entities.WebLog_Label_Views", b =>
                 {
                     b.Property<int>("Id")
@@ -1484,23 +1501,6 @@ namespace Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Entities.WebLog_Label_Blog", b =>
-                {
-                    b.HasBaseType("Entities.BaseView");
-
-                    b.Property<int>("LabelId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("WeblogId")
-                        .HasColumnType("int");
-
-                    b.HasIndex("LabelId");
-
-                    b.HasIndex("WeblogId");
-
-                    b.HasDiscriminator().HasValue("WebLog_Label_Blog");
-                });
-
             modelBuilder.Entity("Entities.WebLog", b =>
                 {
                     b.HasOne("Entities.WebLog_Group", "WebLog_Groups")
@@ -1603,6 +1603,25 @@ namespace Data.Migrations
                     b.Navigation("webLog_Category");
 
                     b.Navigation("WebLog_Group");
+
+                    b.Navigation("webLog_Label");
+                });
+
+            modelBuilder.Entity("Entities.WebLog_Label_Blog", b =>
+                {
+                    b.HasOne("Entities.WebLog_Label", "webLog_Label")
+                        .WithMany()
+                        .HasForeignKey("LabelId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Entities.WebLog", "webLog")
+                        .WithMany()
+                        .HasForeignKey("WeblogId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("webLog");
 
                     b.Navigation("webLog_Label");
                 });
@@ -1729,25 +1748,6 @@ namespace Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Entities.WebLog_Label_Blog", b =>
-                {
-                    b.HasOne("Entities.WebLog_Label", "webLog_Label")
-                        .WithMany()
-                        .HasForeignKey("LabelId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Entities.WebLog", "webLog")
-                        .WithMany()
-                        .HasForeignKey("WeblogId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("webLog");
-
-                    b.Navigation("webLog_Label");
                 });
 
             modelBuilder.Entity("Entities.WebLog_Category", b =>

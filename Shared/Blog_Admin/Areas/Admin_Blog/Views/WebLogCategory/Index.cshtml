@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "دسته وبلاگ ها   ";
     int counter = Convert.ToInt32(ViewBag.counter);
+ 
 }
 
 
@@ -33,9 +34,8 @@
                 <!--end::Card title-->
                 <!--begin::Card toolbar-->
                 <div class="card-toolbar">
-                    <!--begin::Add customer-->
                     <a asp-action="Create" class="btn btn-primary">افزودن  </a>
-                    <!--end::Add customer-->
+               
                 </div>
                 <!--end::Card toolbar-->
             </div>
@@ -150,6 +150,11 @@
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-3">
                                                 <a asp-action="Delete" asp-route-Id="@item.Id" class="menu-link px-3">حذف</a>
+                                            </div>
+                                            <!--end::Menu item-->
+                                            <!--begin::Menu item-->
+                                            <div class="menu-item px-3">
+                                                <a asp-action="Index"asp-controller="WebLogGroup" asp-route-categoryId="@item.Id" class="menu-link px-3">گروه ها</a>
                                             </div>
                                             <!--end::Menu item-->
                                         </div>

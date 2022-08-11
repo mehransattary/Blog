@@ -1,12 +1,10 @@
 using Data.Context;
-using Data.Dto;
 using IRepositories;
+using Microsoft.AspNetCore.Authentication.Certificate;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,8 +13,6 @@ using Repositories;
 using Service.Repository;
 using Service.Repository.Interface;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
 
@@ -34,10 +30,15 @@ namespace Blog
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddRazorPages();
             services.AddControllersWithViews();
-            services.AddAuthorization(x => {
+            services.AddAuthorization(x =>
+            {
                 x.AddPolicy("admin", p => p.RequireClaim("value_admin_role"));
             });
+            services.AddAuthentication(
+               CertificateAuthenticationDefaults.AuthenticationScheme)
+               .AddCertificate();
             //===========SqlServer==================================================================//
             #region SqlServer
             //=======SqlServer===============//
@@ -70,11 +71,14 @@ namespace Blog
             services.AddScoped<IWeblogCategoryService, WeblogCategoryService>();
             services.AddScoped<IWeblogGroupService, WeblogGroupService>();
             services.AddScoped<IWeblogLabelService, WeblogLabelService>();
+            services.AddScoped<IWeblogService, WeblogService>();
 
 
 
             services.AddSingleton<Microsoft.AspNetCore.Http.IHttpContextAccessor, Microsoft.AspNetCore.Http.HttpContextAccessor>();
-            services.AddSingleton<HtmlEncoder>(HtmlEncoder.Create(allowedRanges: new[] { UnicodeRanges.BasicLatin, UnicodeRanges.Arabic }));
+            services.AddSingleton<HtmlEncoder>(HtmlEncoder.Create(allowedRanges: new[] { UnicodeRanges.BasicLatin, UnicodeRanges.Arabic }));         
+            //  services.AddAutoMapper(typeof(Startup));
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             #endregion
         }
 
@@ -106,6 +110,9 @@ namespace Blog
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
+
+
             });
         }
     }

@@ -11,7 +11,7 @@ using System.Text;
 
 namespace Data.Dto
 {
-    public  class WeblogDto: BaseMetaTagDto
+    public  class WeblogDto: BaseMetaTagDto<int>
     {
         #region properties
         //***====================================================================================***//
@@ -26,11 +26,9 @@ namespace Data.Dto
         public string Weblog_Title_Two { get; set; }
         //***====================================================================================***//
         [Display(Name = "تصویر")]
-        [MaxLength(700, ErrorMessage = "نباید بیشتر از{1}کاراکتر وارد شه")]
         public IFormFile Weblog_Image { get; set; }
         //***====================================================================================***//
         [Display(Name = "تصویر کوچک")]
-        [MaxLength(700, ErrorMessage = "نباید بیشتر از{1}کاراکتر وارد شه")]
         public IFormFile Weblog_Thumbnail_Image { get; set; }
         //***====================================================================================***//
         [Display(Name = "توضیح مختصر ")]

@@ -1,0 +1,173 @@
+﻿@model WebLog_Group
+
+@{
+    ViewData["Title"] = $"  حذف  گروه وبلاگ  ✨ {Model.WebLog_Group_Title_One} ";
+}
+
+
+<div class="row justify-content-center">
+
+    <div class="col-xl-10">
+
+        <div class="row">
+            <div class="col-xl-1">
+            </div>
+            <div class="col-xl-10">
+
+
+                <div class="d-flex align-items-center mb-3">
+                    <div>
+
+                        <h1 class="page-header mb-0 mt-5">
+
+                            آیا میخواهید
+                            ❌  @Model.WebLog_Group_Title_One   ❌
+                            را حذف کنید؟
+
+                        </h1>
+                    </div>
+                    @if (ViewBag.errormessage_ListIsExist_Groups != null)
+                    {
+                        <div class="text-center ">
+                            <span class=" badge rounded-pill bg-danger  text-white p-5">
+                                @ViewBag.errormessage_ListIsExist_Groups
+                            </span>
+                        </div>
+                    }
+                </div>
+                <br />
+                <div id="formControls" class="mb-5">
+
+                    <div class="card">
+                        <div class="card-body pb-2">
+
+                            <div>
+                                <dl>
+
+
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.WebLog_Group_Title_One)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.WebLog_Group_Title_One)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.WebLog_Group_Title_Two)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.WebLog_Group_Title_Two)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.WebLog_Group_Image)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        <img src="@Model.WebLog_Group_Image" width="120" height="80" />
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.WebLog_Group_ThumbnaillImage)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        <img src="@Model.WebLog_Group_ThumbnaillImage" width="120" height="80" />
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.WebLog_Group_ImageHome)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        <img src="@Model.WebLog_Group_ImageHome" width="120" height="80" />
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.WebLog_Group_Order)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.WebLog_Group_Order)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.WebLog_Group_IsShow)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.WebLog_Group_IsShow)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.WebLog_Group_ShortDescription)
+                                    </dt>
+                                    <dd class="col-sm-10">
+@Html.Raw(Model.WebLog_Group_ShortDescription)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.WebLog_Group_Description)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.Raw(Model.WebLog_Group_Description)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.WebLog_Group_ShortLink)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.Raw(Model.WebLog_Group_ShortLink)
+                                    </dd>
+
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.IsDelete)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.IsDelete)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.CreateDate)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.CreateDate)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.LastUpdateDate)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.LastUpdateDate)
+                                    </dd>
+                        
+                                </dl>
+                                <form asp-action="Delete">
+                                    <input type="hidden" asp-for="Id" />
+                                    <input type="hidden" asp-for="WebLog_Group_CategoryId" />
+                                    <input type="submit" value="حذف" class="btn btn-outline-danger" /> |
+
+                                    @if (ViewBag.categoryId != null)
+                                    {
+
+                                        <!--begin::Button-->
+                                        <a asp-action="Index" id="kt_ecommerce_add_product_cancel" asp-route-categoryId="@ViewBag.categoryId"
+                                           class="btn btn-light me-5">انصراف</a>
+                                        <!--end::Button-->
+                                    }
+                                    else
+                                    {
+                                        <!--begin::Button-->
+                                        <a asp-action="Index" id="kt_ecommerce_add_product_cancel"
+                                           class="btn btn-light me-5">انصراف</a>
+                                        <!--end::Button-->
+                                    }
+                                </form>
+                            </div>
+                        </div>
+                        <div class="card-arrow">
+                            <div class="card-arrow-top-left"></div>
+                            <div class="card-arrow-top-right"></div>
+                            <div class="card-arrow-bottom-left"></div>
+                            <div class="card-arrow-bottom-right"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+            <div class="col-xl-1">
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

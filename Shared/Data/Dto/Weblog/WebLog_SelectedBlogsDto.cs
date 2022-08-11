@@ -9,7 +9,7 @@ using System.Text;
 
 namespace Data.Dto
 {
-    public class WebLog_SelectedBlogsDto : BaseDto
+    public class WebLog_SelectedBlogsDto : BaseEntity<int>
     {
 
         //***====================================================================================***//    

@@ -64,11 +64,11 @@ namespace Service.Repository
             try
             {
                 #region CheckRepeatShortLink
-                string random_shortlink = RandomNumber.RandomChars();
+                string random_shortlink = RandomNumber.Random(100000,190000).ToString();
                 bool result = TableNoTracking.Any(x => x.WebLog_Category_ShortLink == random_shortlink);
                 while (result)
                 {
-                    random_shortlink = RandomNumber.RandomChars();
+                    random_shortlink = RandomNumber.Random(100000, 190000).ToString();
                 }
                 #endregion
                 #region Save AvatarImage + IconImage
@@ -101,7 +101,7 @@ namespace Service.Repository
 
                     WebLog_Category_IsShow = WebLog_CategoryDto.WebLog_Category_IsShow,
                     WebLog_Category_ShortDescription = WebLog_CategoryDto.WebLog_Category_ShortDescription,
-                    WebLog_Category_ShortLink = RandomNumber.RandomChars(),
+                    WebLog_Category_ShortLink = random_shortlink,
                     WebLog_Category_Description = WebLog_CategoryDto.WebLog_Category_Description,
                     WebLog_Category_Image = filePathWebLog_Category_Image,
                     WebLog_Category_ImageHome = filePathWebLog_Category_ImageHome,
@@ -141,14 +141,7 @@ namespace Service.Repository
             try
             {
                 var _WebLog_Category = await GetByIdAsync(cancellationToken, WebLog_CategoryDto.Id);
-                #region CheckRepeatShortLink
-                string random_shortlink = RandomNumber.RandomChars();
-                bool result = TableNoTracking.Any(x => x.WebLog_Category_ShortLink == random_shortlink);
-                while (result)
-                {
-                    random_shortlink = RandomNumber.RandomChars();
-                }
-                #endregion
+ 
                 #region Save AvatarImage + IconImage
                 string filePathWebLog_Category_Image = "/images/default.png";
                 string filePathWebLog_Category_ImageHome = "/images/default.png";
@@ -336,6 +329,18 @@ namespace Service.Repository
             }).ToListAsync(cancellationToken);
                 return result;
         }
+        public async Task<IList<WebLog_Category>> SelectListAsync(CancellationToken cancellationToken, string UserId,int categoryId=0)
+        {
+            var result = await TableNoTracking.Where(x => x.UserId == UserId&&x.Id== categoryId).Select(x =>
+            new WebLog_Category()
+            {
 
+                Id = x.Id,
+                WebLog_Category_Title_One = x.WebLog_Category_Title_One
+
+
+            }).ToListAsync(cancellationToken);
+            return result;
+        }
     }
 }

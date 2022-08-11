@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Data.Dto
 {
-    public class SettingsMetaDto : BaseDto
+    public class SettingsMetaDto : BaseEntityDto<byte>
     {
         #region MetaTags
 

@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Data.Dto
 {
-    public class SettingsDto : BaseDto
+    public class SettingsDto : BaseEntityDto<byte>
     {
         #region Properties
 

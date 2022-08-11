@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework", "..\..\Shared\F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "..\..\Shared\Services\Services.csproj", "{3AD369A0-43A2-46FC-8339-9F48B6BDC715}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Identities", "..\..\Shared\Identities\Identities.csproj", "{54FD759F-812C-4ED6-B724-DA285D2E5811}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{3AD369A0-43A2-46FC-8339-9F48B6BDC715}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3AD369A0-43A2-46FC-8339-9F48B6BDC715}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3AD369A0-43A2-46FC-8339-9F48B6BDC715}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54FD759F-812C-4ED6-B724-DA285D2E5811}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54FD759F-812C-4ED6-B724-DA285D2E5811}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54FD759F-812C-4ED6-B724-DA285D2E5811}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54FD759F-812C-4ED6-B724-DA285D2E5811}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

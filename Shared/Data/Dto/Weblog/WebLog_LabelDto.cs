@@ -11,7 +11,7 @@ using System.Text;
 
 namespace Data.Dto
 {
-    public class WebLog_LabelDto : BaseMetaTagDto
+    public class WebLog_LabelDto : BaseMetaTagDto<int>
     {
 
 

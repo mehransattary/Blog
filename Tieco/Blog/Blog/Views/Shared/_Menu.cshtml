@@ -1,61 +1,789 @@
-﻿@inject Service.Repository.Interface.IAccountService accountService;
-<header class="nav-container">
-    <nav class="sina-nav mobile-sidebar navbar-fixed" data-top="60">
-        <div class="container">
+﻿@inject IAccountService accountService
+@inject ISettingsLogoesService logoService
+@inject ISettingsCopyRightsService CopyRightsService
+@inject ISettingsService SettingsService
 
-            <div class="extension-nav">
-                <ul class="pt-2">
+@{
+ 
+    
+    }
+
+@if (!accountService.IsSignin(User))
+{
+    <li>
+        <a href="/Identity/Account/Login" rel="nofollow">ورود</a>
+    </li>
+}
+else
+{
+    <li>
+        <a asp-action="Index" asp-controller="Default" asp-area="Admin_Blog" rel="nofollow">  پنل مدیریت</a>
+    </li>
+    <li>
+        <a asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" rel="nofollow">   خروج</a>
+    </li>
+
+}
 
 
-                    @if (accountService.IsSignin(User))
-                    {
-                        <li>
-                            <a id="loginbtn" asp-action="Index" asp-controller="Default" asp-area="Admin_Blog" class="btn btn-link p-1 ml-2">
-                                <img src="/tieco/Images/Svg/account-user-profile-gui-web.svg" />
-                                پنل مدیریت
-                            </a>
-                        </li>
-                        <li>
-                            <a id="loginbtn" asp-action="LogOut" asp-controller="Account" class="btn btn-link p-1 ml-2">
-                                <img src="/tieco/Images/Svg/account-user-delete-profile-gui-web.svg" />
-                                خروج
-                            </a>
-                        </li>
 
-                    }
-                    else
-                    {
-                        <li>
-                            <a id="loginbtn" href="/login" class="btn btn-link p-1 ml-2">
-                                <img src="/tieco/Images/Svg/login.svg" /> ورود
-                            </a>
-                        </li>
-                    }
-                    <li>
-                        <a id="loginbtn" href="/register" class="btn btn-link p-1 ml-2">
-                            <img src="/tieco/Images/Svg/user.svg" />عضویت
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="sina-nav-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
-                    <i class="fa fa-bars"></i>
-                </button>
-                <a class="sina-brand pl-4 d-lg-none d-block" href="Index.html">
-                    <img src="/tieco/Images/logo.png" class="img-fluid" />
-                </a>
+
+<!-- Start Header -->
+<header class="header axil-header  header-light header-sticky ">
+    <div class="header-wrap">
+        <div class="row justify-content-between align-items-center">
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-3 col-12">
+                <div class="logo text-right">
+                    <a href="index.html">
+                        <img class="dark-logo" src="/tieco/images/logo/logo-black.png" alt="Blogar logo">
+                        <img class="light-logo" src="/tieco/images/logo/logo-white2.png" alt="Blogar logo">
+                    </a>
+                </div>
             </div>
 
-            <div class="collapse navbar-collapse" id="navbar-menu">
-                <ul class="sina-menu sina-menu-center">
-                    <li><a href="Index.html">صفحه اصلی</a></li>
+            <div class="col-xl-6 d-none d-xl-block">
+                <div class="mainmenu-wrapper">
+                    <nav class="mainmenu-nav">
+                        <!-- Start Mainmanu Nav -->
+                        <ul class="mainmenu">
+                            <li class="menu-item-has-children">
+                                <a href="#">خانه</a>
+                                <ul class="axil-submenu">
+                                    <li>
+                                        <a class="hover-flip-item-wrapper" href="index.html">
+                                            <span class="hover-flip-item">
+                                                <span data-text="نسخه 1">نسخه 1</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="hover-flip-item-wrapper" href="home-creative-blog.html">
+                                            <span class="hover-flip-item">
+                                                <span data-text="نسخه 2">نسخه 2</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="hover-flip-item-wrapper" href="home-seo-blog.html">
+                                            <span class="hover-flip-item">
+                                                <span data-text="نسخه 3">نسخه 3</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="hover-flip-item-wrapper" href="home-tech-blog.html">
+                                            <span class="hover-flip-item">
+                                                <span data-text="نسخه 4">نسخه 4</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="hover-flip-item-wrapper" href="home-lifestyle-blog.html">
+                                            <span class="hover-flip-item">
+                                                <span data-text="نسخه 5">نسخه 5</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
 
-                    <li><a href="AboutUs.html">درباره ما</a></li>
-                    <li><a href="ContactUs.html">ارتباط با ما</a></li>
-                </ul>
+                            <li class="menu-item-has-children">
+                                <a href="#">طرح بندی ها</a>
+                                <ul class="axil-submenu">
+                                    <li>
+                                        <a class="hover-flip-item-wrapper" href="post-format-standard.html">
+                                            <span class="hover-flip-item">
+                                                <span data-text="نسخه استاندارد">نسخه استاندارد</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="hover-flip-item-wrapper" href="post-format-video.html">
+                                            <span class="hover-flip-item">
+                                                <span data-text="نسخه ویدئو">نسخه ویدئو</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="hover-flip-item-wrapper" href="post-format-gallery.html">
+                                            <span class="hover-flip-item">
+                                                <span data-text="نسخه گالری">نسخه گالری</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="hover-flip-item-wrapper" href="post-format-text.html">
+                                            <span class="hover-flip-item">
+                                                <span data-text="نسخه متنی">نسخه متنی</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="hover-flip-item-wrapper" href="post-layout-1.html">
+                                            <span class="hover-flip-item">
+                                                <span data-text="طرح بندی نسخه 1">طرح بندی نسخه 1</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="hover-flip-item-wrapper" href="post-layout-2.html">
+                                            <span class="hover-flip-item">
+                                                <span data-text="طرح بندی نسخه 2">طرح بندی نسخه 2</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="hover-flip-item-wrapper" href="post-layout-3.html">
+                                            <span class="hover-flip-item">
+                                                <span data-text="طرح بندی نسخه 3">طرح بندی نسخه 3</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="hover-flip-item-wrapper" href="post-layout-4.html">
+                                            <span class="hover-flip-item">
+                                                <span data-text="طرح بندی نسخه 4">طرح بندی نسخه 4</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="hover-flip-item-wrapper" href="post-layout-5.html">
+                                            <span class="hover-flip-item">
+                                                <span data-text="طرح بندی نسخه 5">طرح بندی نسخه 5</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
 
+                            <li class="menu-item-has-children megamenu-wrapper">
+                                <a href="#">مگامنو</a>
+                                <ul class="megamenu-sub-menu">
+                                    <li class="megamenu-item">
+
+                                        <!-- Start Verticle Nav  -->
+                                        <div class="axil-vertical-nav">
+                                            <ul class="vertical-nav-menu">
+                                                <li class="vertical-nav-item active">
+                                                    <a class="hover-flip-item-wrapper" href="#tab1">
+                                                        <span class="hover-flip-item">
+                                                            <span data-text="فرهنگ و هنر">فرهنگ و هنر</span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li class="vertical-nav-item">
+                                                    <a class="hover-flip-item-wrapper" href="#tab2">
+                                                        <span class="hover-flip-item">
+                                                            <span data-text="فناوری و اطلاعات">فناوری و اطلاعات</span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li class="vertical-nav-item">
+                                                    <a class="hover-flip-item-wrapper" href="#tab3">
+                                                        <span class="hover-flip-item">
+                                                            <span data-text="ورزشی">ورزشی</span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li class="vertical-nav-item">
+                                                    <a class="hover-flip-item-wrapper" href="#tab4">
+                                                        <span class="hover-flip-item">
+                                                            <span data-text="نرم افزارهای کاربردی">نرم افزارهای کاربردی</span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!-- Start Verticle Nav  -->
+                                        <!-- Start Verticle Menu  -->
+                                        <div class="axil-vertical-nav-content">
+                                            <!-- Start One Item  -->
+                                            <div class="axil-vertical-inner tab-content" id="tab1" style="display: block;">
+                                                <div class="axil-vertical-single">
+                                                    <div class="row">
+
+                                                        <!-- Start Post List  -->
+                                                        <div class="col-lg-3">
+                                                            <div class="content-block image-rounded">
+                                                                <div class="post-thumbnail mb--20">
+                                                                    <a href="post-details.html">
+                                                                        <img class="w-100" src="/tieco/images/others/mega-post-01.jpg" alt="Post Images">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="post-content">
+                                                                    <div class="post-cat">
+                                                                        <div class="post-cat-list">
+                                                                            <a class="hover-flip-item-wrapper" href="#">
+                                                                                <span class="hover-flip-item">
+                                                                                    <span data-text="طراحی">طراحی</span>
+                                                                                </span>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h5 class="title"><a href="post-details.html">لورم ایپسوم متن ساختگی با تولید سادگی</a></h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End Post List  -->
+                                                        <!-- Start Post List  -->
+                                                        <div class="col-lg-3">
+                                                            <div class="content-block image-rounded">
+                                                                <div class="post-thumbnail mb--20">
+                                                                    <a href="post-details.html">
+                                                                        <img class="w-100" src="/tieco/images/others/mega-post-02.jpg" alt="Post Images">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="post-content">
+                                                                    <div class="post-cat">
+                                                                        <div class="post-cat-list">
+                                                                            <a class="hover-flip-item-wrapper" href="#">
+                                                                                <span class="hover-flip-item">
+                                                                                    <span data-text="سبک زندگی">سبک زندگی</span>
+                                                                                </span>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h5 class="title"><a href="post-details.html">لورم ایپسوم متن ساختگی با تولید سادگی</a></h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End Post List  -->
+                                                        <!-- Start Post List  -->
+                                                        <div class="col-lg-3">
+                                                            <div class="content-block image-rounded">
+                                                                <div class="post-thumbnail mb--20">
+                                                                    <a href="post-details.html">
+                                                                        <img class="w-100" src="/tieco/images/others/mega-post-03.jpg" alt="Post Images">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="post-content">
+                                                                    <div class="post-cat">
+                                                                        <div class="post-cat-list">
+                                                                            <a class="hover-flip-item-wrapper" href="#">
+                                                                                <span class="hover-flip-item">
+                                                                                    <span data-text="گردشگری">گردشگری</span>
+                                                                                </span>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h5 class="title"><a href="post-details.html">لورم ایپسوم متن ساختگی با تولید سادگی</a></h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End Post List  -->
+                                                        <!-- Start Post List  -->
+                                                        <div class="col-lg-3">
+                                                            <div class="content-block image-rounded">
+                                                                <div class="post-thumbnail mb--20">
+                                                                    <a href="post-details.html">
+                                                                        <img class="w-100" src="/tieco/images/others/mega-post-04.jpg" alt="Post Images">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="post-content">
+                                                                    <div class="post-cat">
+                                                                        <div class="post-cat-list">
+                                                                            <a class="hover-flip-item-wrapper" href="#">
+                                                                                <span class="hover-flip-item">
+                                                                                    <span data-text="نرم افزارهای کاربردی">نرم افزارهای کاربردی</span>
+                                                                                </span>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h5 class="title"><a href="post-details.html">لورم ایپسوم متن ساختگی با تولید سادگی</a></h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End Post List  -->
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End One Item  -->
+                                            <!-- Start One Item  -->
+                                            <div class="axil-vertical-inner tab-content" id="tab2">
+                                                <div class="axil-vertical-single">
+                                                    <div class="row">
+
+                                                        <!-- Start Post List  -->
+                                                        <div class="col-lg-3">
+                                                            <div class="content-block image-rounded">
+                                                                <div class="post-thumbnail mb--20">
+                                                                    <a href="post-details.html">
+                                                                        <img class="w-100" src="/tieco/images/others/mega-post-04.jpg" alt="Post Images">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="post-content">
+                                                                    <div class="post-cat">
+                                                                        <div class="post-cat-list">
+                                                                            <a class="hover-flip-item-wrapper" href="#">
+                                                                                <span class="hover-flip-item">
+                                                                                    <span data-text="طراحی">طراحی</span>
+                                                                                </span>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h5 class="title"><a href="post-details.html">لورم ایپسوم متن ساختگی با تولید سادگی</a></h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End Post List  -->
+                                                        <!-- Start Post List  -->
+                                                        <div class="col-lg-3">
+                                                            <div class="content-block image-rounded">
+                                                                <div class="post-thumbnail mb--20">
+                                                                    <a href="post-details.html">
+                                                                        <img class="w-100" src="/tieco/images/others/mega-post-03.jpg" alt="Post Images">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="post-content">
+                                                                    <div class="post-cat">
+                                                                        <div class="post-cat-list">
+                                                                            <a class="hover-flip-item-wrapper" href="#">
+                                                                                <span class="hover-flip-item">
+                                                                                    <span data-text="طراحی">طراحی</span>
+                                                                                </span>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h5 class="title"><a href="post-details.html">لورم ایپسوم متن ساختگی با تولید سادگی</a></h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End Post List  -->
+                                                        <!-- Start Post List  -->
+                                                        <div class="col-lg-3">
+                                                            <div class="content-block image-rounded">
+                                                                <div class="post-thumbnail mb--20">
+                                                                    <a href="post-details.html">
+                                                                        <img class="w-100" src="/tieco/images/others/mega-post-02.jpg" alt="Post Images">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="post-content">
+                                                                    <div class="post-cat">
+                                                                        <div class="post-cat-list">
+                                                                            <a class="hover-flip-item-wrapper" href="#">
+                                                                                <span class="hover-flip-item">
+                                                                                    <span data-text="طراحی">طراحی</span>
+                                                                                </span>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h5 class="title"><a href="post-details.html">لورم ایپسوم متن ساختگی با تولید سادگی</a></h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End Post List  -->
+                                                        <!-- Start Post List  -->
+                                                        <div class="col-lg-3">
+                                                            <div class="content-block image-rounded">
+                                                                <div class="post-thumbnail mb--20">
+                                                                    <a href="post-details.html">
+                                                                        <img class="w-100" src="/tieco/images/others/mega-post-04.jpg" alt="Post Images">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="post-content">
+                                                                    <div class="post-cat">
+                                                                        <div class="post-cat-list">
+                                                                            <a class="hover-flip-item-wrapper" href="#">
+                                                                                <span class="hover-flip-item">
+                                                                                    <span data-text="طراحی">طراحی</span>
+                                                                                </span>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h5 class="title"><a href="post-details.html">لورم ایپسوم متن ساختگی با تولید سادگی</a></h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End Post List  -->
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End One Item  -->
+                                            <!-- Start One Item  -->
+                                            <div class="axil-vertical-inner tab-content" id="tab3">
+                                                <div class="axil-vertical-single">
+                                                    <div class="row">
+
+                                                        <!-- Start Post List  -->
+                                                        <div class="col-lg-3">
+                                                            <div class="content-block image-rounded">
+                                                                <div class="post-thumbnail mb--20">
+                                                                    <a href="post-details.html">
+                                                                        <img class="w-100" src="/tieco/images/others/mega-post-04.jpg" alt="Post Images">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="post-content">
+                                                                    <div class="post-cat">
+                                                                        <div class="post-cat-list">
+                                                                            <a class="hover-flip-item-wrapper" href="#">
+                                                                                <span class="hover-flip-item">
+                                                                                    <span data-text="برنامه های کاربردی">برنامه های کاربردی</span>
+                                                                                </span>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h5 class="title"><a href="post-details.html">لورم ایپسوم متن ساختگی با تولید سادگی</a></h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End Post List  -->
+                                                        <!-- Start Post List  -->
+                                                        <div class="col-lg-3">
+                                                            <div class="content-block image-rounded">
+                                                                <div class="post-thumbnail mb--20">
+                                                                    <a href="post-details.html">
+                                                                        <img class="w-100" src="/tieco/images/others/mega-post-03.jpg" alt="Post Images">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="post-content">
+                                                                    <div class="post-cat">
+                                                                        <div class="post-cat-list">
+                                                                            <a class="hover-flip-item-wrapper" href="#">
+                                                                                <span class="hover-flip-item">
+                                                                                    <span data-text="طراحی">طراحی</span>
+                                                                                </span>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h5 class="title"><a href="post-details.html">لورم ایپسوم متن ساختگی با تولید سادگی</a></h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End Post List  -->
+                                                        <!-- Start Post List  -->
+                                                        <div class="col-lg-3">
+                                                            <div class="content-block image-rounded">
+                                                                <div class="post-thumbnail mb--20">
+                                                                    <a href="post-details.html">
+                                                                        <img class="w-100" src="/tieco/images/others/mega-post-02.jpg" alt="Post Images">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="post-content">
+                                                                    <div class="post-cat">
+                                                                        <div class="post-cat-list">
+                                                                            <a class="hover-flip-item-wrapper" href="#">
+                                                                                <span class="hover-flip-item">
+                                                                                    <span data-text="ورزشی">ورزشی</span>
+                                                                                </span>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h5 class="title"><a href="post-details.html">لورم ایپسوم متن ساختگی با تولید سادگی</a></h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End Post List  -->
+                                                        <!-- Start Post List  -->
+                                                        <div class="col-lg-3">
+                                                            <div class="content-block image-rounded">
+                                                                <div class="post-thumbnail mb--20">
+                                                                    <a href="post-details.html">
+                                                                        <img class="w-100" src="/tieco/images/others/mega-post-04.jpg" alt="Post Images">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="post-content">
+                                                                    <div class="post-cat">
+                                                                        <div class="post-cat-list">
+                                                                            <a class="hover-flip-item-wrapper" href="#">
+                                                                                <span class="hover-flip-item">
+                                                                                    <span data-text="گردشگری">گردشگری</span>
+                                                                                </span>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h5 class="title"><a href="post-details.html">لورم ایپسوم متن ساختگی با تولید سادگی</a></h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End Post List  -->
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End One Item  -->
+                                            <!-- Start One Item  -->
+                                            <div class="axil-vertical-inner tab-content" id="tab4">
+                                                <div class="axil-vertical-single">
+                                                    <div class="row">
+
+                                                        <!-- Start Post List  -->
+                                                        <div class="col-lg-3">
+                                                            <div class="content-block image-rounded">
+                                                                <div class="post-thumbnail mb--20">
+                                                                    <a href="post-details.html">
+                                                                        <img class="w-100" src="/tieco/images/others/mega-post-01.jpg" alt="Post Images">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="post-content">
+                                                                    <div class="post-cat">
+                                                                        <div class="post-cat-list">
+                                                                            <a class="hover-flip-item-wrapper" href="#">
+                                                                                <span class="hover-flip-item">
+                                                                                    <span data-text="طراحی">طراحی</span>
+                                                                                </span>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h5 class="title"><a href="post-details.html">لورم ایپسوم متن ساختگی با تولید سادگی</a></h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End Post List  -->
+                                                        <!-- Start Post List  -->
+                                                        <div class="col-lg-3">
+                                                            <div class="content-block image-rounded">
+                                                                <div class="post-thumbnail mb--20">
+                                                                    <a href="post-details.html">
+                                                                        <img class="w-100" src="/tieco/images/others/mega-post-04.jpg" alt="Post Images">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="post-content">
+                                                                    <div class="post-cat">
+                                                                        <div class="post-cat-list">
+                                                                            <a class="hover-flip-item-wrapper" href="#">
+                                                                                <span class="hover-flip-item">
+                                                                                    <span data-text="گردشگری">گردشگری</span>
+                                                                                </span>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h5 class="title"><a href="post-details.html">لورم ایپسوم متن ساختگی با تولید سادگی</a></h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End Post List  -->
+                                                        <!-- Start Post List  -->
+                                                        <div class="col-lg-3">
+                                                            <div class="content-block image-rounded">
+                                                                <div class="post-thumbnail mb--20">
+                                                                    <a href="post-details.html">
+                                                                        <img class="w-100" src="/tieco/images/others/mega-post-03.jpg" alt="Post Images">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="post-content">
+                                                                    <div class="post-cat">
+                                                                        <div class="post-cat-list">
+                                                                            <a class="hover-flip-item-wrapper" href="#">
+                                                                                <span class="hover-flip-item">
+                                                                                    <span data-text="طراحی">طراحی</span>
+                                                                                </span>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h5 class="title"><a href="post-details.html">لورم ایپسوم متن ساختگی با تولید سادگی</a></h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End Post List  -->
+                                                        <!-- Start Post List  -->
+                                                        <div class="col-lg-3">
+                                                            <div class="content-block image-rounded">
+                                                                <div class="post-thumbnail mb--20">
+                                                                    <a href="post-details.html">
+                                                                        <img class="w-100" src="/tieco/images/others/mega-post-04.jpg" alt="Post Images">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="post-content">
+                                                                    <div class="post-cat">
+                                                                        <div class="post-cat-list">
+                                                                            <a class="hover-flip-item-wrapper" href="#">
+                                                                                <span class="hover-flip-item">
+                                                                                    <span data-text="IT">IT</span>
+                                                                                </span>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h5 class="title"><a href="post-details.html">لورم ایپسوم متن ساختگی با تولید سادگی</a></h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End Post List  -->
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End One Item  -->
+
+                                        </div>
+                                        <!-- End Verticle Menu  -->
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="menu-item-has-children">
+                                <a href="#">صفحات</a>
+                                <ul class="axil-submenu">
+                                    <li>
+                                        <a class="hover-flip-item-wrapper" href="post-list.html">
+                                            <span class="hover-flip-item">
+                                                <span data-text="لیست مقاله نسخه 1">لیست مقاله نسخه 1</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="hover-flip-item-wrapper" href="archive.html">
+                                            <span class="hover-flip-item">
+                                                <span data-text="لیست مقاله نسخه 2">لیست مقاله نسخه 2</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="hover-flip-item-wrapper" href="author.html">
+                                            <span class="hover-flip-item">
+                                                <span data-text="نویسندگان">نویسندگان</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="hover-flip-item-wrapper" href="about.html">
+                                            <span class="hover-flip-item">
+                                                <span data-text="درباره ما">درباره ما</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="hover-flip-item-wrapper" href="contact.html">
+                                            <span class="hover-flip-item">
+                                                <span data-text="تماس با ما">تماس با ما</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="hover-flip-item-wrapper" href="404.html">
+                                            <span class="hover-flip-item">
+                                                <span data-text="صفحه 404">صفحه 404</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="hover-flip-item-wrapper" href="maintenance.html">
+                                            <span class="hover-flip-item">
+                                                <span data-text="درحال ساخت">درحال ساخت</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="hover-flip-item-wrapper" href="privacy-policy.html">
+                                            <span class="hover-flip-item">
+                                                <span data-text="قوانین و شرایط">قوانین و شرایط</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li><a href="home-lifestyle-blog.html">نسخه سبک زندگی</a></li>
+                            <li><a href="home-tech-blog.html">نسخه تکنولوژی</a></li>
+                        </ul>
+                        <!-- End Mainmanu Nav -->
+                    </nav>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-lg-8 col-md-8 col-sm-9 col-12">
+                <div class="header-search text-end d-flex align-items-center">
+                    <form class="header-search-form d-sm-block d-none">
+                        <div class="axil-search form-group">
+                            <button type="submit" class="search-button"><i class="fal fa-search"></i></button>
+                            <input type="text" class="form-control" placeholder="جستجو...">
+                        </div>
+                    </form>
+                    <div class="mobile-search-wrapper d-sm-none d-block">
+                        <button class="search-button-toggle"><i class="fal fa-search"></i></button>
+                        <form class="header-search-form">
+                            <div class="axil-search form-group">
+                                <button type="submit" class="search-button"><i class="fal fa-search"></i></button>
+                                <input type="text" class="form-control" placeholder="جستجو...">
+                            </div>
+                        </form>
+                    </div>
+                    <ul class="metabar-block">
+                        <li class="icon"><a href="#"><i class="fas fa-bookmark"></i></a></li>
+                        <li class="icon"><a href="#"><i class="fas fa-bell"></i></a></li>
+                        <li><a href="#"><img src="/tieco/images/others/author.png" alt="Author Images"></a></li>
+                    </ul>
+                    <!-- Start Hamburger Menu  -->
+                    <div class="hamburger-menu d-block d-xl-none">
+                        <div class="hamburger-inner">
+                            <div class="icon"><i class="fal fa-bars"></i></div>
+                        </div>
+                    </div>
+                    <!-- End Hamburger Menu  -->
+                </div>
             </div>
         </div>
-    </nav>
+    </div>
 </header>
+<!-- Start Header -->
+<!-- Start Mobile Menu Area  -->
+<div class="popup-mobilemenu-area">
+    <div class="inner">
+        <div class="mobile-menu-top">
+            <div class="logo">
+                <a href="index.html">
+                    <img class="dark-logo" src="/tieco/images/logo/logo-black.png" alt="Logo Images">
+                    <img class="light-logo" src="/tieco/images/logo/logo-white2.png" alt="Logo Images">
+                </a>
+            </div>
+            <div class="mobile-close">
+                <div class="icon">
+                    <i class="fal fa-times"></i>
+                </div>
+            </div>
+        </div>
+        <ul class="mainmenu">
+            <li class="menu-item-has-children">
+                <a href="#">خانه</a>
+                <ul class="axil-submenu">
+                    <li><a href="index.html">خانه نسخه 1</a></li>
+                    <li><a href="home-creative-blog.html">خانه نسخه 2</a></li>
+                    <li><a href="home-seo-blog.html">خانه نسخه 3</a></li>
+                    <li><a href="home-tech-blog.html">خانه نسخه 4</a></li>
+                    <li><a href="home-lifestyle-blog.html">خانه نسخه 5</a></li>
+                </ul>
+            </li>
+            <li class="menu-item-has-children">
+                <a href="#">دسته بندی ها</a>
+                <ul class="axil-submenu">
+                    <li><a href="post-details.html">فرهنگ و هنر</a></li>
+                    <li><a href="post-details.html">فناوری اطلاعات</a></li>
+                    <li><a href="post-details.html">ورزشی</a></li>
+                    <li><a href="post-details.html">نرم افزارهای کاربردی</a></li>
+                </ul>
+            </li>
+            <li class="menu-item-has-children">
+                <a href="#">طرح بندی ها</a>
+                <ul class="axil-submenu">
+                    <li><a href="post-format-standard.html">استاندارد</a></li>
+                    <li><a href="post-format-video.html">ویدئو</a></li>
+                    <li><a href="post-format-gallery.html">گالری</a></li>
+                    <li><a href="post-format-text.html">متنی</a></li>
+                    <li><a href="post-layout-1.html">طرح بندی 1</a></li>
+                    <li><a href="post-layout-2.html">طرح بندی 2</a></li>
+                    <li><a href="post-layout-3.html">طرح بندی 3</a></li>
+                    <li><a href="post-layout-4.html">طرح بندی 4</a></li>
+                    <li><a href="post-layout-5.html">طرح بندی 5</a></li>
+                </ul>
+            </li>
+            <li class="menu-item-has-children">
+                <a href="#">صفحات</a>
+                <ul class="axil-submenu">
+                    <li><a href="post-list.html">لیست مقاله نسخه 1</a></li>
+                    <li><a href="archive.html">لیست مقاله نسخه 2</a></li>
+                    <li><a href="author.html">نویسندگان</a></li>
+                    <li><a href="about.html">درباره ما</a></li>
+                    <li><a href="maintenance.html">در حال ساخت</a></li>
+                    <li><a href="contact.html">تماس با ما</a></li>
+                </ul>
+            </li>
+            <li><a href="404.html">صفحه 404</a></li>
+            <li><a href="contact.html">تماس با ما</a></li>
+        </ul>
+        <div class="buy-now-btn">
+            <a href="www.rtl-theme.com">خرید قالب از راست چین</a>
+        </div>
+    </div>
+</div>
+<!-- End Mobile Menu Area  -->
