@@ -24,5 +24,10 @@ namespace Service.Repository.Interface
         IPagedList<WebLog_Label> ShowAllWeblogLabel_PagingAsync(CancellationToken cancellationToken, string UserId, int currentPage = 0, int number_showproduct = 10);
         Task<bool> CheckRepeatUrlMeta(string Url_Meta);
         Task<bool> CheckRepeatOrder(short order);
+
+        Task<IList<WebLog_Label>> SelectListAsync(CancellationToken cancellationToken, int labelId = 0);
+
+        Task<IList<WebLog_Label>> SelectListAsync(CancellationToken cancellationToken);
+   
     }
 }

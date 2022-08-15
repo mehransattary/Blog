@@ -113,7 +113,7 @@ namespace Service.Repository
                     //=======Meta Tags==========//
                     Title_Meta = WebLog_CategoryDto.Title_Meta,
                     TitleEnglish_Meta = WebLog_CategoryDto.TitleEnglish_Meta,
-                    Url_Meta = WebLog_CategoryDto.Url_Meta,
+                    Url_Meta = WebLog_CategoryDto.Url_Meta.ToLower().Trim().Replace(' ', '-'),
                     Desc_Meta = WebLog_CategoryDto.Desc_Meta,
                     Canonical_Meta = WebLog_CategoryDto.Canonical_Meta,
                     Keyword_Meta = WebLog_CategoryDto.Keyword_Meta,
@@ -210,7 +210,7 @@ namespace Service.Repository
                 //=======Meta Tags==========//
                 _WebLog_Category.Title_Meta = WebLog_CategoryDto.Title_Meta;
                 _WebLog_Category.TitleEnglish_Meta = WebLog_CategoryDto.TitleEnglish_Meta;
-                _WebLog_Category.Url_Meta = WebLog_CategoryDto.Url_Meta;
+                _WebLog_Category.Url_Meta = WebLog_CategoryDto.Url_Meta.ToLower().Trim().Replace(' ', '-');
                 _WebLog_Category.Desc_Meta = WebLog_CategoryDto.Desc_Meta;
                 _WebLog_Category.Canonical_Meta = WebLog_CategoryDto.Canonical_Meta;
                 _WebLog_Category.Keyword_Meta = WebLog_CategoryDto.Keyword_Meta;
@@ -293,6 +293,29 @@ namespace Service.Repository
           }).ToListAsync(cancellationToken);
             return result;
         }
+
+        public async Task<IList<WebLog_Category>> ShowAllWeblogCategoryFoeMainAsync(CancellationToken cancellationToken)
+        {
+
+            var result = await TableNoTracking.Where(x=>x.WebLog_Category_IsShow).Include(x=>x.webLog_Groups).Select(x =>
+          new WebLog_Category()
+          {
+
+              WebLog_Category_IsShow = x.WebLog_Category_IsShow,                    
+              WebLog_Category_ThumbnaillImage = x.WebLog_Category_ThumbnaillImage,             
+              WebLog_Category_Title_One = x.WebLog_Category_Title_One,
+              WebLog_Category_Title_Two = x.WebLog_Category_Title_Two,
+              Title_Meta=x.Title_Meta,
+              WebLog_Category_Order=x.WebLog_Category_Order,
+              Id = x.Id,
+              LastUpdateDate = x.LastUpdateDate,
+              CreateDate = x.CreateDate,
+              webLog_Groups=x.webLog_Groups
+
+
+          }).OrderByDescending(x=>x.WebLog_Category_Order).ToListAsync(cancellationToken);
+            return result;
+        }
         public IPagedList<WebLog_Category> ShowAllWeblogCategory_PagingAsync(CancellationToken cancellationToken, string UserId, int currentPage = 0, int number_showproduct = 10)
         {
             var result = TableNoTracking.Where(x => x.UserId == UserId).Select(x =>
@@ -316,22 +339,22 @@ namespace Service.Repository
             return result;
         }
 
-        public async Task<IList<WebLog_Category>>  SelectListAsync(CancellationToken cancellationToken, string UserId)
+        public async Task<IList<WebLog_Category>>  SelectListAsync(CancellationToken cancellationToken)
         {
-            var result = await TableNoTracking.Where(x => x.UserId == UserId).Select(x =>
+            var result = await TableNoTracking.Select(x =>
             new WebLog_Category()
             {
 
-             Id=x.Id,
-             WebLog_Category_Title_One=x.WebLog_Category_Title_One
+                 Id=x.Id,
+                 WebLog_Category_Title_One=x.WebLog_Category_Title_One
 
 
             }).ToListAsync(cancellationToken);
                 return result;
         }
-        public async Task<IList<WebLog_Category>> SelectListAsync(CancellationToken cancellationToken, string UserId,int categoryId=0)
+        public async Task<IList<WebLog_Category>> SelectListAsync(CancellationToken cancellationToken,int categoryId=0)
         {
-            var result = await TableNoTracking.Where(x => x.UserId == UserId&&x.Id== categoryId).Select(x =>
+            var result = await TableNoTracking.Where(x => x.Id== categoryId).Select(x =>
             new WebLog_Category()
             {
 

@@ -1,0 +1,139 @@
+﻿@model WebLog_SliderDto
+
+@{
+    ViewData["Title"] = $"  حذف  اسلایدر  ✨ {Model.WebLog_Slider_Title} ";
+}
+
+
+<div class="row justify-content-center">
+
+    <div class="col-xl-10">
+
+        <div class="row">
+            <div class="col-xl-1">
+            </div>
+            <div class="col-xl-10">
+
+
+                <div class="d-flex align-items-center mb-3">
+                    <div>
+
+                        <h1 class="page-header mb-0 mt-5">
+
+                            آیا میخواهید
+                            ❌  @Model.WebLog_Slider_Title   ❌
+                            را حذف کنید؟
+
+                        </h1>
+                    </div>
+                    @if (ViewBag.errormessage_ListIsExist_Labels != null)
+                    {
+                        <div class="text-center ">
+                            <span class=" badge rounded-pill bg-danger  text-white p-5">
+                                @ViewBag.errormessage_ListIsExist_Labels
+                            </span>
+                        </div>
+                    }
+                </div>
+                <br />
+                <div id="formControls" class="mb-5">
+
+                    <div class="card">
+                        <div class="card-body pb-2">
+
+                            <div>
+                                <dl>
+
+
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.WebLog_Slider_Title)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.WebLog_Slider_Title)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.WebLog_Slider_Category_IsActive)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.WebLog_Slider_Title)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.WebLog_Slider_Group_IsActive)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.WebLog_Slider_Group_IsActive)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.WebLog_Slider_Blog_IsActive)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.WebLog_Slider_Blog_IsActive)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.WebLog_Slider_Label_IsActive)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.WebLog_Slider_Label_IsActive)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.WebLog_Slider_IsActive)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.WebLog_Slider_IsActive)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.WebLog_Slider_IsActive_TopPage)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.WebLog_Slider_IsActive_TopPage)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.WebLog_Slider_IsActive_MiddlePage)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.WebLog_Slider_IsActive_MiddlePage)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.WebLog_Slider_IsActive_BottomPage)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => model.WebLog_Slider_IsActive_BottomPage)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.WebLog_Slider_Image)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        <img src="@Model.WebLog_Slider_Image" width="120" height="80" />
+                                    </dd>
+                                   
+
+                                </dl>
+                                <form asp-action="Delete">
+                                    <input type="hidden" asp-for="Id" />
+                                    <input type="submit" value="حذف" class="btn btn-outline-danger" /> |
+                                    <a class="btn btn-outline-info" asp-action="Index">بازگشت</a>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="card-arrow">
+                            <div class="card-arrow-top-left"></div>
+                            <div class="card-arrow-top-right"></div>
+                            <div class="card-arrow-bottom-left"></div>
+                            <div class="card-arrow-bottom-right"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+            <div class="col-xl-1">
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

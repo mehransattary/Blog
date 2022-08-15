@@ -1,0 +1,228 @@
+﻿@model AbouteMeDto
+
+@{
+    ViewData["Title"] = $"  ویرایش  درباره ما  ✨  ";
+}
+
+
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Container-->
+    <div class="container-xxl" id="kt_content_container">
+        <!--begin::Form-->
+        <form id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row was-validated"
+              asp-action="Edit" method="post" enctype="multipart/form-data">
+            <input hidden asp-for="Id" />
+            <input hidden value="@ViewBag.AbouteMe_Image" name="_AbouteMes_Image" />
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <!--begin::کناری column-->
+            <div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
+                <!--begin::Thumbnail settings-->
+                <div class="card card-flush py-4">
+                    <!--begin::Card header-->
+                    <div class="card-header">
+                        <!--begin::Card title-->
+                        <div class="card-title">
+                            <h2>تصویر شاخص</h2>
+                        </div>
+                        <!--end::Card title-->
+                    </div>
+                    <!--end::Card header-->
+                    <!--begin::Card body-->
+                    <div class="card-body text-center pt-0">
+                        <!--begin::Image input-->
+                        <div class="image-input image-input-empty image-input-outline mb-3" data-kt-image-input="true" style="background-image: url(assets/media/svg/files/blank-image.svg)">
+                            <!--begin::نمایش existing avatar-->
+                            <div class="image-input-wrapper w-150px h-150px"></div>
+                            <!--end::نمایش existing avatar-->
+                            <!--begin::Tags-->
+                            <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="تعویض آواتار">
+                                <i class="bi bi-pencil-fill fs-7"></i>
+                                <!--begin::Inputs-->
+                                <input type="file" asp-for="AbouteMe_Image" accept=".png, .jpg, .jpeg" />
+                                <input type="hidden" name="avatar_remove" />
+                                <!--end::Inputs-->
+                            </label>
+                            <!--end::Tags-->
+                            <!--begin::انصراف-->
+                            <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title="انصراف avatar">
+                                <i class="bi bi-x fs-2"></i>
+                            </span>
+                            <!--end::انصراف-->
+                            <!--begin::حذف-->
+                            <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="حذف آواتار">
+                                <i class="bi bi-x fs-2"></i>
+                            </span>
+                            <!--end::حذف-->
+                        </div>
+                        <!--end::Image input-->
+                        <!--begin::توضیحات-->
+                        <div class="text-muted fs-7">تصویر بندانگشتی محصول را تنظیم کنید. فقط فایل های تصویری *.png، *.jpg و *.jpeg پذیرفته می شوند</div>
+                        <!--end::توضیحات-->
+                    </div>
+                    <!--end::Card body-->
+                </div>
+                <!--end::Thumbnail settings-->
+
+            </div>
+            <!--end::کناری column-->
+            <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
+
+                <div class="tab-content">
+
+                    <div class="tab-pane fade show active" id="kt_ecommerce_add_product_general" role="tab-panel">
+                        <div class="d-flex flex-column gap-7 gap-lg-10">
+                            <!----------عمومی---------------------->
+                            <div class="card">
+                                <div class="card-header bg-primary " data-bs-toggle="collapse" href="#collapseOne">
+                                    <a class="collapsed btn text-white">
+                                        ورودی های عمومی
+                                    </a>
+                                </div>
+                                <div id="collapseOne" class="collapse" data-bs-parent="#accordion">
+                                    <div class="card-body">
+                                        <div class="card-body">
+
+
+                                            <div class="card card-flush py-4">
+                                                <div class="mb-10 fv-row">
+                                                    <!--begin::Tags-->
+                                                    <label class="required form-label" asp-for="AbouteMe_Text"> </label>
+                                                    <!--end::Tags-->
+                                                    <!--begin::Input-->
+                                                    <textarea asp-for="AbouteMe_Text" class="form-control"></textarea>
+                                                    <!--end::Input-->
+                                                    <span asp-validation-for="AbouteMe_Text" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <!--end::Card header-->
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+                            <!----------MetaTag---------------------->
+                            <div class="card">
+                                <div class="card-header bg-danger " data-bs-toggle="collapse" href="#collapseTwo">
+                                    <a class="collapsed btn text-white">
+                                        ورودی های سئو
+                                    </a>
+                                </div>
+                                <div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
+                                    <div class="card-body">
+                                        <div class="card-body">
+
+
+                                            <div class="card card-flush py-4">
+
+
+                                                <div class="card-body pt-0">
+
+                                                    <div class="mb-10 fv-row">
+                                                        <label class="required form-label" asp-for="Title_Meta"> </label>
+                                                        <input type="text" class="form-control mb-2 is-invalid" placeholder="عنوان متا تگ " asp-for="Title_Meta" required />
+                                                        <span asp-validation-for="Title_Meta" class="text-danger"></span>
+                                                    </div>
+
+                                                    <div class="mb-10 fv-row">
+                                                        <label class=" form-label" asp-for="TitleEnglish_Meta"> </label>
+                                                        <input type="text" class="form-control mb-2 " placeholder="عنوان انگلیسی متا تگ " asp-for="TitleEnglish_Meta" />
+                                                        <span asp-validation-for="TitleEnglish_Meta" class="text-danger"></span>
+                                                    </div>
+                                                    <div class="mb-10 fv-row">
+                                                        <label class="required form-label" asp-for="Url_Meta"> </label>
+                                                        <input type="text" class="form-control mb-2 is-invalid" placeholder="لینک متا تگ " asp-for="Url_Meta" required />
+                                                        <span asp-validation-for="Url_Meta" class="text-danger"></span>
+                                                    </div>
+                                                    <div class="mb-10 fv-row">
+                                                        <label class="required form-label" asp-for="Desc_Meta"> </label>
+                                                        <input type="text" class="form-control mb-2 is-invalid" placeholder="توضیحات متاتگ " asp-for="Desc_Meta" required />
+                                                        <span asp-validation-for="Desc_Meta" class="text-danger"></span>
+                                                    </div>
+                                                    <div class="mb-10 fv-row">
+                                                        <label class=" form-label" asp-for="Canonical_Meta"> </label>
+                                                        <input type="text" class="form-control mb-2 " placeholder="کنو نیکال یا لینک اصلی  برای این دسته " asp-for="Canonical_Meta" />
+                                                        <span asp-validation-for="Canonical_Meta" class="text-danger"></span>
+                                                    </div>
+                                                    <div class="mb-10 fv-row">
+                                                        <label class=" form-label" asp-for="Keyword_Meta"> </label>
+                                                        <input type="text" class="form-control mb-2 is-invalid" placeholder="کلمات کلیدی متا تگ " asp-for="Keyword_Meta" />
+                                                        <span asp-validation-for="Keyword_Meta" class="text-danger"></span>
+                                                    </div>
+
+                                                </div>
+                                                <!--end::Card header-->
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="d-flex justify-content-end">
+
+                    <a asp-action="Index" id="kt_ecommerce_add_product_cancel"
+                       class="btn btn-light me-5">انصراف</a>
+
+                    <button type="submit" id="kt_ecommerce_add_product_submit" class="btn btn-primary">
+                        <span class="indicator-label">ذخیره تغییرات</span>
+                        <span class="indicator-progress">
+                            لطفا صبر کنید...
+                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                        </span>
+                    </button>
+
+                </div>
+             </div>
+
+                  
+        </form>
+        <!--end::Form-->
+    </div>
+    <!--end::Container-->
+</div>
+@section Scripts {
+    <script>
+        $('#AbouteMe_Text').summernote({
+            toolbar: [
+                ['style', ['style']],
+                ['fontsize', ['fontsize']],
+                ['font', ['bold', 'italic', 'underline', 'clear']],
+                ['fontname', ['fontname']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['height', ['height']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['fullscreen', 'codeview', 'help']],
+            ],
+
+            focus: false,
+            height: 400,
+            fontSizeUnits: ['px', 'pt'],
+            fontSizes: ['8', '9', '10', '11', '12', '14', '18', '24', '36', '48', '64', '82', '150'],
+            fontNames: ['IRANSansWeb', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New'],
+            lineHeights: ['0.2', '0.3', '0.4', '0.5', '0.6', '0.8', '1.0', '1.2', '1.4', '1.5', '2.0', '3.0'],
+        });
+    </script>
+    @{
+
+
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+
+
+    }
+            }

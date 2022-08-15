@@ -4,18 +4,7 @@
 @inject UserManager<IdentityUser> userManager
 @{
     var userId = userManager.GetUserId(User);
-    var socials = socialService.TableNoTracking.Where(x => x.UserId == userId).Select(x =>
-                  new Social()
-                  {
-                      Name = x.Name,
-                      Link = x.Link,
-                      FontAwseome = x.FontAwseome,
-                      UserId = x.UserId,
-                      Image = x.Image,
-                      Id = x.Id,
-                      LastUpdateDate = x.LastUpdateDate,
-                      CreateDate = x.CreateDate
-                  }).ToList();
+    var socials = socialService.TableNoTracking.Where(x => x.UserId == userId).ToList();
     var person = personService.TableNoTracking.FirstOrDefault(x => x.UserId == userId);
 }
 

@@ -23,7 +23,7 @@ namespace Service.Repository
         {
         }
 
-        public  async Task AddSocialAsync(SocialDto SocialDto, CancellationToken cancellationToken)
+        public async Task AddSocialAsync(SocialDto SocialDto, CancellationToken cancellationToken)
         {
             try
             {
@@ -40,9 +40,9 @@ namespace Service.Repository
                 #region Save Customerpage
                 var Social = new Social()
                 {
-                    FontAwseome=SocialDto.FontAwseome,
-                    Link=SocialDto.Link,
-                    Name= SocialDto.Name,
+                    FontAwseome = SocialDto.FontAwseome,
+                    Link = SocialDto.Link,
+                    Name = SocialDto.Name,
                     Image = filePathImage,
                     UserId = SocialDto.UserId,
                     CreateDate = DateTime.Now,
@@ -57,7 +57,7 @@ namespace Service.Repository
             {
                 throw;
             }
-        }   
+        }
 
         public async Task UpdateSocialAsync(SocialDto SocialDto, string _Image, CancellationToken cancellationToken)
         {
@@ -113,7 +113,7 @@ namespace Service.Repository
                        Name = x.Name,
                        Link = x.Link,
                        FontAwseome = x.FontAwseome,
-                       UserId = x.UserId,               
+                       UserId = x.UserId,
                        Image = x.Image,
                        Id = x.Id,
                        LastUpdateDate = x.LastUpdateDate,
@@ -124,7 +124,7 @@ namespace Service.Repository
             return result;
         }
 
-        public  IPagedList<Social> ShowAllSocial_PagingAsync(CancellationToken cancellationToken, string UserId, int currentPage = 0, int number_showproduct = 10)
+        public IPagedList<Social> ShowAllSocial_PagingAsync(CancellationToken cancellationToken, string UserId, int currentPage = 0, int number_showproduct = 10)
         {
             var result = TableNoTracking.Where(x => x.UserId == UserId).Select(x =>
                new Social()
@@ -139,8 +139,8 @@ namespace Service.Repository
                    Image = x.Image,
 
                }).ToPagedList(currentPage, number_showproduct);
-                    return result;
+            return result;
         }
- 
+
     }
 }

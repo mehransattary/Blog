@@ -278,8 +278,6 @@ namespace ProMe_Admin.Controllers
         }
 
         #endregion
-
-
         private bool WebLog_LabelExists(int id)
         {
             return WebLog_LabelService.TableNoTracking.Any(e => e.Id == id);

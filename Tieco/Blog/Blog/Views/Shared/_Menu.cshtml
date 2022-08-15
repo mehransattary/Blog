@@ -1,29 +1,8 @@
-﻿@inject IAccountService accountService
-@inject ISettingsLogoesService logoService
-@inject ISettingsCopyRightsService CopyRightsService
-@inject ISettingsService SettingsService
+﻿
 
-@{
- 
-    
-    }
 
-@if (!accountService.IsSignin(User))
-{
-    <li>
-        <a href="/Identity/Account/Login" rel="nofollow">ورود</a>
-    </li>
-}
-else
-{
-    <li>
-        <a asp-action="Index" asp-controller="Default" asp-area="Admin_Blog" rel="nofollow">  پنل مدیریت</a>
-    </li>
-    <li>
-        <a asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" rel="nofollow">   خروج</a>
-    </li>
 
-}
+
 
 
 

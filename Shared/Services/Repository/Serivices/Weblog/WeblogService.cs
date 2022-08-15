@@ -82,11 +82,13 @@ namespace Service.Repository
                      Weblog_Title_One= WeblogDto.Weblog_Title_One,
                      Weblog_Title_Two= WeblogDto.Weblog_Title_Two,
                      Weblog_Writer= WeblogDto.Weblog_Writer,
-
+                     Weblog_Image= filePathWebLog_Image,
+                     Weblog_Thumbnail_Image= filePathWeblog_Thumbnail_Image,
+                     
                     //=======Meta Tags==========//
                     Title_Meta = WeblogDto.Title_Meta,
                     TitleEnglish_Meta = WeblogDto.TitleEnglish_Meta,
-                    Url_Meta = WeblogDto.Url_Meta,
+                    Url_Meta = WeblogDto.Url_Meta.ToLower().Trim().Replace(' ', '-'),
                     Desc_Meta = WeblogDto.Desc_Meta,
                     Canonical_Meta = WeblogDto.Canonical_Meta,
                     Keyword_Meta = WeblogDto.Keyword_Meta,
@@ -181,7 +183,7 @@ namespace Service.Repository
                 //=======Meta Tags==========//
                 _WebLog.Title_Meta = WeblogDto.Title_Meta;
                 _WebLog.TitleEnglish_Meta = WeblogDto.TitleEnglish_Meta;
-                _WebLog.Url_Meta = WeblogDto.Url_Meta;
+                _WebLog.Url_Meta = WeblogDto.Url_Meta.ToLower().Trim().Replace(' ', '-');
                 _WebLog.Desc_Meta = WeblogDto.Desc_Meta;
                 _WebLog.Canonical_Meta = WeblogDto.Canonical_Meta;
                 _WebLog.Keyword_Meta = WeblogDto.Keyword_Meta;
@@ -257,6 +259,87 @@ namespace Service.Repository
           }).ToListAsync(cancellationToken);
             return result;
         }
+        public async Task<WebLog> ShowWeblogAsync(string url, CancellationToken cancellationToken)
+        {
+            var result = await TableNoTracking.Where(x => x.Url_Meta == url).Include(x=>x.WebLog_Groups).Select(x =>
+           new WebLog()
+           {
+
+               Weblog_IsShow = x.Weblog_IsShow,
+               Weblog_ShortLink = x.Weblog_ShortLink,
+               Weblog_Star = x.Weblog_Star,
+               Weblog_StudyTime = x.Weblog_StudyTime,
+               Image_Meta = x.Image_Meta,
+               Weblog_Title_One = x.Weblog_Title_One,
+               Weblog_Title_Two = x.Weblog_Title_Two,
+               Title_Meta=x.Title_Meta,
+               Weblog_Short_Description=x.Weblog_Short_Description,
+               Weblog_Writer=x.Weblog_Writer,
+               Canonical_Meta = x.Canonical_Meta,
+               Weblog_Thumbnail_Image = x.Weblog_Thumbnail_Image,
+               Weblog_Image = x.Weblog_Image,
+               Weblog_Text=x.Weblog_Text,
+               Id = x.Id,
+               LastUpdateDate = x.LastUpdateDate,
+               CreateDate = x.CreateDate,
+               WebLog_Groups=x.WebLog_Groups
+
+
+           }).FirstOrDefaultAsync(cancellationToken);
+            return result;
+        }
+        public async Task<IList<WebLog>> ShowSelectedFiveWeblogToMiddleSlidersAsync(CancellationToken cancellationToken)
+        {
+            var result = await TableNoTracking.Where(x => x.Weblog_IsShow ).Include(x=>x.WebLog_Groups).Select(x =>
+          new WebLog()
+          {
+
+              Weblog_IsShow = x.Weblog_IsShow,
+              Weblog_Star = x.Weblog_Star,
+              Weblog_StudyTime = x.Weblog_StudyTime,
+              Image_Meta = x.Image_Meta,
+              Weblog_Title_One = x.Weblog_Title_One,
+              Weblog_Title_Two = x.Weblog_Title_Two,
+              Title_Meta=x.Title_Meta,              
+              Weblog_Thumbnail_Image = x.Weblog_Thumbnail_Image,
+              Id = x.Id,
+              LastUpdateDate = x.LastUpdateDate,
+              CreateDate = x.CreateDate,
+              Url_Meta=x.Url_Meta,
+              WebLog_Groups =new WebLog_Group() 
+              { 
+                Url_Meta=x.WebLog_Groups.Url_Meta,
+                Title_Meta=x.Title_Meta,
+                WebLog_Group_Title_One=x.Weblog_Title_One,
+                WebLog_Group_Title_Two=x.Weblog_Title_Two
+              }
+
+
+          }).OrderByDescending(x=>x.LastUpdateDate).Skip(0).Take(5).ToListAsync(cancellationToken);
+            return result;
+        }
+
+        public async Task<IList<WebLog>> ShowAllWeblogMainAsync(CancellationToken cancellationToken)
+        {
+            var result = await TableNoTracking.Where(x => x.Weblog_IsShow).Select(x =>
+        new WebLog()
+        {
+
+            Weblog_IsShow = x.Weblog_IsShow,        
+            Image_Meta = x.Image_Meta,
+            Weblog_Title_One = x.Weblog_Title_One,
+            Weblog_Title_Two = x.Weblog_Title_Two,
+            Title_Meta = x.Title_Meta,
+            Weblog_Thumbnail_Image = x.Weblog_Thumbnail_Image,
+            Id = x.Id,
+            LastUpdateDate = x.LastUpdateDate,
+            CreateDate = x.CreateDate,
+            Url_Meta = x.Url_Meta,          
+
+
+        }).OrderByDescending(x => x.LastUpdateDate).Skip(0).Take(10).ToListAsync(cancellationToken);
+            return result;
+        }
         public IPagedList<WebLog> ShowAllWeblog_PagingAsync(CancellationToken cancellationToken, string UserId, int currentPage = 0, int number_showproduct = 10)
         {
             var result = TableNoTracking.Where(x => x.UserId == UserId).Select(x =>
@@ -303,6 +386,30 @@ namespace Service.Repository
 
              }).ToPagedList(currentPage, number_showproduct);
             return result;
+        }
+
+        public async Task<IList<WebLog>> SelectListAsync(CancellationToken cancellationToken, int weblogId = 0)
+        {
+            var result = await TableNoTracking.Where(x => x.Id == weblogId).Select(x =>
+              new WebLog()
+              {
+                  Id = x.Id,
+                  Weblog_Title_One = x.Weblog_Title_One
+
+              }).ToListAsync(cancellationToken);
+            return result;
+        }
+
+        public async Task<IList<WebLog>> SelectListAsync(CancellationToken cancellationToken)
+        {
+            var result = await TableNoTracking.Select(x =>
+              new WebLog()
+              {
+                  Id = x.Id,
+                  Weblog_Title_One = x.Weblog_Title_One
+
+              }).ToListAsync(cancellationToken);
+                        return result;
         }
     }
 }

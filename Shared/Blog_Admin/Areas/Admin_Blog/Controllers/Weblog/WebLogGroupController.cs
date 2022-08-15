@@ -74,13 +74,13 @@ namespace ProMe_Admin.Controllers
             var UserId = userManager.GetUserId(User);
             if (categoryId != 0)
             {
-                var selectlist = await WebLog_CategoryService.SelectListAsync(cancellationToken, UserId, categoryId);
+                var selectlist = await WebLog_CategoryService.SelectListAsync(cancellationToken, categoryId);
                 ViewData["WebLog_Group_CategoryId"] = new SelectList(selectlist, "Id", "WebLog_Category_Title_One");
                 ViewBag.categoryId = categoryId;
             }
             else
             {
-                var selectlist = await WebLog_CategoryService.SelectListAsync(cancellationToken, UserId);
+                var selectlist = await WebLog_CategoryService.SelectListAsync(cancellationToken);
                 ViewData["WebLog_Group_CategoryId"] = new SelectList(selectlist, "Id", "WebLog_Category_Title_One");
 
             }
@@ -104,13 +104,13 @@ namespace ProMe_Admin.Controllers
             var UserId = userManager.GetUserId(User);
             if (categoryId != 0)
             {
-                var selectlist = await WebLog_CategoryService.SelectListAsync(cancellationToken, UserId, categoryId);
+                var selectlist = await WebLog_CategoryService.SelectListAsync(cancellationToken, categoryId);
                 ViewData["WebLog_Group_CategoryId"] = new SelectList(selectlist, "Id", "WebLog_Category_Title_One", WebLog_GroupDto.WebLog_Group_CategoryId);
                 ViewBag.categoryId = categoryId;
             }
             else
             {
-                var selectlist = await WebLog_CategoryService.SelectListAsync(cancellationToken, UserId);
+                var selectlist = await WebLog_CategoryService.SelectListAsync(cancellationToken);
                 ViewData["WebLog_Group_CategoryId"] = new SelectList(selectlist, "Id", "WebLog_Category_Title_One", WebLog_GroupDto.WebLog_Group_CategoryId);
 
             }
@@ -175,13 +175,13 @@ namespace ProMe_Admin.Controllers
           
             if (categoryId != 0)
             {
-                var selectlist = await WebLog_CategoryService.SelectListAsync(cancellationToken, UserId, categoryId);
-                ViewData["WebLog_Group_CategoryId"] = new SelectList(selectlist, "Id", "WebLog_Category_Title_One");
+                var selectlist = await WebLog_CategoryService.SelectListAsync(cancellationToken, categoryId);
+                ViewData["WebLog_Group_CategoryId"] = new SelectList(selectlist, "Id", "WebLog_Category_Title_One", WebLog_Group.WebLog_Group_CategoryId);
                 ViewBag.categoryId = categoryId;
             }
             else
             {
-                var selectlist = await WebLog_CategoryService.SelectListAsync(cancellationToken, UserId);
+                var selectlist = await WebLog_CategoryService.SelectListAsync(cancellationToken);
                 ViewData["WebLog_Group_CategoryId"] = new SelectList(selectlist, "Id", "WebLog_Category_Title_One");
 
             }
@@ -249,13 +249,13 @@ namespace ProMe_Admin.Controllers
 
             if (categoryId != 0)
             {
-                var selectlist = await WebLog_CategoryService.SelectListAsync(cancellationToken, UserId, categoryId);
+                var selectlist = await WebLog_CategoryService.SelectListAsync(cancellationToken, categoryId);
                 ViewData["WebLog_Group_CategoryId"] = new SelectList(selectlist, "Id", "WebLog_Category_Title_One", WebLog_GroupDto.WebLog_Group_CategoryId);
                 ViewBag.categoryId = categoryId;
             }
             else
             {
-                var selectlist = await WebLog_CategoryService.SelectListAsync(cancellationToken, UserId);
+                var selectlist = await WebLog_CategoryService.SelectListAsync(cancellationToken);
                 ViewData["WebLog_Group_CategoryId"] = new SelectList(selectlist, "Id", "WebLog_Category_Title_One", WebLog_GroupDto.WebLog_Group_CategoryId);
 
             }

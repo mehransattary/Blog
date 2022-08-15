@@ -1,113 +1,11 @@
-﻿<!-- Start Footer Area  -->
+﻿@inject IAccountService accountService
+@inject ISettingsLogoesService logoService
+@inject ISettingsCopyRightsService CopyRightsService
+@inject ISettingsService SettingsService
+
+<!-- Start Footer Area  -->
 <div class="axil-footer-area axil-footer-style-1 footer-variation-2">
-    <div class="footer-mainmenu">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-2 col-md-6 col-sm-6 col-12">
-                    <div class="footer-widget text-right">
-                        <h3 class="title">لینک 1</h3>
-                        <div class="inner">
-                            <ul class="ft-menu-list">
-                                <li><a href="#">لپ تاب</a></li>
-                                <li><a href="#">کامپیوتر</a></li>
-                                <li><a href="#">نرم افزار</a></li>
-                                <li><a href="#">تبلت</a></li>
-                                <li><a href="#">دوربین</a></li>
-                                <li><a href="#">سیستم عامل</a></li>
-                                <li><a href="#">سخت افزار</a></li>
-                                <li><a href="#">هوش مصنوعی</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6 col-sm-6 col-12">
-                    <div class="footer-widget text-right">
-                        <h3 class="title">لینک 2</h3>
-                        <div class="inner">
-                            <ul class="ft-menu-list">
-                                <li><a href="#">لپ تاب</a></li>
-                                <li><a href="#">کامپیوتر</a></li>
-                                <li><a href="#">نرم افزار</a></li>
-                                <li><a href="#">تبلت</a></li>
-                                <li><a href="#">دوربین</a></li>
-                                <li><a href="#">سیستم عامل</a></li>
-                                <li><a href="#">سخت افزار</a></li>
-                                <li><a href="#">هوش مصنوعی</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6 col-sm-6 col-12">
-                    <div class="footer-widget text-right">
-                        <h3 class="title">لینک 3</h3>
-                        <div class="inner">
-                            <ul class="ft-menu-list">
-                                <li><a href="#">لپ تاب</a></li>
-                                <li><a href="#">کامپیوتر</a></li>
-                                <li><a href="#">نرم افزار</a></li>
-                                <li><a href="#">تبلت</a></li>
-                                <li><a href="#">دوربین</a></li>
-                                <li><a href="#">سیستم عامل</a></li>
-                                <li><a href="#">سخت افزار</a></li>
-                                <li><a href="#">هوش مصنوعی</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6 col-sm-6 col-12">
-                    <div class="footer-widget text-right">
-                        <h3 class="title">لینک 4</h3>
-                        <div class="inner">
-                            <ul class="ft-menu-list">
-                                <li><a href="#">لپ تاب</a></li>
-                                <li><a href="#">کامپیوتر</a></li>
-                                <li><a href="#">نرم افزار</a></li>
-                                <li><a href="#">تبلت</a></li>
-                                <li><a href="#">دوربین</a></li>
-                                <li><a href="#">سیستم عامل</a></li>
-                                <li><a href="#">سخت افزار</a></li>
-                                <li><a href="#">هوش مصنوعی</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6 col-sm-6 col-12">
-                    <div class="footer-widget text-right">
-                        <h3 class="title">لینک 5</h3>
-                        <div class="inner">
-                            <ul class="ft-menu-list">
-                                <li><a href="#">لپ تاب</a></li>
-                                <li><a href="#">کامپیوتر</a></li>
-                                <li><a href="#">نرم افزار</a></li>
-                                <li><a href="#">تبلت</a></li>
-                                <li><a href="#">دوربین</a></li>
-                                <li><a href="#">سیستم عامل</a></li>
-                                <li><a href="#">سخت افزار</a></li>
-                                <li><a href="#">هوش مصنوعی</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6 col-sm-6 col-12">
-                    <div class="footer-widget text-right">
-                        <h3 class="title">لینک 6</h3>
-                        <div class="inner">
-                            <ul class="ft-menu-list">
-                                <li><a href="#">لپ تاب</a></li>
-                                <li><a href="#">کامپیوتر</a></li>
-                                <li><a href="#">نرم افزار</a></li>
-                                <li><a href="#">تبلت</a></li>
-                                <li><a href="#">دوربین</a></li>
-                                <li><a href="#">سیستم عامل</a></li>
-                                <li><a href="#">سخت افزار</a></li>
-                                <li><a href="#">هوش مصنوعی</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
     <!-- Start Footer Top Area  -->
     <div class="footer-top">
@@ -176,13 +74,38 @@
                                     </span>
                                 </a>
                             </li>
-                            <li>
-                                <a class="hover-flip-item-wrapper" href="#">
-                                    <span class="hover-flip-item">
-                                        <span data-text="لیست مقالات">لیست مقالات</span>
-                                    </span>
-                                </a>
-                            </li>
+                            @if (!accountService.IsSignin(User))
+                            {
+
+                                <li>
+                                    <a class="hover-flip-item-wrapper" href="/Identity/Account/Login" rel="nofollow">
+                                        <span class="hover-flip-item">
+                                            <span data-text="ورود">ورود</span>
+                                        </span>
+                                    </a>
+                                </li>
+                           }
+                            else
+                            {
+
+                 
+
+                                    <li>
+                                        <a class="hover-flip-item-wrapper" asp-action="Index" asp-controller="Default" asp-area="Admin_Blog" rel="nofollow">
+                                            <span class="hover-flip-item">
+                                            <span data-text="پنل مدیریت"> پنل مدیریت</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="hover-flip-item-wrapper" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" rel="nofollow">
+                                            <span class="hover-flip-item">
+                                                <span data-text="خروج">خروج</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                }
+
                         </ul>
                     </div>
                 </div>

@@ -1,14 +1,16 @@
-﻿
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Text;
 
-
-namespace Data.Dto
+namespace Entities
 {
-    public class SocialDto : BaseEntityDto<int>
+    public class Social : BaseEntity<byte>
     {
-
-
+        #region Properties
         //*****************************************************************//
         [Display(Name = "نام شبکه ")]
         [MaxLength(100, ErrorMessage = "نباید بیش تر از {1} کاراکتر باشد")]
@@ -18,13 +20,16 @@ namespace Data.Dto
         public string Link { get; set; }
         //*****************************************************************//
         [Display(Name = "تصویر پروژه ")]
-        public IFormFile Image { get; set; }
+        public string Image { get; set; }
         //*****************************************************************//
         [Display(Name = "فونت آسوم ")]
         [MaxLength(100, ErrorMessage = "نباید بیش تر از {1} کاراکتر باشد")]
         public string FontAwseome { get; set; }
         //*****************************************************************//
 
+        #endregion
+
+
     }
-   
+  
 }

@@ -6,6 +6,7 @@
 
 
   <ItemGroup>
+    <Folder Include="wwwroot\images\WebLog_Slider\" />
     <Folder Include="wwwroot\images\WebLog\" />
     <Folder Include="wwwroot\images\WebLog_Label\" />
     <Folder Include="wwwroot\images\WebLog_Group\" />

@@ -47,6 +47,8 @@ namespace Data.Context
         public DbSet<SettingsMeta> SettingsMetas { get; set; }
         #endregion
         public DbSet<Social> Socials { get; set; }
+        public DbSet<AbouteMe> AbouteMe { get; set; }
+        public DbSet<ContactUs> ContactUs { get; set; }
         public DbSet<Person> People { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

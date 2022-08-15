@@ -1,4 +1,5 @@
 ﻿using Entities;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -45,8 +46,7 @@ namespace Data.Dto
         public string WebLog_Slider_Link { get; set; }
         //***====================================================================================***//  
         [Display(Name = "تصویر")]
-        [MaxLength(700, ErrorMessage = "نباید بیشتر از {1} کاراکتر وارد شه")]
-        public string WebLog_Slider_Image { get; set; }
+        public IFormFile WebLog_Slider_Image { get; set; }
         //***====================================================================================***//
         [Display(Name = "مرتب سازی")]
         public int WebLog_Slider_Order { get; set; }

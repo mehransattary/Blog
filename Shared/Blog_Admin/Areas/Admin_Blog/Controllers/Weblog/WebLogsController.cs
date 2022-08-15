@@ -74,13 +74,13 @@ namespace ProMe_Admin.Controllers
             var UserId = userManager.GetUserId(User);
             if (groupId != 0)
             {
-                var selectlist = await weblogGroupService.SelectListAsync(cancellationToken, UserId, groupId);
+                var selectlist = await weblogGroupService.SelectListAsync(cancellationToken, groupId);
                 ViewData["Weblog_GroupId"] = new SelectList(selectlist, "Id", "WebLog_Group_Title_One");
                 ViewBag.groupId = groupId;
             }
             else
             {
-                var selectlist = await weblogGroupService.SelectListAsync(cancellationToken, UserId);
+                var selectlist = await weblogGroupService.SelectListAsync(cancellationToken);
                 ViewData["Weblog_GroupId"] = new SelectList(selectlist, "Id", "WebLog_Group_Title_One");
             
             }
@@ -101,13 +101,13 @@ namespace ProMe_Admin.Controllers
             }
             if (groupId != 0)
             {
-                var selectlist = await weblogGroupService.SelectListAsync(cancellationToken, UserId, groupId);
+                var selectlist = await weblogGroupService.SelectListAsync(cancellationToken, groupId);
                 ViewData["Weblog_GroupId"] = new SelectList(selectlist, "Id", "WebLog_Group_Title_One", WeblogDto.Weblog_GroupId);
                 ViewBag.groupId = groupId;
             }
             else
             {
-                var selectlist = await weblogGroupService.SelectListAsync(cancellationToken, UserId);
+                var selectlist = await weblogGroupService.SelectListAsync(cancellationToken);
                 ViewData["Weblog_GroupId"] = new SelectList(selectlist, "Id", "WebLog_Group_Title_One", WeblogDto.Weblog_GroupId);
 
             }
@@ -158,13 +158,13 @@ namespace ProMe_Admin.Controllers
 
             if (groupId != 0)
             {
-                var selectlist = await weblogGroupService.SelectListAsync(cancellationToken, UserId, groupId);
+                var selectlist = await weblogGroupService.SelectListAsync(cancellationToken, groupId);
                 ViewData["Weblog_GroupId"] = new SelectList(selectlist, "Id", "WebLog_Group_Title_One");
                 ViewBag.groupId = groupId;
             }
             else
             {
-                var selectlist = await weblogGroupService.SelectListAsync(cancellationToken, UserId);
+                var selectlist = await weblogGroupService.SelectListAsync(cancellationToken);
                 ViewData["Weblog_GroupId"] = new SelectList(selectlist, "Id", "WebLog_Group_Title_One");
 
             }
@@ -233,13 +233,13 @@ namespace ProMe_Admin.Controllers
 
             if (groupId != 0)
             {
-                var selectlist = await weblogGroupService.SelectListAsync(cancellationToken, UserId, groupId);
+                var selectlist = await weblogGroupService.SelectListAsync(cancellationToken, groupId);
                 ViewData["Weblog_GroupId"] = new SelectList(selectlist, "Id", "WebLog_Group_Title_One", WeblogDto.Weblog_GroupId);
                 ViewBag.groupId = groupId;
             }
             else
             {
-                var selectlist = await weblogGroupService.SelectListAsync(cancellationToken, UserId);
+                var selectlist = await weblogGroupService.SelectListAsync(cancellationToken);
                 ViewData["Weblog_GroupId"] = new SelectList(selectlist, "Id", "WebLog_Group_Title_One", WeblogDto.Weblog_GroupId);
 
             }
@@ -317,8 +317,6 @@ namespace ProMe_Admin.Controllers
             return RedirectToAction(nameof(Index),new { groupId = groupId });
         }
         #endregion
-
-
         private bool WeblogExists(int id)
         {
             return WebLogService.TableNoTracking.Any(e => e.Id == id);

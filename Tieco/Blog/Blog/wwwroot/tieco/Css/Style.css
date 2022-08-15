@@ -7618,6 +7618,7 @@ Category Styles
 .list-categories .single-cat .content .title {
   margin-bottom: 0;
   color: var(--color-white);
+  font-size:14px;
 }
 
 .list-categories .single-cat .inner {

@@ -21,14 +21,18 @@ namespace Service.Repository.Interface
         Task AddWebLog_CategoryAsync(WebLog_CategoryDto  webLog_CategoryDto, CancellationToken cancellationToken);
         Task UpdateWebLog_CategoryAsync(WebLog_CategoryDto webLog_CategoryDto,  string _WebLog_Category_Image, string _WebLog_Category_ImageHome, string _WebLog_Category_ThumbnaillImage, string _Image_Meta, CancellationToken cancellationToken);
         Task<IList<WebLog_Category>> ShowAllWeblogCategoryAsync(CancellationToken cancellationToken, string UserId);
+        Task<IList<WebLog_Category>> ShowAllWeblogCategoryFoeMainAsync(CancellationToken cancellationToken);
         IPagedList<WebLog_Category> ShowAllWeblogCategory_PagingAsync(CancellationToken cancellationToken, string UserId, int currentPage = 0, int number_showproduct = 10);
 
-        Task<IList<WebLog_Category>> SelectListAsync(CancellationToken cancellationToken, string UserId);
-        Task<IList<WebLog_Category>> SelectListAsync(CancellationToken cancellationToken, string UserId,int categoryId=0);
+
 
         Task<bool> CheckRepeatUrlMeta(string Url_Meta);
         Task<bool> CheckRepeatOrder(short order);
         string CheckIsExistGroupInCategory(int categoryId);
+
+        Task<IList<WebLog_Category>> SelectListAsync(CancellationToken cancellationToken, int categoryId = 0);
+
+        Task<IList<WebLog_Category>> SelectListAsync(CancellationToken cancellationToken);
 
     }
 }

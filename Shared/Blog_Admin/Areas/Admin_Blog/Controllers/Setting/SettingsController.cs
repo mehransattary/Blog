@@ -68,7 +68,7 @@ namespace ProMe_Admin.Controllers
             {
                 return NotFound();
             }
-            var settings = await settingsService.GetByIdAsync(cancellationToken, id);
+            var settings = await settingsService.TableNoTracking.FirstOrDefaultAsync(x=>x.Id== id, cancellationToken);
             if (settings == null)
             {
                 return NotFound();

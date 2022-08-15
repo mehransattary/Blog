@@ -72,8 +72,10 @@ namespace Blog
             services.AddScoped<IWeblogGroupService, WeblogGroupService>();
             services.AddScoped<IWeblogLabelService, WeblogLabelService>();
             services.AddScoped<IWeblogService, WeblogService>();
+            services.AddScoped<IWebLog_SliderService, WeblogSliderService>();
 
-
+            services.AddScoped<IAbouteMeService, AbouteMeService>();
+            services.AddScoped<IContactUsService, ContactUsService>();
 
             services.AddSingleton<Microsoft.AspNetCore.Http.IHttpContextAccessor, Microsoft.AspNetCore.Http.HttpContextAccessor>();
             services.AddSingleton<HtmlEncoder>(HtmlEncoder.Create(allowedRanges: new[] { UnicodeRanges.BasicLatin, UnicodeRanges.Arabic }));         

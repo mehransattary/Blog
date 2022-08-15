@@ -27,8 +27,8 @@ namespace Service.Repository
         }
         public async Task<bool> CheckRepeatUrlMeta(string Url_Meta)
         {
-            var isUrl_Meta =await TableNoTracking.FirstOrDefaultAsync(x => x.Url_Meta == Url_Meta);
-            if (isUrl_Meta!=null)
+            var isUrl_Meta = await TableNoTracking.FirstOrDefaultAsync(x => x.Url_Meta == Url_Meta);
+            if (isUrl_Meta != null)
             {
                 return true;
             }
@@ -50,10 +50,10 @@ namespace Service.Repository
 
                 #region CheckRepeatShortLink
                 string random_shortlink = RandomNumber.Random(100000, 190000).ToString();
-                bool result = TableNoTracking.Any(x => x.WebLog_Label_ShortLink == random_shortlink);         
+                bool result = TableNoTracking.Any(x => x.WebLog_Label_ShortLink == random_shortlink);
                 while (result)
                 {
-                   random_shortlink = RandomNumber.Random(100000, 190000).ToString();
+                    random_shortlink = RandomNumber.Random(100000, 190000).ToString();
                 }
                 #endregion
                 #region Save AvatarImage + IconImage
@@ -98,7 +98,7 @@ namespace Service.Repository
                     //=======Meta Tags==========//
                     Title_Meta = WebLog_LabelDto.Title_Meta,
                     TitleEnglish_Meta = WebLog_LabelDto.TitleEnglish_Meta,
-                    Url_Meta = WebLog_LabelDto.Url_Meta,
+                    Url_Meta = WebLog_LabelDto.Url_Meta.ToLower().Trim().Replace(' ', '-'),
                     Desc_Meta = WebLog_LabelDto.Desc_Meta,
                     Canonical_Meta = WebLog_LabelDto.Canonical_Meta,
                     Keyword_Meta = WebLog_LabelDto.Keyword_Meta,
@@ -121,12 +121,12 @@ namespace Service.Repository
             }
         }
 
-        public async Task UpdateWebLog_LabelAsync(WebLog_LabelDto WebLog_LabelDto, string _WebLog_Label_Image, string _WebLog_Label_ImageHome, string _WebLog_Label_ThumbnaillImage,string _Image_Meta, CancellationToken cancellationToken)
+        public async Task UpdateWebLog_LabelAsync(WebLog_LabelDto WebLog_LabelDto, string _WebLog_Label_Image, string _WebLog_Label_ImageHome, string _WebLog_Label_ThumbnaillImage, string _Image_Meta, CancellationToken cancellationToken)
         {
             try
             {
                 var _WebLog_Label = await GetByIdAsync(cancellationToken, WebLog_LabelDto.Id);
-   
+
                 #region Save AvatarImage + IconImage
                 string filePathWebLog_Label_Image = "/images/default.png";
                 string filePathWebLog_Label_ImageHome = "/images/default.png";
@@ -182,7 +182,7 @@ namespace Service.Repository
                 _WebLog_Label.WebLog_Label_IsShow = WebLog_LabelDto.WebLog_Label_IsShow;
                 _WebLog_Label.WebLog_Label_ShortDescription = WebLog_LabelDto.WebLog_Label_ShortDescription;
                 _WebLog_Label.WebLog_Label_ShortLink = _WebLog_Label.WebLog_Label_ShortLink;
-              
+
                 _WebLog_Label.WebLog_Label_Description = WebLog_LabelDto.WebLog_Label_Description;
                 _WebLog_Label.WebLog_Label_Image = filePathWebLog_Label_Image;
                 _WebLog_Label.WebLog_Label_ImageHome = filePathWebLog_Label_ImageHome;
@@ -196,7 +196,7 @@ namespace Service.Repository
                 //=======Meta Tags==========//
                 _WebLog_Label.Title_Meta = WebLog_LabelDto.Title_Meta;
                 _WebLog_Label.TitleEnglish_Meta = WebLog_LabelDto.TitleEnglish_Meta;
-                _WebLog_Label.Url_Meta = WebLog_LabelDto.Url_Meta;
+                _WebLog_Label.Url_Meta = WebLog_LabelDto.Url_Meta.ToLower().Trim().Replace(' ', '-');
                 _WebLog_Label.Desc_Meta = WebLog_LabelDto.Desc_Meta;
                 _WebLog_Label.Canonical_Meta = WebLog_LabelDto.Canonical_Meta;
                 _WebLog_Label.Keyword_Meta = WebLog_LabelDto.Keyword_Meta;
@@ -261,16 +261,16 @@ namespace Service.Repository
             var result = await TableNoTracking.Where(x => x.UserId == UserId).Select(x =>
           new WebLog_Label()
           {
-         
+
               WebLog_Label_IsShow = x.WebLog_Label_IsShow,
-              WebLog_Label_ShortLink = x.WebLog_Label_ShortLink,            
+              WebLog_Label_ShortLink = x.WebLog_Label_ShortLink,
               WebLog_Label_Image = x.WebLog_Label_Image,
               WebLog_Label_ImageHome = x.WebLog_Label_ImageHome,
               WebLog_Label_ThumbnaillImage = x.WebLog_Label_ThumbnaillImage,
               WebLog_Label_Order = x.WebLog_Label_Order,
               WebLog_Label_Title_One = x.WebLog_Label_Title_One,
               WebLog_Label_Title_Two = x.WebLog_Label_Title_Two,
-          
+
               Id = x.Id,
               LastUpdateDate = x.LastUpdateDate,
               CreateDate = x.CreateDate
@@ -284,9 +284,9 @@ namespace Service.Repository
             var result = TableNoTracking.Where(x => x.UserId == UserId).Select(x =>
              new WebLog_Label()
              {
-             
+
                  WebLog_Label_IsShow = x.WebLog_Label_IsShow,
-                 WebLog_Label_ShortLink = x.WebLog_Label_ShortLink,               
+                 WebLog_Label_ShortLink = x.WebLog_Label_ShortLink,
                  WebLog_Label_Image = x.WebLog_Label_Image,
                  WebLog_Label_ImageHome = x.WebLog_Label_ImageHome,
                  WebLog_Label_ThumbnaillImage = x.WebLog_Label_ThumbnaillImage,
@@ -301,6 +301,30 @@ namespace Service.Repository
             return result;
         }
 
+
+        public async Task<IList<WebLog_Label>> SelectListAsync(CancellationToken cancellationToken, int labelId = 0)
+        {
+            var result = await TableNoTracking.Where(x=>x.Id== labelId).Select(x =>
+          new WebLog_Label()
+          {
+              Id = x.Id,
+              WebLog_Label_Title_One = x.WebLog_Label_Title_One
+
+          }).ToListAsync(cancellationToken);
+            return result;
+        }
+
+        public async Task<IList<WebLog_Label>> SelectListAsync(CancellationToken cancellationToken)
+        {
+            var result = await TableNoTracking.Select(x =>
+             new WebLog_Label()
+             {
+                 Id = x.Id,
+                 WebLog_Label_Title_One = x.WebLog_Label_Title_One
+
+             }).ToListAsync(cancellationToken);
+                    return result;
+        }
 
     }
 }
