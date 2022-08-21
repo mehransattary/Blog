@@ -294,6 +294,23 @@ namespace Service.Repository
             return result;
         }
 
+        public async Task<IList<WebLog_Category>> ShowAllWeblogCategorySiteMapsAsync(CancellationToken cancellationToken)
+        {
+            var result = await TableNoTracking.Where(x => x.WebLog_Category_IsShow).Select(x =>
+       new WebLog_Category()
+       {
+
+           WebLog_Category_IsShow = x.WebLog_Category_IsShow,
+           Url_Meta=x.Url_Meta,
+           Id = x.Id,
+           LastUpdateDate = x.LastUpdateDate,
+           CreateDate = x.CreateDate
+
+
+       }).ToListAsync(cancellationToken);
+            return result;
+        }
+
         public async Task<IList<WebLog_Category>> ShowAllWeblogCategoryFoeMainAsync(CancellationToken cancellationToken)
         {
 

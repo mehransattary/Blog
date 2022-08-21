@@ -1,10 +1,12 @@
 ﻿@model ContactUsDto
 
-@{
-    ViewData["Title"] = $"  ویرایش  تماس با ما  ✨  ";
+@{ ViewData["Title"] = $"  ویرایش  تماس با ما  ✨  "; }
+
+@section Style
+{
+    <link rel="stylesheet" href="/summernote/dist/summernote-lite.css" />
+
 }
-
-
 
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <!--begin::Container-->
@@ -214,6 +216,9 @@
     <!--end::Container-->
 </div>
 @section Scripts {
+
+    <script src="/summernote/dist/summernote-lite.min.js"></script>
+
     <script>
         $('#ContactUs_Text').summernote({
             toolbar: [
@@ -237,7 +242,5 @@
             lineHeights: ['0.2', '0.3', '0.4', '0.5', '0.6', '0.8', '1.0', '1.2', '1.4', '1.5', '2.0', '3.0'],
         });
     </script>
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-    }
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

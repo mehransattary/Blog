@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<WebLog_Slider>
+
 @if (Model!=null)
 {
     <div class="slider-area bg-color-grey">
@@ -97,6 +98,88 @@
 
                                                 <div class="read-more-button cerchio">
                                                     <a class="axil-button button-rounded hover-flip-item-wrapper" href="@item.webLog_Label.Url_Meta">
+                                                        <span class="hover-flip-item">
+                                                            <span data-text="ادامه مطلب">ادامه مطلب</span>
+                                                        </span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Post Content  -->
+                                    </div>
+                                    <!-- End Single Slide  -->
+                                }
+
+                                else if (item.WebLog_Slider_Category_IsActive)
+                                {
+                                    <!-- Start Single Slide  -->
+                                    <div class="content-block">
+                                        <!-- Start Post Thumbnail  -->
+                                        <div class="post-thumbnail">
+                                            <a href="@item.WebLog_Slider_Link">
+                                                <img src="@item.WebLog_Slider_Image" alt="@item.WebLog_Slider_Title">
+                                            </a>
+                                        </div>
+                                        <!-- End Post Thumbnail  -->
+                                        <!-- Start Post Content  -->
+                                        <div class="post-content">
+
+                                            <h2 class="title"><a href="@item.webLog_Category.Url_Meta" title="@item.webLog_Category.WebLog_Category_Title_One">@item.webLog_Category.WebLog_Category_Title_Two</a></h2>
+                                            <!-- Post Meta  -->
+                                            <div class="post-meta-wrapper with-button">
+                                                <div class="post-meta">
+
+                                                    <div class="content">
+                                                        <ul class="post-meta-list">
+                                                            <li>@item.webLog_Category.LastUpdateDate</li>
+
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                                <div class="read-more-button cerchio">
+                                                    <a class="axil-button button-rounded hover-flip-item-wrapper" href="@item.webLog_Category.Url_Meta">
+                                                        <span class="hover-flip-item">
+                                                            <span data-text="ادامه مطلب">ادامه مطلب</span>
+                                                        </span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Post Content  -->
+                                    </div>
+                                    <!-- End Single Slide  -->
+                                }
+
+                                else if (item.WebLog_Slider_Group_IsActive)
+                                {
+                                    <!-- Start Single Slide  -->
+                                    <div class="content-block">
+                                        <!-- Start Post Thumbnail  -->
+                                        <div class="post-thumbnail">
+                                            <a href="@item.WebLog_Slider_Link">
+                                                <img src="@item.WebLog_Slider_Image" alt="@item.WebLog_Slider_Title">
+                                            </a>
+                                        </div>
+                                        <!-- End Post Thumbnail  -->
+                                        <!-- Start Post Content  -->
+                                        <div class="post-content">
+
+                                            <h2 class="title"><a href="@item.WebLog_Group.Url_Meta" title="@item.WebLog_Group.WebLog_Group_Title_One">@item.WebLog_Group.WebLog_Group_Title_Two</a></h2>
+                                            <!-- Post Meta  -->
+                                            <div class="post-meta-wrapper with-button">
+                                                <div class="post-meta">
+
+                                                    <div class="content">
+                                                        <ul class="post-meta-list">
+                                                            <li>@item.WebLog_Group.LastUpdateDate</li>
+
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                                <div class="read-more-button cerchio">
+                                                    <a class="axil-button button-rounded hover-flip-item-wrapper" href="@item.WebLog_Group.Url_Meta">
                                                         <span class="hover-flip-item">
                                                             <span data-text="ادامه مطلب">ادامه مطلب</span>
                                                         </span>

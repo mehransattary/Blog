@@ -1,0 +1,78 @@
+﻿
+
+
+@model IEnumerable<WebLog_Category>
+
+@{ 
+    int a = 1;
+    int b = 1;
+}
+    <li class="menu-item-has-children megamenu-wrapper">
+        <a href="#"rel="nofollow">مقالات</a>
+        <ul class="megamenu-sub-menu">
+            <li class="megamenu-item">
+
+                <!-- Start Verticle Nav  -->
+                <div class="axil-vertical-nav">
+                    <ul class="vertical-nav-menu">
+                        @foreach (var category in Model)
+                        {
+                            <li class="vertical-nav-item @(a==1?"active":"")">
+                                <a class="hover-flip-item-wrapper" href="#category-@category.Id">
+                                    <span class="hover-flip-item">
+                                        <span data-text="@category.Title_Meta">@category.Title_Meta</span>
+                                    </span>
+                                </a>
+                            </li>
+                            a = 0;
+                        }
+                    </ul>
+                </div>
+                <!-- Start Verticle Nav  -->
+
+                <!-- Start Verticle Menu  -->
+                <div class="axil-vertical-nav-content">
+                    @foreach (var category in Model)
+                    {
+                        <!-- Start One Item  -->
+                        <div class="axil-vertical-inner tab-content" id="category-@category.Id" style="@(b==1?"display: block;":"")">
+                            <div class="axil-vertical-single">
+                                <div class="row">
+                                    @foreach (var group in category.webLog_Groups)
+                                    {
+                                        <!-- Start Post List  -->
+                                        <div class="col-lg-3">
+                                            <div class="content-block image-rounded">
+                                                <div class="post-thumbnail mb--20">
+                                                    <a href="@group.Url_Meta" title="@group.WebLog_Group_Title_One">
+                                                        <img class="w-100" src="@group.WebLog_Group_ImageHome" alt="@group.WebLog_Group_Title_One"title="@group.WebLog_Group_Title_Two">
+                                                    </a>
+                                                </div>
+                                                <div class="post-content">
+                                                    <div class="post-cat">
+                                                        <div class="post-cat-list">
+                                                            <a class="hover-flip-item-wrapper" href="@group.Url_Meta"title="@group.WebLog_Group_Title_Two">
+                                                                <span class="hover-flip-item">
+                                                                    <span data-text="@group.Title_Meta">@group.Title_Meta</span>
+                                                                </span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Post List  -->
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End One Item  -->
+                        b = 0;
+                    }
+
+                </div>
+                    <!-- End Verticle Menu  -->
+             </li>
+        </ul>
+    </li>
+

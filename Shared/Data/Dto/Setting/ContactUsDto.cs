@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Data.Dto
 {
-    public class ContactUsDto : BaseMetaTagDto<byte>
+    public class ContactUsDto : BaseMetaTagDto<int>
     {
         #region Properties
         //***====================================================================================***//

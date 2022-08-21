@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Entities
 {
-    public class Social : BaseEntity<byte>
+    public class Social : BaseEntity<int>
     {
         #region Properties
         //*****************************************************************//

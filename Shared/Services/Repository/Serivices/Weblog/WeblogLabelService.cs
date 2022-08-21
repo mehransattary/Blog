@@ -279,6 +279,21 @@ namespace Service.Repository
           }).ToListAsync(cancellationToken);
             return result;
         }
+
+        public async Task<IList<WebLog_Label>> ShowAllWeblogLabelSiteMapsAsync(CancellationToken cancellationToken)
+        {
+
+          var result = await TableNoTracking.Where(x => x.WebLog_Label_IsShow).Select(x =>
+          new WebLog_Label()
+          {
+              WebLog_Label_IsShow = x.WebLog_Label_IsShow,
+              Url_Meta=x.Url_Meta,
+              Id = x.Id,
+              LastUpdateDate = x.LastUpdateDate,
+              CreateDate = x.CreateDate
+          }).ToListAsync(cancellationToken);
+            return result;
+        }
         public IPagedList<WebLog_Label> ShowAllWeblogLabel_PagingAsync(CancellationToken cancellationToken, string UserId, int currentPage = 0, int number_showproduct = 10)
         {
             var result = TableNoTracking.Where(x => x.UserId == UserId).Select(x =>

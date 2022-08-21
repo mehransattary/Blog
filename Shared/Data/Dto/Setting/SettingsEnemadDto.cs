@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Data.Dto
 {
-    public class SettingsEnemadDto : BaseEntityDto<byte>
+    public class SettingsEnemadDto : BaseEntityDto<int>
     {
         #region Enemad
    

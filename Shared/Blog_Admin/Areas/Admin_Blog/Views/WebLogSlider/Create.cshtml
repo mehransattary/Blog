@@ -165,7 +165,7 @@
                                                             <label class=" form-label" asp-for="WebLog_Slider_Order"> </label>
                                                             <!--end::Tags-->
                                                             <!--begin::Input-->
-                                                            <input class="form-control mb-2 " placeholder="مرتب سازی " asp-for="WebLog_Slider_Order"  />
+                                                            <input class="form-control mb-2 " placeholder="مرتب سازی " asp-for="WebLog_Slider_Order" />
                                                             <!--end::Input-->
 
                                                             <span asp-validation-for="WebLog_Slider_Order" class="text-danger"></span>
@@ -304,6 +304,19 @@
                                                             <!--end::Input-->
 
                                                             <span asp-validation-for="WebLog_Slider_IsActive_BottomPage" class="text-danger"></span>
+
+                                                        </div>
+                                                        <!--end::Input group-->
+                                                        <!--begin::Input group-->
+                                                        <div class="mb-10 fv-row">
+                                                            <!--begin::Tags-->
+                                                            <label class="required form-label" asp-for="WebLog_Slider_IsActive"> </label>
+                                                            <!--end::Tags-->
+                                                            <!--begin::Input-->
+                                                            <input class="form-check-input" type="checkbox" asp-for="WebLog_Slider_IsActive">
+                                                            <!--end::Input-->
+
+                                                            <span asp-validation-for="WebLog_Slider_IsActive" class="text-danger"></span>
 
                                                         </div>
                                                         <!--end::Input group-->

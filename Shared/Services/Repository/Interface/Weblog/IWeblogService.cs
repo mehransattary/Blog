@@ -24,6 +24,9 @@ namespace Service.Repository.Interface
 
         Task<IList<WebLog>> ShowSelectedFiveWeblogToMiddleSlidersAsync(CancellationToken cancellationToken);
         Task<WebLog> ShowWeblogAsync(string url, CancellationToken cancellationToken);
+        Task<WebLog> ShowWeblogShortUrlAsync(string shortUrl, CancellationToken cancellationToken);
+        Task<IList<WebLog>> ShowAllWeblogsSiteMapsAsync(CancellationToken cancellationToken);
+     
         IPagedList<WebLog> ShowAllWeblog_PagingAsync(CancellationToken cancellationToken, string UserId, int currentPage = 0, int number_showproduct = 10);
         IPagedList<WebLog> ShowAllWeblog_PagingAsync(CancellationToken cancellationToken, string UserId, int currentPage = 0, int number_showproduct = 10,int groupId=0);
         Task<bool> CheckRepeatUrlMeta(string Url_Meta);

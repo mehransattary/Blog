@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
-   public  class SettingsLogo : BaseEntity<byte>
+   public  class SettingsLogo : BaseEntity<int>
     {
         #region Logo
         //***====================================================================================***//

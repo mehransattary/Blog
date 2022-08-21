@@ -1,0 +1,24 @@
+﻿
+
+
+@model IEnumerable<Social>
+
+@if (Model != null)
+{ 
+<!-- Start Post List  -->
+<div class="d-flex justify-content-start mt_sm--15 justify-content-md-end align-items-center flex-wrap">
+    <h5 class="follow-title mb--0 mr--20">ما را دنبال کنید</h5>
+    <ul class="social-icon color-tertiary md-size justify-content-start">
+        @foreach (var item in Model)
+        {
+            <!-- Start Post List  -->
+            <li>
+                <a href="@item.Link">
+                    <i class="fab fa-@item.FontAwseome"></i>
+                </a>
+            </li> <!-- End Post List  -->
+        }
+    </ul>
+</div>
+<!-- End Post List  -->
+}

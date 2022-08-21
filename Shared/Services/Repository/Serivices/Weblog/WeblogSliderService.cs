@@ -102,7 +102,7 @@ namespace Service.Repository
                 if (WebLog_SliderDto.WebLog_Slider_Image != null)
                     webLog_Slider.WebLog_Slider_Image = filePathWebLog_Slider_Image;
                 else if (WebLog_SliderDto.WebLog_Slider_Image == null && !string.IsNullOrEmpty(_WebLog_Slider_Image))
-                    _WebLog_Slider.WebLog_Slider_Image = Before_filePathWebLog_Slider_Image_Meta;
+                    webLog_Slider.WebLog_Slider_Image = Before_filePathWebLog_Slider_Image_Meta;
                 else
                     webLog_Slider.WebLog_Slider_Image = filePathWebLog_Slider_Image;
                 #endregion
@@ -149,19 +149,21 @@ namespace Service.Repository
 
         public async Task<IList<WebLog_Slider>> ShowSliderTopForBlogAsync(CancellationToken cancellationToken)
         {
-            var result = await TableNoTracking.Include(x => x.webLog).ThenInclude(x=>x.WebLog_Groups).Include(x=>x.webLog_Label).Select(x =>
+            var result = await TableNoTracking.Where(x=>x.WebLog_Slider_IsActive && x.WebLog_Slider_IsActive_TopPage).Include(x => x.webLog).ThenInclude(x=>x.WebLog_Groups).Include(x=>x.webLog_Label).Include(x => x.webLog_Category).Include(x => x.WebLog_Group).Select(x =>
            new WebLog_Slider()
            {
 
                WebLog_Slider_Image = x.WebLog_Slider_Image,
                WebLog_Slider_Title = x.WebLog_Slider_Title,
+               WebLog_Slider_Category_IsActive = x.WebLog_Slider_Category_IsActive,
+               WebLog_Slider_Group_IsActive = x.WebLog_Slider_Group_IsActive,
                WebLog_Slider_Blog_IsActive = x.WebLog_Slider_Blog_IsActive,
                WebLog_Slider_Label_IsActive = x.WebLog_Slider_Label_IsActive,
                WebLog_Slider_IsActive = x.WebLog_Slider_IsActive,
                WebLog_Slider_IsActive_TopPage = x.WebLog_Slider_IsActive_TopPage,
                WebLog_Slider_IsActive_MiddlePage = x.WebLog_Slider_IsActive_MiddlePage,
                WebLog_Slider_IsActive_BottomPage = x.WebLog_Slider_IsActive_BottomPage,
-               webLog_Label=new WebLog_Label() 
+               webLog_Label =new WebLog_Label() 
                {
                    WebLog_Label_Title_Two = x.webLog_Label.WebLog_Label_Title_Two,
                    WebLog_Label_Title_One = x.webLog_Label.WebLog_Label_Title_One,
@@ -186,6 +188,22 @@ namespace Service.Repository
                     Url_Meta=x.webLog.Url_Meta,
                     LastUpdateDate=x.webLog.LastUpdateDate
                },
+               WebLog_Group = new WebLog_Group()
+               {
+                  Url_Meta=x.webLog_Category.Url_Meta,
+                   WebLog_Group_Title_One=x.WebLog_Group.WebLog_Group_Title_One,
+                   WebLog_Group_Title_Two=x.WebLog_Group.WebLog_Group_Title_Two,
+                   LastUpdateDate=x.WebLog_Group.LastUpdateDate
+
+               },
+               webLog_Category = new WebLog_Category()
+               {
+                   Url_Meta = x.webLog_Category.Url_Meta,
+                   WebLog_Category_Title_One = x.webLog_Category.WebLog_Category_Title_One,
+                   WebLog_Category_Title_Two = x.webLog_Category.WebLog_Category_Title_Two,
+                   LastUpdateDate = x.webLog_Category.LastUpdateDate
+
+               },
                Id = x.Id,
                LastUpdateDate = x.LastUpdateDate,
                CreateDate = x.CreateDate
@@ -193,6 +211,70 @@ namespace Service.Repository
 
 
            }).OrderByDescending(x => x.LastUpdateDate).ToListAsync(cancellationToken);
+            return result;
+        }
+
+
+        public async Task<IList<WebLog_Slider>> ShowSliderMiddleForBlogAsync(CancellationToken cancellationToken)
+        {
+            var result = await TableNoTracking.Where(x => x.WebLog_Slider_IsActive && x.WebLog_Slider_IsActive_MiddlePage).Include(x => x.webLog).Include(x => x.webLog_Label).Include(x => x.webLog_Category).Include(x => x.WebLog_Group).Select(x =>
+         new WebLog_Slider()
+         {
+
+             WebLog_Slider_Image = x.WebLog_Slider_Image,
+             WebLog_Slider_Title = x.WebLog_Slider_Title,
+             WebLog_Slider_Category_IsActive = x.WebLog_Slider_Category_IsActive,
+             WebLog_Slider_Group_IsActive = x.WebLog_Slider_Group_IsActive,
+             WebLog_Slider_Blog_IsActive = x.WebLog_Slider_Blog_IsActive,
+             WebLog_Slider_Label_IsActive = x.WebLog_Slider_Label_IsActive,
+             WebLog_Slider_IsActive = x.WebLog_Slider_IsActive,
+             WebLog_Slider_IsActive_TopPage = x.WebLog_Slider_IsActive_TopPage,
+             WebLog_Slider_IsActive_MiddlePage = x.WebLog_Slider_IsActive_MiddlePage,
+             WebLog_Slider_IsActive_BottomPage = x.WebLog_Slider_IsActive_BottomPage,
+             webLog_Label = new WebLog_Label()
+             {
+                 WebLog_Label_Title_Two = x.webLog_Label.WebLog_Label_Title_Two,
+                 WebLog_Label_Title_One = x.webLog_Label.WebLog_Label_Title_One,
+                 Title_Meta = x.webLog_Label.Title_Meta,
+                 Url_Meta = x.webLog_Label.Url_Meta,
+                 LastUpdateDate = x.webLog_Label.LastUpdateDate
+             },
+             webLog = new WebLog()
+             {
+               
+
+                 Weblog_Title_Two = x.webLog.Weblog_Title_Two,
+                 Weblog_Title_One = x.webLog.Weblog_Title_One,
+                 Title_Meta = x.webLog.Title_Meta,
+                 Weblog_Writer = x.webLog.Weblog_Writer,
+                 Url_Meta = x.webLog.Url_Meta,
+                 LastUpdateDate = x.webLog.LastUpdateDate,
+                 
+             },
+             WebLog_Group = new WebLog_Group()
+             {
+                 Url_Meta = x.WebLog_Group.Url_Meta,
+                 WebLog_Group_Title_One = x.WebLog_Group.WebLog_Group_Title_One,
+                 WebLog_Group_Title_Two = x.WebLog_Group.WebLog_Group_Title_Two,
+                 LastUpdateDate = x.WebLog_Group.LastUpdateDate,
+                   Title_Meta = x.webLog.Title_Meta,
+             },
+             webLog_Category = new WebLog_Category()
+             {
+                 Url_Meta = x.webLog_Category.Url_Meta,
+                 WebLog_Category_Title_One = x.webLog_Category.WebLog_Category_Title_One,
+                 WebLog_Category_Title_Two = x.webLog_Category.WebLog_Category_Title_Two,
+                 LastUpdateDate = x.webLog_Category.LastUpdateDate
+
+             },
+             Id = x.Id,
+             LastUpdateDate = x.LastUpdateDate,
+             CreateDate = x.CreateDate,
+             WebLog_Slider_Order=x.WebLog_Slider_Order
+             
+
+
+         }).OrderBy(x => x.WebLog_Slider_Order).ToListAsync(cancellationToken);
             return result;
         }
         public IPagedList<WebLog_Slider> ShowAllWebLog_Slider_PagingAsync(CancellationToken cancellationToken, string UserId, int currentPage = 0, int number_showproduct = 10)

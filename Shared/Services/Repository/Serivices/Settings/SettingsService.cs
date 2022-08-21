@@ -5,6 +5,7 @@ using Data.ViewModel;
 using Entities;
 
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Repositories;
 using Service.Repository.Interface;
 using System;
@@ -158,7 +159,23 @@ namespace Service.Repository
                    }).ToListAsync(cancellationToken);
             return result;
         }
+        public async Task<Settings> ShowSettingsAsync(CancellationToken cancellationToken)
+        {
+            var result = await TableNoTracking.Select(x =>
+                  new Settings()
+                  {
 
+                    
+                      Settings_Mobile = x.Settings_Mobile,
+                      Settings_Sitename = x.Settings_Sitename,
+                      Settings_Tell = x.Settings_Tell,  
+                      Settings_Address=x.Settings_Address,
+                      Settings_Email=x.Settings_Email
+
+
+                  }).FirstOrDefaultAsync(cancellationToken);
+            return result;
+        }
         public  IPagedList<Settings> ShowAllSettings_PagingAsync(CancellationToken cancellationToken, string UserId, int currentPage = 0, int number_showproduct = 10)
         {
             var result = TableNoTracking.Where(x => x.UserId == UserId).Select(x =>

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
-    public  class SettingsEnemad : BaseEntity<byte>
+    public  class SettingsEnemad : BaseEntity<int>
     {
         #region Enemad
         //***====================================================================================***//

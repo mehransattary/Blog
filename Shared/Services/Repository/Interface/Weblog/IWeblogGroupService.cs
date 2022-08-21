@@ -22,6 +22,7 @@ namespace Service.Repository.Interface
         Task UpdateWebLog_GroupAsync(WebLog_GroupDto webLog_GroupDto,  string _WebLog_Group_Image, string _WebLog_Group_ImageHome, string _WebLog_Group_ThumbnaillImage, string _Image_Meta, CancellationToken cancellationToken);
         Task<IList<WebLog_Group>> ShowAllWeblogGroupAsync(CancellationToken cancellationToken );
         Task<WebLog_Group> ShowAllWeblogGroupByUrlAsync(string url, CancellationToken cancellationToken);
+        Task<IList<WebLog_Group>> ShowAllWeblogGroupSiteMapsAsync( CancellationToken cancellationToken);
         IPagedList<WebLog_Group> ShowAllWeblogGroup_PagingAsync(CancellationToken cancellationToken, string UserId, int currentPage = 0, int number_showproduct = 10);
         IPagedList<WebLog_Group> ShowAllWeblogGroup_PagingAsync(CancellationToken cancellationToken, string UserId, int currentPage = 0, int number_showproduct = 10,int categoryId=0);
         Task<bool> CheckRepeatUrlMeta(string Url_Meta);

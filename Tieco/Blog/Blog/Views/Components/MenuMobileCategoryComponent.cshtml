@@ -1,0 +1,18 @@
+﻿
+
+
+@model IEnumerable<WebLog_Category>
+
+@foreach (var category in Model)
+{
+    <li>
+        <a href="#">@category.Title_Meta</a>
+        <ul class="axil-submenu">
+            @foreach (var group in category.webLog_Groups)
+            {
+                <li><a href="@group.Url_Meta"title="@group.WebLog_Group_Title_One">@group.Title_Meta</a></li>
+
+            }
+        </ul>
+    </li>
+}

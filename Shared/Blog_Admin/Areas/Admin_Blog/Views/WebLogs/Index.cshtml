@@ -176,6 +176,17 @@
                             <!--end::Table body-->
                         </table>
                     </div>
+
+                    @Html.PagedListPager(Model, page => Url.Action("Index", "WebLogs", new { currentPage = page, groupId = @ViewBag.groupId }),
+                                new PagedListRenderOptionsBase
+                                {
+                                    DisplayLinkToIndividualPages = true,
+                                    DisplayPageCountAndCurrentLocation = false,
+                                    MaximumPageNumbersToDisplay = 5,
+                                    DisplayLinkToNextPage = PagedListDisplayMode.Never,
+                                    DisplayLinkToPreviousPage = PagedListDisplayMode.Never,
+
+                                })
                 </div>
                 <!--end::Table-->
             </div>

@@ -22,6 +22,8 @@ namespace Service.Repository.Interface
         Task AddSettingsAsync(SettingsDto SettingDto, CancellationToken cancellationToken);
         Task UpdateSettingsAsync(SettingsDto SettingDto, string _Settings_ImageFooter, string _Settings_ImageTopMain, CancellationToken cancellationToken);
         Task<IList<Settings>> ShowAllSettingsAsync(CancellationToken cancellationToken, string UserId);
+        Task<Settings> ShowSettingsAsync(CancellationToken cancellationToken);
+
         IPagedList<Settings> ShowAllSettings_PagingAsync(CancellationToken cancellationToken, string UserId, int currentPage = 0, int number_showproduct = 10);
 
 

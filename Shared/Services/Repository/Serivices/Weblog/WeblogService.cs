@@ -85,6 +85,7 @@ namespace Service.Repository
                      Weblog_Image= filePathWebLog_Image,
                      Weblog_Thumbnail_Image= filePathWeblog_Thumbnail_Image,
                      
+                     
                     //=======Meta Tags==========//
                     Title_Meta = WeblogDto.Title_Meta,
                     TitleEnglish_Meta = WeblogDto.TitleEnglish_Meta,
@@ -282,10 +283,41 @@ namespace Service.Repository
                Id = x.Id,
                LastUpdateDate = x.LastUpdateDate,
                CreateDate = x.CreateDate,
-               WebLog_Groups=x.WebLog_Groups
+               WebLog_Groups=x.WebLog_Groups,
+               Url_Meta=x.Url_Meta
 
 
            }).FirstOrDefaultAsync(cancellationToken);
+            return result;
+        }
+        public async Task<WebLog> ShowWeblogShortUrlAsync(string shortUrl, CancellationToken cancellationToken)
+        {
+            var result = await TableNoTracking.Where(x => x.Weblog_ShortLink == shortUrl).Include(x => x.WebLog_Groups).Select(x =>
+             new WebLog()
+             {
+
+                 Weblog_IsShow = x.Weblog_IsShow,
+                 Weblog_ShortLink = x.Weblog_ShortLink,
+                 Weblog_Star = x.Weblog_Star,
+                 Weblog_StudyTime = x.Weblog_StudyTime,
+                 Image_Meta = x.Image_Meta,
+                 Weblog_Title_One = x.Weblog_Title_One,
+                 Weblog_Title_Two = x.Weblog_Title_Two,
+                 Title_Meta = x.Title_Meta,
+                 Weblog_Short_Description = x.Weblog_Short_Description,
+                 Weblog_Writer = x.Weblog_Writer,
+                 Canonical_Meta = x.Canonical_Meta,
+                 Weblog_Thumbnail_Image = x.Weblog_Thumbnail_Image,
+                 Weblog_Image = x.Weblog_Image,
+                 Weblog_Text = x.Weblog_Text,
+                 Id = x.Id,
+                 LastUpdateDate = x.LastUpdateDate,
+                 CreateDate = x.CreateDate,
+                 WebLog_Groups = x.WebLog_Groups,
+                 Url_Meta=x.Url_Meta
+
+
+             }).FirstOrDefaultAsync(cancellationToken);
             return result;
         }
         public async Task<IList<WebLog>> ShowSelectedFiveWeblogToMiddleSlidersAsync(CancellationToken cancellationToken)
@@ -337,7 +369,20 @@ namespace Service.Repository
             Url_Meta = x.Url_Meta,          
 
 
-        }).OrderByDescending(x => x.LastUpdateDate).Skip(0).Take(10).ToListAsync(cancellationToken);
+        }).OrderByDescending(x => x.LastUpdateDate).Skip(0).Take(12).ToListAsync(cancellationToken);
+            return result;
+        }
+        public async Task<IList<WebLog>> ShowAllWeblogsSiteMapsAsync(CancellationToken cancellationToken)
+        {
+            var result = await TableNoTracking.Where(x => x.Weblog_IsShow).Select(x =>
+            new WebLog()
+            {
+                Weblog_IsShow = x.Weblog_IsShow,         
+                LastUpdateDate = x.LastUpdateDate,
+                CreateDate = x.CreateDate,
+                Url_Meta = x.Url_Meta,
+
+            }).OrderByDescending(x => x.LastUpdateDate).ToListAsync(cancellationToken);
             return result;
         }
         public IPagedList<WebLog> ShowAllWeblog_PagingAsync(CancellationToken cancellationToken, string UserId, int currentPage = 0, int number_showproduct = 10)

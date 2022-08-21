@@ -123,10 +123,28 @@ namespace Service.Repository
                    }).ToListAsync(cancellationToken);
             return result;
         }
+        public async Task<IList<Social>> ShowAllSocialAsync(CancellationToken cancellationToken)
+        {
+            var result = await TableNoTracking.Select(x =>
+                   new Social()
+                   {
+                       Name = x.Name,
+                       Link = x.Link,
+                       FontAwseome = x.FontAwseome,
+                       UserId = x.UserId,
+                       Image = x.Image,
+                       Id = x.Id,
+                       LastUpdateDate = x.LastUpdateDate,
+                       CreateDate = x.CreateDate
+
+
+                   }).ToListAsync(cancellationToken);
+            return result;
+        }
 
         public IPagedList<Social> ShowAllSocial_PagingAsync(CancellationToken cancellationToken, string UserId, int currentPage = 0, int number_showproduct = 10)
         {
-            var result = TableNoTracking.Where(x => x.UserId == UserId).Select(x =>
+            var result = TableNoTracking.Select(x =>
                new Social()
                {
                    Name = x.Name,

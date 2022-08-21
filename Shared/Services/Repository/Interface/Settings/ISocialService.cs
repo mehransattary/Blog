@@ -21,6 +21,7 @@ namespace Service.Repository.Interface
         Task AddSocialAsync(SocialDto SocialDto, CancellationToken cancellationToken);
         Task UpdateSocialAsync(SocialDto SocialDto, string _Image, CancellationToken cancellationToken);
         Task<IList<Social>> ShowAllSocialAsync(CancellationToken cancellationToken, string UserId);
+        Task<IList<Social>> ShowAllSocialAsync(CancellationToken cancellationToken);
         IPagedList<Social> ShowAllSocial_PagingAsync(CancellationToken cancellationToken, string UserId, int currentPage = 0, int number_showproduct = 10);
 
 

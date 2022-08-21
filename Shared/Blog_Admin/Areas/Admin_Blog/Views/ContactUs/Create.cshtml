@@ -1,10 +1,12 @@
 ﻿@model ContactUsDto
 
-@{
-    ViewData["Title"] = $"  تماس با ما  جدید   ";
+@{ ViewData["Title"] = $"  تماس با ما  جدید   "; }
+
+@section Style
+{
+    <link rel="stylesheet" href="/summernote/dist/summernote-lite.css" />
+
 }
-
-
 
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <!--begin::Container-->
@@ -14,7 +16,7 @@
               asp-action="Create" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-          
+
             <div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
                 <div class="card card-flush py-4">
                     <!--begin::Card header-->
@@ -61,7 +63,7 @@
                     <!--end::Card body-->
                 </div>
             </div>
-             <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
+            <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
                 <div class="tab-content">
                     <div class="tab-pane fade show active" id="kt_ecommerce_add_product_general" role="tab-panel">
                         <div class="d-flex flex-column gap-7 gap-lg-10">
@@ -159,18 +161,18 @@
                 </div>
                 <div class="d-flex justify-content-end">
 
-    <a asp-action="Index" id="kt_ecommerce_add_product_cancel"
-       class="btn btn-light me-5">انصراف</a>
+                    <a asp-action="Index" id="kt_ecommerce_add_product_cancel"
+                       class="btn btn-light me-5">انصراف</a>
 
-    <button type="submit" id="kt_ecommerce_add_product_submit" class="btn btn-primary">
-        <span class="indicator-label">ذخیره تغییرات</span>
-        <span class="indicator-progress">
-            لطفا صبر کنید...
-            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
-        </span>
-    </button>
+                    <button type="submit" id="kt_ecommerce_add_product_submit" class="btn btn-primary">
+                        <span class="indicator-label">ذخیره تغییرات</span>
+                        <span class="indicator-progress">
+                            لطفا صبر کنید...
+                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                        </span>
+                    </button>
 
-</div>
+                </div>
             </div>
         </form>
 
@@ -178,6 +180,8 @@
 </div>
 
 @section Scripts {
+    <script src="/summernote/dist/summernote-lite.min.js"></script>
+
     <script>
         $('#ContactUs_Text').summernote({
             toolbar: [
@@ -201,9 +205,6 @@
             lineHeights: ['0.2', '0.3', '0.4', '0.5', '0.6', '0.8', '1.0', '1.2', '1.4', '1.5', '2.0', '3.0'],
         });
     </script>
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-
-    }
-  }
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
 

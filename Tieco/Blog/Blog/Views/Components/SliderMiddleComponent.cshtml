@@ -1,10 +1,15 @@
 ﻿
-@model IEnumerable<WebLog_Slider>
-@{ 
+
+@{
     var Slider1 = ViewData["Slider1"] as WebLog_Slider;
     var Slider2 = ViewData["Slider2"] as WebLog_Slider;
     var Slider3 = ViewData["Slider3"] as WebLog_Slider;
 }
+@if(Slider1!=null&& Slider2!=null && Slider3!=null)
+{
+
+
+<!-- Start Post Grid Area  -->
 <div class="axil-post-grid-area axil-section-gap bg-color-grey">
     <div class="container">
 
@@ -15,7 +20,7 @@
                 </div>
             </div>
             <div class="col-lg-12">
-           
+
                 <!-- Start Tab Content  -->
                 <div class="grid-tab-content tab-content mt--10">
 
@@ -23,31 +28,35 @@
                     <div class="single-post-grid tab-pane fade show active" id="gridone" role="tabpanel">
                         <div class="row">
                             <div class="col-xl-7 col-lg-7 col-md-12 col-12">
-
                                 <!-- Start Post Grid  -->
                                 <div class="content-block post-grid post-grid-large mt--30">
+
                                     <div class="post-thumbnail">
-                                        <a href="post-details.html">
-                                            <img src="@Slider1.WebLog_Slider_Image" alt="@Slider1.WebLog_Slider_Title" title="@Slider1.WebLog_Slider_Title">
+                                        <a href="@Slider1.WebLog_Slider_Link">
+                                            <img src="@Slider1.WebLog_Slider_Image" alt="@Slider1.WebLog_Slider_Title">
                                         </a>
                                     </div>
-                                    @if (Slider1.WebLog_Slider_Blog_IsActive)
-                                    {
-                                        <div class="post-grid-content">
+                                    <div class="post-grid-content">
+                                        @if (Slider1.WebLog_Slider_Blog_IsActive)
+                                        {
                                             <div class="post-content">
                                                 <div class="post-cat">
                                                     <div class="post-cat-list">
-                                                        <a class="hover-flip-item-wrapper" href="@Slider1.webLog.WebLog_Groups.Url_Meta" title="@Slider1.webLog.WebLog_Groups.WebLog_Group_Title_One">
+                                                        <a class="hover-flip-item-wrapper" href="@Slider1.WebLog_Slider_Link" title="@Slider1.WebLog_Slider_Title">
                                                             <span class="hover-flip-item">
-                                                                <span data-text="@Slider1.webLog.Title_Meta">@Slider1.webLog.WebLog_Groups.Title_Meta</span>
+                                                                <span data-text="@Slider1.WebLog_Slider_Title">@Slider1.WebLog_Slider_Title</span>
                                                             </span>
                                                         </a>
                                                     </div>
                                                 </div>
-                                                <h3 class="title"><a href="@Slider1.webLog.Url_Meta">@Slider1.webLog.Title_Meta</a></h3>
+                                                <h3 class="title">
+                                                    <a href=" @Slider1.webLog.Url_Meta" title=" @Slider1.webLog.Weblog_Title_One">
+                                                        @Slider1.webLog.Title_Meta
+                                                    </a>
+                                                </h3>
                                                 <div class="post-meta-wrapper">
                                                     <div class="post-meta">
-
+                                                  
                                                         <div class="content">
                                                             <h6 class="post-author-name">
                                                                 <a class="hover-flip-item-wrapper" href="@Slider1.webLog.Url_Meta">
@@ -64,18 +73,36 @@
 
                                                 </div>
                                             </div>
-                                        </div>
-                                    }
-                                    else if (Slider1.WebLog_Slider_Label_IsActive)
-                                    {
-                                        <div class="post-grid-content">
+                                        }
+
+                                        else if (Slider1.WebLog_Slider_Label_IsActive)
+                                        {
                                             <div class="post-content">
-                                              
-                                                <h3 class="title"><a href="@Slider1.webLog_Label.Url_Meta">@Slider1.webLog_Label.Title_Meta</a></h3>
+                                                <div class="post-cat">
+                                                    <div class="post-cat-list">
+                                                        <a class="hover-flip-item-wrapper" href="@Slider1.WebLog_Slider_Link" title="@Slider1.WebLog_Slider_Title">
+                                                            <span class="hover-flip-item">
+                                                                <span data-text="@Slider1.WebLog_Slider_Title">@Slider1.WebLog_Slider_Title</span>
+                                                            </span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title">
+                                                    <a href=" @Slider1.webLog_Label.Url_Meta" title=" @Slider1.webLog_Label.WebLog_Label_Title_One">
+                                                        @Slider1.webLog_Label.Title_Meta
+                                                    </a>
+                                                </h3>
                                                 <div class="post-meta-wrapper">
                                                     <div class="post-meta">
-
-                                                        <div class="content">                                                           
+                                       
+                                                        <div class="content">
+                                                            <h6 class="post-author-name">
+                                                                <a class="hover-flip-item-wrapper" href="@Slider1.webLog_Label.Url_Meta">
+                                                                    <span class="hover-flip-item">
+                                                                        <span data-text="تایکو">تایکو</span>
+                                                                    </span>
+                                                                </a>
+                                                            </h6>
                                                             <ul class="post-meta-list">
                                                                 <li>@Slider1.webLog_Label.LastUpdateDate.ToShamsi()</li>
                                                             </ul>
@@ -84,9 +111,85 @@
 
                                                 </div>
                                             </div>
-                                        </div>
-                                    }
+                                        }
 
+                                        else if (Slider1.WebLog_Slider_Category_IsActive)
+                                        {
+                                            <div class="post-content">
+                                                <div class="post-cat">
+                                                    <div class="post-cat-list">
+                                                        <a class="hover-flip-item-wrapper" href="@Slider1.WebLog_Slider_Link" title="@Slider1.WebLog_Slider_Title">
+                                                            <span class="hover-flip-item">
+                                                                <span data-text="@Slider1.WebLog_Slider_Title">@Slider1.WebLog_Slider_Title</span>
+                                                            </span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title">
+                                                    <a href=" @Slider1.webLog_Category.Url_Meta" title=" @Slider1.webLog_Category.WebLog_Category_Title_One">
+                                                        @Slider1.webLog_Category.Title_Meta
+                                                    </a>
+                                                </h3>
+                                                <div class="post-meta-wrapper">
+                                                    <div class="post-meta">
+                                                
+                                                        <div class="content">
+                                                            <h6 class="post-author-name">
+                                                                <a class="hover-flip-item-wrapper" href="@Slider1.webLog_Category.Url_Meta">
+                                                                    <span class="hover-flip-item">
+                                                                        <span data-text="تایکو">تایکو</span>
+                                                                    </span>
+                                                                </a>
+                                                            </h6>
+                                                            <ul class="post-meta-list">
+                                                                <li>@Slider1.webLog_Category.LastUpdateDate.ToShamsi()</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        }
+
+                                        else if (Slider1.WebLog_Slider_Group_IsActive)
+                                        {
+                                            <div class="post-content">
+                                                <div class="post-cat">
+                                                    <div class="post-cat-list">
+                                                        <a class="hover-flip-item-wrapper" href="@Slider1.WebLog_Slider_Link" title="@Slider1.WebLog_Slider_Title">
+                                                            <span class="hover-flip-item">
+                                                                <span data-text="@Slider1.WebLog_Slider_Title">@Slider1.WebLog_Slider_Title</span>
+                                                            </span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title">
+                                                    <a href=" @Slider1.WebLog_Group.Url_Meta" title=" @Slider1.WebLog_Group.WebLog_Group_Title_One">
+                                                        @Slider1.WebLog_Group.Title_Meta
+                                                    </a>
+                                                </h3>
+                                                <div class="post-meta-wrapper">
+                                                    <div class="post-meta">
+                                                 
+                                                        <div class="content">
+                                                            <h6 class="post-author-name">
+                                                                <a class="hover-flip-item-wrapper" href="@Slider1.WebLog_Group.Url_Meta">
+                                                                    <span class="hover-flip-item">
+                                                                        <span data-text="تایکو">تایکو</span>
+                                                                    </span>
+                                                                </a>
+                                                            </h6>
+                                                            <ul class="post-meta-list">
+                                                                <li>@Slider1.WebLog_Group.LastUpdateDate.ToShamsi()</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        }
+
+                                    </div>
                                 </div>
                                 <!-- Start Post Grid  -->
                             </div>
@@ -96,45 +199,92 @@
                                         <!-- Start Post Grid  -->
                                         <div class="content-block post-grid mt--30">
                                             <div class="post-thumbnail">
-                                                <a href="@Slider2.WebLog_Slider_Link" title="@Slider2.WebLog_Slider_Title">
+                                                <a href="@Slider2.WebLog_Slider_Link">
                                                     <img src="@Slider2.WebLog_Slider_Image" alt="@Slider2.WebLog_Slider_Title">
                                                 </a>
                                             </div>
-                                            @if (Slider2.WebLog_Slider_Blog_IsActive)
-                                            {                                           
-                                                <div class="post-grid-content">
+                                            <div class="post-grid-content">
+                                                @if (Slider2.WebLog_Slider_Blog_IsActive)
+                                                {
                                                     <div class="post-content">
                                                         <div class="post-cat">
                                                             <div class="post-cat-list">
-                                                                <a class="hover-flip-item-wrapper" href="@Slider2.webLog.Url_Meta">
+                                                                <a class="hover-flip-item-wrapper" href="@Slider2.WebLog_Slider_Link" title="@Slider2.WebLog_Slider_Title">
                                                                     <span class="hover-flip-item">
-                                                                        <span data-text="@Slider2.webLog.Title_Meta">@Slider2.webLog.Title_Meta</span>
+                                                                        <span data-text="@Slider2.WebLog_Slider_Title">@Slider2.WebLog_Slider_Title</span>
                                                                     </span>
                                                                 </a>
                                                             </div>
                                                         </div>
-                                                        <h4 class="title"><a href="@Slider2.webLog.Url_Meta">@Slider2.webLog.Title_Meta</a></h4>
+                                                        <h4 class="title">
+                                                            <a href="@Slider2.webLog.Url_Meta" title="@Slider2.webLog.Weblog_Title_Two">
+                                                                @Slider2.webLog.Title_Meta
+                                                            </a>
+                                                        </h4>
                                                     </div>
-                                                </div>
-                                            }
-                                            else if (Slider2.WebLog_Slider_Label_IsActive)
-                                            {
-                                                <div class="post-grid-content">
-                                                    <div class="post-content">
-                                                        <div class="post-cat">
-                                                            <div class="post-cat-list">
-                                                                <a class="hover-flip-item-wrapper" href="@Slider2.webLog_Label.Url_Meta">
-                                                                    <span class="hover-flip-item">
-                                                                        <span data-text="@Slider2.webLog_Label.Title_Meta">@Slider2.webLog_Label.Title_Meta</span>
-                                                                    </span>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <h4 class="title"><a href="@Slider2.webLog_Label.Url_Meta">@Slider2.webLog_Label.Title_Meta</a></h4>
-                                                    </div>
-                                                </div>
-                                            }
+                                                }
 
+                                                else if (Slider2.WebLog_Slider_Label_IsActive)
+                                                {
+                                                    <div class="post-content">
+                                                        <div class="post-cat">
+                                                            <div class="post-cat-list">
+                                                                <a class="hover-flip-item-wrapper" href="@Slider2.WebLog_Slider_Link" title="@Slider2.WebLog_Slider_Title">
+                                                                    <span class="hover-flip-item">
+                                                                        <span data-text="@Slider2.WebLog_Slider_Title">@Slider2.WebLog_Slider_Title</span>
+                                                                    </span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <h4 class="title">
+                                                            <a href="@Slider2.webLog_Label.Url_Meta" title="@Slider2.webLog_Label.WebLog_Label_Title_Two">
+                                                                @Slider2.webLog_Label.Title_Meta
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                }
+
+                                                else if (Slider2.WebLog_Slider_Category_IsActive)
+                                                {
+                                                    <div class="post-content">
+                                                        <div class="post-cat">
+                                                            <div class="post-cat-list">
+                                                                <a class="hover-flip-item-wrapper" href="@Slider2.WebLog_Slider_Link" title="@Slider2.WebLog_Slider_Title">
+                                                                    <span class="hover-flip-item">
+                                                                        <span data-text="@Slider2.WebLog_Slider_Title">@Slider2.WebLog_Slider_Title</span>
+                                                                    </span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <h4 class="title">
+                                                            <a href="@Slider2.webLog_Category.Url_Meta" title="@Slider2.webLog_Category.WebLog_Category_Title_Two">
+                                                                @Slider2.webLog_Category.Title_Meta
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                }
+
+                                                else if (Slider2.WebLog_Slider_Group_IsActive)
+                                                {
+                                                    <div class="post-content">
+                                                        <div class="post-cat">
+                                                            <div class="post-cat-list">
+                                                                <a class="hover-flip-item-wrapper" href="@Slider2.WebLog_Slider_Link" title="@Slider2.WebLog_Slider_Title">
+                                                                    <span class="hover-flip-item">
+                                                                        <span data-text="@Slider2.WebLog_Slider_Title">@Slider2.WebLog_Slider_Title</span>
+                                                                    </span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <h4 class="title">
+                                                            <a href="@Slider2.WebLog_Group.Url_Meta" title="@Slider2.WebLog_Group.WebLog_Group_Title_One">
+                                                                @Slider2.WebLog_Group.Title_Meta
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                }
+
+                                            </div>
                                         </div>
                                         <!-- Start Post Grid  -->
                                     </div>
@@ -142,45 +292,92 @@
                                         <!-- Start Post Grid  -->
                                         <div class="content-block post-grid mt--30">
                                             <div class="post-thumbnail">
-                                                <a href="@Slider3.WebLog_Slider_Link" title="@Slider3.WebLog_Slider_Title">
+                                                <a href="@Slider3.WebLog_Slider_Link">
                                                     <img src="@Slider3.WebLog_Slider_Image" alt="@Slider3.WebLog_Slider_Title">
                                                 </a>
                                             </div>
-                                            @if (Slider3.WebLog_Slider_Blog_IsActive)
-                                            {
-                                                <div class="post-grid-content">
+                                            <div class="post-grid-content">
+                                                @if (Slider3.WebLog_Slider_Blog_IsActive)
+                                                {
                                                     <div class="post-content">
                                                         <div class="post-cat">
                                                             <div class="post-cat-list">
-                                                                <a class="hover-flip-item-wrapper" href="@Slider3.WebLog_Slider_Link">
+                                                                <a class="hover-flip-item-wrapper" href="@Slider3.WebLog_Slider_Link" title="@Slider3.WebLog_Slider_Title">
                                                                     <span class="hover-flip-item">
                                                                         <span data-text="@Slider3.WebLog_Slider_Title">@Slider3.WebLog_Slider_Title</span>
                                                                     </span>
                                                                 </a>
                                                             </div>
                                                         </div>
-                                                        <h4 class="title"><a href="@Slider3.webLog.Url_Meta" title="@Slider3.webLog.Weblog_Title_One">@Slider3.webLog.Title_Meta </a></h4>
+                                                        <h4 class="title">
+                                                            <a href="@Slider3.webLog.Url_Meta" title="@Slider3.webLog.Weblog_Title_One">
+                                                                @Slider3.webLog.Title_Meta
+                                                            </a>
+                                                        </h4>
                                                     </div>
-                                                </div>
-                                            }
-                                            else if (Slider2.WebLog_Slider_Label_IsActive)
-                                            {
-                                                <div class="post-grid-content">
-                                                    <div class="post-content">
-                                                        <div class="post-cat">
-                                                            <div class="post-cat-list">
-                                                                <a class="hover-flip-item-wrapper" href="@Slider3.WebLog_Slider_Link">
-                                                                    <span class="hover-flip-item">
-                                                                        <span data-text="@Slider3.WebLog_Slider_Title">@Slider3.WebLog_Slider_Title</span>
-                                                                    </span>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <h4 class="title"><a href="@Slider3.webLog_Label.Url_Meta" title="@Slider3.webLog_Label.WebLog_Label_Title_One">@Slider3.webLog_Label.Title_Meta </a></h4>
-                                                    </div>
-                                                </div>
-                                            }
+                                                }
 
+                                                else if (Slider3.WebLog_Slider_Label_IsActive)
+                                                {
+                                                    <div class="post-content">
+                                                        <div class="post-cat">
+                                                            <div class="post-cat-list">
+                                                                <a class="hover-flip-item-wrapper" href="@Slider3.WebLog_Slider_Link" title="@Slider3.WebLog_Slider_Title">
+                                                                    <span class="hover-flip-item">
+                                                                        <span data-text="@Slider3.WebLog_Slider_Title">@Slider3.WebLog_Slider_Title</span>
+                                                                    </span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <h4 class="title">
+                                                            <a href="@Slider3.webLog_Label.Url_Meta" title="@Slider3.webLog_Label.WebLog_Label_Title_One">
+                                                                @Slider3.webLog_Label.Title_Meta
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                }
+
+                                                else if (Slider3.WebLog_Slider_Category_IsActive)
+                                                {
+                                                    <div class="post-content">
+                                                        <div class="post-cat">
+                                                            <div class="post-cat-list">
+                                                                <a class="hover-flip-item-wrapper" href="@Slider3.WebLog_Slider_Link" title="@Slider3.WebLog_Slider_Title">
+                                                                    <span class="hover-flip-item">
+                                                                        <span data-text="@Slider3.WebLog_Slider_Title">@Slider3.WebLog_Slider_Title</span>
+                                                                    </span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <h4 class="title">
+                                                            <a href="@Slider3.webLog_Category.Url_Meta" title="@Slider3.webLog_Category.WebLog_Category_Title_One">
+                                                                @Slider3.webLog_Category.Title_Meta
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                }
+
+                                                else if (Slider3.WebLog_Slider_Group_IsActive)
+                                                {
+                                                    <div class="post-content">
+                                                        <div class="post-cat">
+                                                            <div class="post-cat-list">
+                                                                <a class="hover-flip-item-wrapper" href="@Slider3.WebLog_Slider_Link" title="@Slider3.WebLog_Slider_Title">
+                                                                    <span class="hover-flip-item">
+                                                                        <span data-text="@Slider3.WebLog_Slider_Title">@Slider3.WebLog_Slider_Title</span>
+                                                                    </span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <h4 class="title">
+                                                            <a href="@Slider3.webLog_Category.Url_Meta" title="@Slider3.webLog_Category.WebLog_Category_Title_One">
+                                                                @Slider3.webLog_Category.Title_Meta
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                }
+
+                                            </div>
                                         </div>
                                         <!-- Start Post Grid  -->
                                     </div>
@@ -189,7 +386,7 @@
                         </div>
                     </div>
                     <!-- End Single Tab Content  -->
-             
+  
 
                 </div>
                 <!-- End Tab Content  -->
@@ -197,3 +394,6 @@
         </div>
     </div>
 </div>
+<!-- End Post Grid Area  -->
+
+}

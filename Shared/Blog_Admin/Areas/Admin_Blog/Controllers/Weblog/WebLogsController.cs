@@ -122,6 +122,8 @@ namespace ProMe_Admin.Controllers
             
                 if (isCheckRepeatUrlMeta)
                     ViewBag.error_Url_Meta = $"❌  ورودی های سئو /  ✨ {WeblogDto.Url_Meta}  ✨ / این آدرس اینترنتی  از قبل موجود می باشد . ";
+                else 
+                    return "Index";
 
             }
            
@@ -269,6 +271,8 @@ namespace ProMe_Admin.Controllers
                    
                     if (isCheckRepeatUrlMeta)
                         ViewBag.error_Url_Meta = $"❌  ورودی های سئو /  ✨ {WeblogDto.Url_Meta}  ✨ / این آدرس اینترنتی  از قبل موجود می باشد . ";
+                    else 
+                        return "Index";
 
                 }
                

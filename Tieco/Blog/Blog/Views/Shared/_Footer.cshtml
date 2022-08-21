@@ -2,7 +2,8 @@
 @inject ISettingsLogoesService logoService
 @inject ISettingsCopyRightsService CopyRightsService
 @inject ISettingsService SettingsService
-
+@inject ISettingsLogoesService logoService
+@{ var logo = logoService.TableNoTracking.FirstOrDefault(); }
 <!-- Start Footer Area  -->
 <div class="axil-footer-area axil-footer-style-1 footer-variation-2">
 
@@ -14,25 +15,19 @@
 
                 <div class="col-lg-4 col-md-4">
                     <div class="logo text-right">
-                        <a href="index.html">
-                            <img class="dark-logo" src="/tieco/images/logo/logo-black.png" alt="Logo Images">
-                            <img class="white-logo" src="/tieco/images/logo/logo-white2.png" alt="Logo Images">
-                        </a>
+                        @if (logo != null)
+                        {
+                            <a href="@logo.Settings_Icon_Path"title="@logo.Settings_title_Logo">
+
+                                <img class="dark-logo" src="@logo.Settings_Image_Logo_Footer" alt="@logo.Settings_alt_Logo"title="@logo.Settings_title_Logo">
+                            </a>
+                        }
+
                     </div>
                 </div>
 
                 <div class="col-lg-8 col-md-8">
-                    <!-- Start Post List  -->
-                    <div class="d-flex justify-content-start mt_sm--15 justify-content-md-end align-items-center flex-wrap">
-                        <h5 class="follow-title mb--0 mr--20">ما را دنبال کنید</h5>
-                        <ul class="social-icon color-tertiary md-size justify-content-start">
-                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                        </ul>
-                    </div>
-                    <!-- End Post List  -->
+                    @(await Component.InvokeAsync("SocialComponent"))
                 </div>
 
             </div>
@@ -47,71 +42,57 @@
                     <div class="copyright-left">
                         <ul class="mainmenu justify-content-start">
                             <li>
-                                <a class="hover-flip-item-wrapper" href="#">
+                                <a class="hover-flip-item-wrapper" href="/ContactUs" rel="nofollow">
                                     <span class="hover-flip-item">
                                         <span data-text="تماس با ما">تماس با ما</span>
                                     </span>
                                 </a>
                             </li>
+
                             <li>
-                                <a class="hover-flip-item-wrapper" href="#">
-                                    <span class="hover-flip-item">
-                                        <span data-text="شرایط و قوانین">شرایط و قوانین</span>
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="hover-flip-item-wrapper" href="#">
+                                <a class="hover-flip-item-wrapper" href="/AbouteUs" rel="nofollow">
                                     <span class="hover-flip-item">
                                         <span data-text="درباره ما">درباره ما</span>
                                     </span>
                                 </a>
                             </li>
-                            <li>
-                                <a class="hover-flip-item-wrapper" href="#">
-                                    <span class="hover-flip-item">
-                                        <span data-text="تبلیغات با ما">تبلیغات با ما</span>
-                                    </span>
-                                </a>
-                            </li>
+
                             @if (!accountService.IsSignin(User))
                             {
 
-                                <li>
-                                    <a class="hover-flip-item-wrapper" href="/Identity/Account/Login" rel="nofollow">
-                                        <span class="hover-flip-item">
-                                            <span data-text="ورود">ورود</span>
-                                        </span>
-                                    </a>
-                                </li>
-                           }
+                <li>
+                    <a class="hover-flip-item-wrapper" href="/Identity/Account/Login" rel="nofollow">
+                        <span class="hover-flip-item">
+                            <span data-text="ورود">ورود</span>
+                        </span>
+                    </a>
+                </li> }
                             else
                             {
 
-                 
 
-                                    <li>
-                                        <a class="hover-flip-item-wrapper" asp-action="Index" asp-controller="Default" asp-area="Admin_Blog" rel="nofollow">
-                                            <span class="hover-flip-item">
-                                            <span data-text="پنل مدیریت"> پنل مدیریت</span>
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="hover-flip-item-wrapper" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" rel="nofollow">
-                                            <span class="hover-flip-item">
-                                                <span data-text="خروج">خروج</span>
-                                            </span>
-                                        </a>
-                                    </li>
-                                }
+
+                <li>
+                    <a class="hover-flip-item-wrapper" asp-action="Index" asp-controller="Default" asp-area="Admin_Blog" rel="nofollow">
+                        <span class="hover-flip-item">
+                            <span data-text="پنل مدیریت"> پنل مدیریت</span>
+                        </span>
+                    </a>
+                </li>
+                                <li>
+                                    <a class="hover-flip-item-wrapper" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" rel="nofollow">
+                                        <span class="hover-flip-item">
+                                            <span data-text="خروج">خروج</span>
+                                        </span>
+                                    </a>
+                                </li>}
 
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-4">
                     <div class="copyright-right text-end text-lg-start mt_md--20 mt_sm--20">
-                        <p class="b3">© کلیه حقوق این سایت محفوظ می باشد</p>
+                        <p class="b3">© طراحی شده توسط تایکو</p>
                     </div>
                 </div>
             </div>

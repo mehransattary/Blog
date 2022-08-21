@@ -22,7 +22,16 @@ namespace Blog.Controllers
         {
             return View();
         }
-
+        [Route("/AbouteUs")]
+        public IActionResult AbouteUs()
+        {
+            return View();
+        }
+        [Route("/ContactUs")]
+        public IActionResult ContactUs()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();

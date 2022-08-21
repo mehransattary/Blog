@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
-    public class SettingsMeta : BaseEntity<byte>
+    public class SettingsMeta : BaseEntity<int>
     {
         #region MetaTags
         //***====================================================================================***//

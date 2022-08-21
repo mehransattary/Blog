@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
-   public  class SettingsCopyRight : BaseEntity<byte>
+   public  class SettingsCopyRight : BaseEntity<int>
     {
         #region @CopyRight
         //***====================================================================================***//

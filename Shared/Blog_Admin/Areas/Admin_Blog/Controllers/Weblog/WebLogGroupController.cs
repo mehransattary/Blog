@@ -170,7 +170,6 @@ namespace ProMe_Admin.Controllers
             ViewBag.WebLog_Group_ImageHome = WebLog_Group.WebLog_Group_ImageHome ?? "/images/default.png";
             ViewBag.WebLog_Group_ThumbnaillImage = WebLog_Group.WebLog_Group_ThumbnaillImage ?? "/images/default.png";
             ViewBag.Image_Meta = WebLog_Group.Image_Meta ?? "/images/default.png";
-            var UserId = userManager.GetUserId(User);
 
           
             if (categoryId != 0)
@@ -244,7 +243,6 @@ namespace ProMe_Admin.Controllers
                 }
 
             }
-            var UserId = userManager.GetUserId(User);
         
 
             if (categoryId != 0)
@@ -282,6 +280,11 @@ namespace ProMe_Admin.Controllers
 
                 if (isCheckRepeatUrlMeta)
                     ViewBag.error_Url_Meta = $"❌  ورودی های سئو /  ✨ {WebLog_GroupDto.Url_Meta}  ✨ / این آدرس اینترنتی  از قبل موجود می باشد . ";
+                else
+                {
+                    await WebLog_GroupService.UpdateWebLog_GroupAsync(WebLog_GroupDto, _WebLog_Category_Image, _WebLog_Category_ImageHome, _WebLog_Category_ThumbnaillImage, _Image_Meta, cancellationToken);
+                    return "Index";
+                }
 
 
             }
@@ -291,7 +294,11 @@ namespace ProMe_Admin.Controllers
 
                 if (isCheckRepeatOrder)
                     ViewBag.error_RepeatOrder = $"❌  ورودی های عمومی /  ✨ {WebLog_GroupDto.WebLog_Group_Order}  ✨ / این مرتب سازی  از قبل موجود می باشد . ";
-
+                else
+                {
+                    await WebLog_GroupService.UpdateWebLog_GroupAsync(WebLog_GroupDto, _WebLog_Category_Image, _WebLog_Category_ImageHome, _WebLog_Category_ThumbnaillImage, _Image_Meta, cancellationToken);
+                    return "Index";
+                }
 
             }
             else

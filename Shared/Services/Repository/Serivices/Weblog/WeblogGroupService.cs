@@ -284,6 +284,21 @@ namespace Service.Repository
             return result;
         }
 
+        public async Task<IList<WebLog_Group>> ShowAllWeblogGroupSiteMapsAsync(CancellationToken cancellationToken)
+        {
+
+            var result = await TableNoTracking.Select(x =>
+          new WebLog_Group()
+          {
+              Id = x.Id,
+              LastUpdateDate = x.LastUpdateDate,
+              CreateDate = x.CreateDate,
+              Url_Meta = x.Url_Meta
+
+          }).ToListAsync(cancellationToken);
+            return result;
+        }
+        
         public async Task<WebLog_Group> ShowAllWeblogGroupByUrlAsync(string url,CancellationToken cancellationToken)
         {
 
@@ -301,7 +316,9 @@ namespace Service.Repository
               WebLog_Group_Title_Two = x.WebLog_Group_Title_Two,
               Title_Meta=x.Title_Meta,
               Desc_Meta=x.Desc_Meta,
-              WebLog_Group_ShortDescription=x.WebLog_Group_ShortDescription,
+              WebLog_Group_Description = x.WebLog_Group_Description,
+
+              WebLog_Group_ShortDescription = x.WebLog_Group_ShortDescription,
               Id = x.Id,
               LastUpdateDate = x.LastUpdateDate,
               CreateDate = x.CreateDate,
@@ -315,7 +332,7 @@ namespace Service.Repository
         }
         public IPagedList<WebLog_Group> ShowAllWeblogGroup_PagingAsync(CancellationToken cancellationToken, string UserId, int currentPage = 0, int number_showproduct = 10)
         {
-            var result = TableNoTracking.Where(x => x.UserId == UserId).Select(x =>
+            var result = TableNoTracking.Select(x =>
              new WebLog_Group()
              {
              
@@ -336,7 +353,7 @@ namespace Service.Repository
         }
         public IPagedList<WebLog_Group> ShowAllWeblogGroup_PagingAsync(CancellationToken cancellationToken, string UserId, int currentPage = 0, int number_showproduct = 10,int categoryId=0)
         {
-            var result = TableNoTracking.Where(x => x.UserId == UserId&&x.WebLog_Group_CategoryId== categoryId).Select(x =>
+            var result = TableNoTracking.Where(x => x.WebLog_Group_CategoryId== categoryId).Select(x =>
              new WebLog_Group()
              {
 

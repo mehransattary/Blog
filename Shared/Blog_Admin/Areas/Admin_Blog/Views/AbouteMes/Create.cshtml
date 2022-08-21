@@ -1,10 +1,12 @@
 ﻿@model AbouteMeDto
 
-@{
-    ViewData["Title"] = $"  درباره ما  جدید   ";
+@{ ViewData["Title"] = $"  درباره ما  جدید   "; }
+
+@section Style
+{
+    <link rel="stylesheet" href="/summernote/dist/summernote-lite.css" />
+
 }
-
-
 
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <!--begin::Container-->
@@ -66,11 +68,11 @@
             </div>
             <!--end::کناری column-->
 
-        
 
 
 
-         
+
+
             <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
 
                 <div class="tab-content">
@@ -90,24 +92,24 @@
 
 
                                             <div class="card card-flush py-4">
-      <div class="mb-10 fv-row">
-                                        <!--begin::Tags-->
-                                        <label class="required form-label" asp-for="AbouteMe_Text"> </label>
-                                        <!--end::Tags-->
-                                        <!--begin::Input-->
-                                        <textarea asp-for="AbouteMe_Text" class="form-control"></textarea>
-                                        <!--end::Input-->
-                                        <span asp-validation-for="AbouteMe_Text" class="text-danger"></span>
-                                    </div>
+                                                <div class="mb-10 fv-row">
+                                                    <!--begin::Tags-->
+                                                    <label class="required form-label" asp-for="AbouteMe_Text"> </label>
+                                                    <!--end::Tags-->
+                                                    <!--begin::Input-->
+                                                    <textarea asp-for="AbouteMe_Text" class="form-control"></textarea>
+                                                    <!--end::Input-->
+                                                    <span asp-validation-for="AbouteMe_Text" class="text-danger"></span>
                                                 </div>
-                                                <!--end::Card header-->
                                             </div>
-
-
+                                            <!--end::Card header-->
                                         </div>
+
+
                                     </div>
                                 </div>
-                       
+                            </div>
+
 
 
                             <!----------MetaTag---------------------->
@@ -196,6 +198,8 @@
     <!--end::Container-->
 </div>
 @section Scripts {
+    <script src="/summernote/dist/summernote-lite.min.js"></script>
+
     <script>
         $('#AbouteMe_Text').summernote({
             toolbar: [
@@ -219,12 +223,6 @@
             lineHeights: ['0.2', '0.3', '0.4', '0.5', '0.6', '0.8', '1.0', '1.2', '1.4', '1.5', '2.0', '3.0'],
         });
     </script>
-    @{
-        
-        
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    
-    
-    }
-            }
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
 
