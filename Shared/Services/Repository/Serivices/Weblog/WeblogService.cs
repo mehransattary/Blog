@@ -262,7 +262,7 @@ namespace Service.Repository
         }
         public async Task<WebLog> ShowWeblogAsync(string url, CancellationToken cancellationToken)
         {
-            var result = await TableNoTracking.Where(x => x.Url_Meta == url).Include(x=>x.WebLog_Groups).Select(x =>
+            var result = await TableNoTracking.Where(x => x.Url_Meta == url).Include(x=>x.WebLog_Groups).ThenInclude(x=>x.WebLog_Category).Select(x =>
            new WebLog()
            {
 
@@ -284,7 +284,8 @@ namespace Service.Repository
                LastUpdateDate = x.LastUpdateDate,
                CreateDate = x.CreateDate,
                WebLog_Groups=x.WebLog_Groups,
-               Url_Meta=x.Url_Meta
+               
+               Url_Meta =x.Url_Meta
 
 
            }).FirstOrDefaultAsync(cancellationToken);
@@ -292,7 +293,7 @@ namespace Service.Repository
         }
         public async Task<WebLog> ShowWeblogShortUrlAsync(string shortUrl, CancellationToken cancellationToken)
         {
-            var result = await TableNoTracking.Where(x => x.Weblog_ShortLink == shortUrl).Include(x => x.WebLog_Groups).Select(x =>
+            var result = await TableNoTracking.Where(x => x.Weblog_ShortLink == shortUrl).Include(x => x.WebLog_Groups).ThenInclude(x => x.WebLog_Category).Select(x =>
              new WebLog()
              {
 

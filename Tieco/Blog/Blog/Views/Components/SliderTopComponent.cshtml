@@ -17,7 +17,7 @@
                                     <div class="content-block">
                                         <!-- Start Post Thumbnail  -->
                                         <div class="post-thumbnail">
-                                            <a href="@item.WebLog_Slider_Link">
+                                            <a href="/blog/@item.WebLog_Slider_Link">
                                                 <img src="@item.WebLog_Slider_Image" alt="@item.WebLog_Slider_Title">
                                             </a>
                                         </div>
@@ -26,21 +26,21 @@
                                         <div class="post-content">
                                             <div class="post-cat">
                                                 <div class="post-cat-list">
-                                                    <a class="hover-flip-item-wrapper" href="@item.webLog.WebLog_Groups.Url_Meta" title="@item.webLog.WebLog_Groups.WebLog_Group_Title_One">
+                                                    <a class="hover-flip-item-wrapper" href="/blog/@item.webLog.WebLog_Groups.Url_Meta" title="@item.webLog.WebLog_Groups.WebLog_Group_Title_One">
                                                         <span class="hover-flip-item">
                                                             <span data-text="@item.webLog.WebLog_Groups.Title_Meta">@item.webLog.WebLog_Groups.Title_Meta</span>
                                                         </span>
                                                     </a>
                                                 </div>
                                             </div>
-                                            <h2 class="title"><a href="@item.webLog.Url_Meta" title="@item.webLog.Weblog_Title_Two">@item.webLog.Weblog_Title_One</a></h2>
+                                            <h2 class="title"><a href="/blog/@item.webLog.Url_Meta" title="@item.webLog.Weblog_Title_Two">@item.webLog.Weblog_Title_One</a></h2>
                                             <!-- Post Meta  -->
                                             <div class="post-meta-wrapper with-button">
                                                 <div class="post-meta">
 
                                                     <div class="content">
                                                         <h6 class="post-author-name">
-                                                            <a class="hover-flip-item-wrapper" href="author.html">
+                                                            <a class="hover-flip-item-wrapper" href="/blog/@item.webLog.Url_Meta">
                                                                 <span class="hover-flip-item">
                                                                     <span data-text="@item.webLog.Weblog_Writer">
                                                                         @item.webLog.Weblog_Writer
@@ -49,14 +49,14 @@
                                                             </a>
                                                         </h6>
                                                         <ul class="post-meta-list">
-                                                            <li>@item.webLog.LastUpdateDate</li>
+                                                            <li>@item.webLog.LastUpdateDate.ToShamsi()</li>
 
                                                         </ul>
                                                     </div>
                                                 </div>
 
                                                 <div class="read-more-button cerchio">
-                                                    <a class="axil-button button-rounded hover-flip-item-wrapper" href="@item.webLog.Url_Meta">
+                                                    <a class="axil-button button-rounded hover-flip-item-wrapper" href="/blog/@item.webLog.Url_Meta">
                                                         <span class="hover-flip-item">
                                                             <span data-text="ادامه مطلب">ادامه مطلب</span>
                                                         </span>
@@ -90,7 +90,7 @@
 
                                                     <div class="content">
                                                         <ul class="post-meta-list">
-                                                            <li>@item.webLog_Label.LastUpdateDate</li>
+                                                            <li>@item.webLog_Label.LastUpdateDate.ToShamsi()</li>
 
                                                         </ul>
                                                     </div>
@@ -116,7 +116,7 @@
                                     <div class="content-block">
                                         <!-- Start Post Thumbnail  -->
                                         <div class="post-thumbnail">
-                                            <a href="@item.WebLog_Slider_Link">
+                                            <a href="/category/@item.WebLog_Slider_Link">
                                                 <img src="@item.WebLog_Slider_Image" alt="@item.WebLog_Slider_Title">
                                             </a>
                                         </div>
@@ -124,21 +124,21 @@
                                         <!-- Start Post Content  -->
                                         <div class="post-content">
 
-                                            <h2 class="title"><a href="@item.webLog_Category.Url_Meta" title="@item.webLog_Category.WebLog_Category_Title_One">@item.webLog_Category.WebLog_Category_Title_Two</a></h2>
+                                            <h2 class="title"><a href="/category/@item.webLog_Category.Url_Meta" title="@item.webLog_Category.WebLog_Category_Title_One">@item.webLog_Category.WebLog_Category_Title_Two</a></h2>
                                             <!-- Post Meta  -->
                                             <div class="post-meta-wrapper with-button">
                                                 <div class="post-meta">
 
                                                     <div class="content">
                                                         <ul class="post-meta-list">
-                                                            <li>@item.webLog_Category.LastUpdateDate</li>
+                                                            <li>@item.webLog_Category.LastUpdateDate.ToShamsi()</li>
 
                                                         </ul>
                                                     </div>
                                                 </div>
 
                                                 <div class="read-more-button cerchio">
-                                                    <a class="axil-button button-rounded hover-flip-item-wrapper" href="@item.webLog_Category.Url_Meta">
+                                                    <a class="axil-button button-rounded hover-flip-item-wrapper" href="/category/@item.webLog_Category.Url_Meta">
                                                         <span class="hover-flip-item">
                                                             <span data-text="ادامه مطلب">ادامه مطلب</span>
                                                         </span>
@@ -157,7 +157,7 @@
                                     <div class="content-block">
                                         <!-- Start Post Thumbnail  -->
                                         <div class="post-thumbnail">
-                                            <a href="@item.WebLog_Slider_Link">
+                                            <a href="/group/@item.WebLog_Slider_Link">
                                                 <img src="@item.WebLog_Slider_Image" alt="@item.WebLog_Slider_Title">
                                             </a>
                                         </div>
@@ -165,21 +165,21 @@
                                         <!-- Start Post Content  -->
                                         <div class="post-content">
 
-                                            <h2 class="title"><a href="@item.WebLog_Group.Url_Meta" title="@item.WebLog_Group.WebLog_Group_Title_One">@item.WebLog_Group.WebLog_Group_Title_Two</a></h2>
+                                            <h2 class="title"><a href="/group/@item.WebLog_Group.Url_Meta" title="@item.WebLog_Group.WebLog_Group_Title_One">@item.WebLog_Group.WebLog_Group_Title_Two</a></h2>
                                             <!-- Post Meta  -->
                                             <div class="post-meta-wrapper with-button">
                                                 <div class="post-meta">
 
                                                     <div class="content">
                                                         <ul class="post-meta-list">
-                                                            <li>@item.WebLog_Group.LastUpdateDate</li>
+                                                            <li>@item.WebLog_Group.LastUpdateDate.ToShamsi()</li>
 
                                                         </ul>
                                                     </div>
                                                 </div>
 
                                                 <div class="read-more-button cerchio">
-                                                    <a class="axil-button button-rounded hover-flip-item-wrapper" href="@item.WebLog_Group.Url_Meta">
+                                                    <a class="axil-button button-rounded hover-flip-item-wrapper" href="/group/@item.WebLog_Group.Url_Meta">
                                                         <span class="hover-flip-item">
                                                             <span data-text="ادامه مطلب">ادامه مطلب</span>
                                                         </span>

@@ -25,8 +25,9 @@ namespace Service.Repository.Interface
         Task<IList<WebLog_Category>> ShowAllWeblogCategoryFoeMainAsync(CancellationToken cancellationToken);
         IPagedList<WebLog_Category> ShowAllWeblogCategory_PagingAsync(CancellationToken cancellationToken, string UserId, int currentPage = 0, int number_showproduct = 10);
 
+        Task<WebLog_Category> ShowAllWeblogCategoryByUrlAsync(string url, CancellationToken cancellationToken);
 
-
+        
         Task<bool> CheckRepeatUrlMeta(string Url_Meta);
         Task<bool> CheckRepeatOrder(short order);
         string CheckIsExistGroupInCategory(int categoryId);

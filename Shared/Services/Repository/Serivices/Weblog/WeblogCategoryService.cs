@@ -310,7 +310,33 @@ namespace Service.Repository
        }).ToListAsync(cancellationToken);
             return result;
         }
+        public async Task<WebLog_Category> ShowAllWeblogCategoryByUrlAsync(string url, CancellationToken cancellationToken)
+        {
 
+            var result = await TableNoTracking.Where(x => x.Url_Meta == url).Include(x => x.webLog_Groups).Select(x =>
+               new WebLog_Category()
+               {
+
+                    Title_Meta=x.Title_Meta,
+                    Url_Meta=x.Url_Meta,
+                    Canonical_Meta=x.Canonical_Meta,
+                    Desc_Meta=x.Desc_Meta,
+                    WebLog_Category_IsShow=x.WebLog_Category_IsShow,
+                    WebLog_Category_ShortDescription=x.WebLog_Category_ShortDescription,
+                    WebLog_Category_ShortLink=x.WebLog_Category_ShortLink,
+                    WebLog_Category_Description=x.WebLog_Category_Description,
+                    WebLog_Category_Image=x.WebLog_Category_Image,
+                    WebLog_Category_Order=x.WebLog_Category_Order,
+                    Keyword_Meta=x.Keyword_Meta,
+                    WebLog_Category_Title_One=x.WebLog_Category_Title_One,
+                    WebLog_Category_Title_Two=x.WebLog_Category_Title_Two,
+                    LastUpdateDate=x.LastUpdateDate,
+                    CreateDate=x.CreateDate,
+                    webLog_Groups=x.webLog_Groups
+
+               }).FirstOrDefaultAsync(cancellationToken);
+            return result;
+        }
         public async Task<IList<WebLog_Category>> ShowAllWeblogCategoryFoeMainAsync(CancellationToken cancellationToken)
         {
 

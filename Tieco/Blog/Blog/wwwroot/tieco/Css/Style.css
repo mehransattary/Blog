@@ -10311,9 +10311,9 @@ Post List Style
 }
 
 .content-block.post-list-view .post-thumbnail {
-  min-width: 295px;
+  min-width: 200px;
   margin-left: 20px;
-  max-width: 295px;
+  max-width: 200px;
   overflow: hidden;
 }
 

@@ -260,7 +260,7 @@ namespace Service.Repository
         public async Task<IList<WebLog_Group>> ShowAllWeblogGroupAsync(CancellationToken cancellationToken)
         {
 
-            var result = await TableNoTracking.Select(x =>
+            var result = await TableNoTracking.Where(x=>x.WebLog_Group_IsShow).Select(x =>
           new WebLog_Group()
           {
          
@@ -302,7 +302,7 @@ namespace Service.Repository
         public async Task<WebLog_Group> ShowAllWeblogGroupByUrlAsync(string url,CancellationToken cancellationToken)
         {
 
-            var result = await TableNoTracking.Where(x=>x.Url_Meta== url).Include(x=>x.WebLogs).Select(x =>
+            var result = await TableNoTracking.Where(x=>x.Url_Meta== url).Include(x=>x.WebLogs).Include(x=>x.WebLog_Category).Select(x =>
           new WebLog_Group()
           {
 
@@ -324,7 +324,8 @@ namespace Service.Repository
               CreateDate = x.CreateDate,
               WebLog_Group_CategoryId = x.WebLog_Group_CategoryId,
               Url_Meta = x.Url_Meta.ToLower().Trim().Replace(' ', '-'),
-              WebLogs=x.WebLogs
+              WebLogs=x.WebLogs,
+              WebLog_Category=x.WebLog_Category
 
 
           }).FirstOrDefaultAsync(cancellationToken);

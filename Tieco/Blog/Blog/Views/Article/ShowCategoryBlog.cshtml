@@ -1,0 +1,133 @@
+﻿
+@model IPagedList<WebLog_Group>
+@{ 
+
+    var categoriesBlogs = ViewData["categoriesBlogs"] as WebLog_Category;
+    ViewData["Title"] = categoriesBlogs.TitleEnglish_Meta;
+}
+<div class="axil-breadcrumb-area breadcrumb-style-1 bg-color-grey" style="background-image:url(@categoriesBlogs.WebLog_Category_Image);background-size:cover;background-position:center">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="inner text-right">
+                    <h1 class="page-title">
+                        @categoriesBlogs.WebLog_Category_Title_One
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="axil-post-list-area axil-section-gap bg-color-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                @Html.PagedListPager(Model, page => Url.Action("ShowCategoryBlog", "Article", new { currentPage = page, url = categoriesBlogs.Url_Meta }),
+     new PagedListRenderOptionsBase
+     {
+         DisplayLinkToIndividualPages = true,
+         DisplayPageCountAndCurrentLocation = false,
+         MaximumPageNumbersToDisplay = 5,
+         DisplayLinkToNextPage = PagedListDisplayMode.Never,
+         DisplayLinkToPreviousPage = PagedListDisplayMode.Never,
+
+     })
+            </div>
+            <div class="col-12">
+                <ul class="nav justify-content-center ">
+                    <li class="nav-item">
+                        <a href="/" class="nav-link text-secondary">
+                            خانه
+                            <span class="fa fa-long-arrow-left text-danger"></span>
+
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="/category/@ViewBag.categoryUrl" class="nav-link active">
+                            @ViewBag.categoryName
+
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-lg-8 col-xl-8 offset-lg-2 offset-xl-2">
+
+
+
+
+
+
+                @foreach (var group in Model)
+                {
+
+                    <!-- Start Post List  -->
+                    <div class="content-block post-list-view mt--30">
+                        <div class="post-thumbnail">
+                            <a href="/group/@group.Url_Meta" title="@group.WebLog_Group_Title_Two">
+                                <img src="@group.WebLog_Group_ThumbnaillImage" alt="@group.WebLog_Group_Title_One">
+                            </a>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-cat">
+                                <div class="post-cat-list">
+                                    <a class="hover-flip-item-wrapper" href="/group/@group.Url_Meta" title="@group.WebLog_Group_Title_Two">
+                                        <span class="hover-flip-item">
+                                            <span data-text="@group.WebLog_Group_Title_One">@group.WebLog_Group_Title_One</span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                            <p class="title" style="text-align:justify">
+                                    @group.WebLog_Group_ShortDescription
+                               
+                            </p>
+                            <div class="post-meta-wrapper">
+                                <div class="post-meta">
+                                    <div class="content">
+                                        <h6 class="post-author-name">
+                                            <a class="hover-flip-item-wrapper" href="/group/@group.Url_Meta">
+                                                <span class="hover-flip-item">
+                                                    <span data-text="@group.Title_Meta">@group.Title_Meta</span>
+                                                </span>
+                                            </a>
+                                        </h6>
+                                       
+                                    </div>
+
+                                </div>
+                                <a class="btn btn-outline-primary w-25" href="/group/@group.Url_Meta">
+                                    جزئیات
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Post List  -->
+
+                }
+
+
+
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-12">
+                @Html.PagedListPager(Model, page => Url.Action("ShowCategoryBlog", "Article", new { currentPage = page, url = categoriesBlogs.Url_Meta }),
+     new PagedListRenderOptionsBase
+     {
+         DisplayLinkToIndividualPages = true,
+         DisplayPageCountAndCurrentLocation = false,
+         MaximumPageNumbersToDisplay = 5,
+         DisplayLinkToNextPage = PagedListDisplayMode.Never,
+         DisplayLinkToPreviousPage = PagedListDisplayMode.Never,
+
+     })
+            </div>
+        </div>
+    </div>
+</div>

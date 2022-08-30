@@ -233,8 +233,8 @@ namespace ProMe_Admin.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id, CancellationToken cancellationToken,int groupId=0)
         {
 
-            var Weblog = await WebLogService.GetByIdAsync(cancellationToken, id);
-            await WebLogService.DeleteAsync(Weblog, cancellationToken);
+            var WeblogSlider = await webLog_SliderService.GetByIdAsync(cancellationToken, id);
+            await webLog_SliderService.DeleteAsync(WeblogSlider, cancellationToken);
             return RedirectToAction(nameof(Index),new { groupId = groupId });
         }
         #endregion
