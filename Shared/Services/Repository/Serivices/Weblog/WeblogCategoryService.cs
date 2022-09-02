@@ -353,7 +353,8 @@ namespace Service.Repository
               Id = x.Id,
               LastUpdateDate = x.LastUpdateDate,
               CreateDate = x.CreateDate,
-              webLog_Groups=x.webLog_Groups
+              webLog_Groups=x.webLog_Groups,
+              WebLog_Category_ImageHome=x.WebLog_Category_ImageHome
 
 
           }).OrderByDescending(x=>x.WebLog_Category_Order).ToListAsync(cancellationToken);

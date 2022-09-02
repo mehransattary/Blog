@@ -1,5 +1,4 @@
-﻿
-@model SettingsLogoDto
+﻿@model SettingsLogoDto
 
 @{
     ViewData["Title"] = $"  لوگو  جدید   ";
@@ -76,7 +75,7 @@
                             <div class="card-header">
                                 <!--begin::Card title-->
                                 <div class="card-title">
-                                    <h2>تصویر  جدید لوگو در بالا</h2>
+                                    <h2>تصویر کوچک جدید لوگو در بالا</h2>
                                 </div>
                                 <!--end::Card title-->
                             </div>
@@ -188,6 +187,17 @@
 
                                     </div>
                                     <!--end::Input group-->
+                                    <!--begin::Input group-->
+                                    <div class="mb-10 fv-row">
+                                        <!--begin::Tags-->
+                                        <label class="required form-label"> آیکن را وارد نمائید.</label>
+                                        <!--end::Tags-->
+                                        <!--begin::Input-->
+                                        <input type="file" class="form-control mb-2" asp-for="Settings_Icon_Path" />
+                                        <!--end::Input-->
+
+                                    </div>
+                                    <!--end::Input group-->
                                 </div>
                                 <!--end::Card header-->
                             </div>
@@ -222,5 +232,7 @@
     <!--end::Container-->
 </div>
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

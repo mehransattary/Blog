@@ -107,7 +107,7 @@ namespace Admin.Controllers
                 {
                     SettingsLogoDto.UserId = userManager.GetUserId(User);
 
-                    await settingsLogoesService.UpdateSettingsLogoAsync(SettingsLogoDto, _Settings_Image_Logo, _Settings_Image_Logo_Footer, cancellationToken);
+                    await settingsLogoesService.UpdateSettingsLogoAsync(SettingsLogoDto, _Settings_Image_Logo, _Settings_Image_Logo_Footer, _Settings_Icon_Path, cancellationToken);
                 }
                 catch (DbUpdateConcurrencyException)
                 {

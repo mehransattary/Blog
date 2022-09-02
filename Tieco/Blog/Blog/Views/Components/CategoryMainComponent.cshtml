@@ -1,0 +1,46 @@
+﻿@model IEnumerable<WebLog_Category>
+
+
+
+
+
+<!-- Start Categories List  -->
+<div class="axil-categories-list axil-section-gap bg-color-grey d-flex">
+    <div class="container">
+
+        <div class="row">
+        
+                @foreach (var item in Model)
+                {
+                    <div class="col-lg-6">
+                        <div class="featured-post mt--30">
+                            <div class="content-block">
+                                <div class="post-content">
+                                    <div class="post-cat">
+                                        <div class="post-cat-list">
+                                            <a class="hover-flip-item-wrapper" href="/category/@item.Url_Meta">
+                                                <span class="hover-flip-item">
+                                                    <span data-text="@item.Title_Meta">@item.Title_Meta</span>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <h4 class="title"><a href="post-details.html">@item.WebLog_Category_ShortDescription</a></h4>
+                                </div>
+                                <div class="post-thumbnail">
+                                    <a href="/category/@item.Url_Meta">
+                                        <img src="@item.WebLog_Category_ImageHome" alt="@item.WebLog_Category_Title_One">
+                                        <div class="review-count">
+                                            <span>@item.WebLog_Category_Title_Two</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+         
+        </div>
+    </div>
+</div>
+<!-- Start Categories List  -->

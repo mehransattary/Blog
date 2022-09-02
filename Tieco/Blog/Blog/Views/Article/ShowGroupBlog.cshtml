@@ -4,6 +4,10 @@
 
     var blogBlogs = ViewData["groupBlogs"] as WebLog_Group;
     ViewData["Title"] = blogBlogs.TitleEnglish_Meta;
+    ViewData["keywords"] = ViewBag.Keyword_Meta;
+    ViewData["description"] = ViewBag.Desc_Meta;
+    ViewData["ogurl"] = "https://tie.co.ir/group/" + ViewBag.Url_Meta;
+    ViewData["imageOg"] = "https://tie.co.ir/WebLog_Group" + ViewBag.Image_Meta;
 }
 
 <div class="axil-breadcrumb-area breadcrumb-style-1 bg-color-grey" style="background-image:url(@blogBlogs.WebLog_Group_Image);background-size:cover;background-position:center">

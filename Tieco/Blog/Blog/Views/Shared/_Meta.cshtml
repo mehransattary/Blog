@@ -1,10 +1,12 @@
 ﻿@model string
 @inject ISettingsMetasService metaservice
 @inject IPersonService personsevice
+@inject ISettingsLogoesService settingLogosevice
 
 @{
     var meta = metaservice.TableNoTracking.FirstOrDefault();
     var person = personsevice.TableNoTracking.FirstOrDefault(x => x.UserId == Model);
+    var logo = settingLogosevice.TableNoTracking.FirstOrDefault();
 
 }
 <meta charset="utf-8">
@@ -46,12 +48,12 @@
     <meta name="googlebot" content="index,follow">
     <meta name="author" content="@(meta?.Settings_author??"")">
     <meta name="robots" content="noodp,noydir">
-    @if (person != null)
+    @if (logo != null)
     {
-        if (person.IconImage != null)
+        if (logo.Settings_Icon_Path != null)
         {
-            <link rel="shortcut icon" type="ico" href="@(person.IconImage??"")" />
-            <link rel="apple-touch-icon" href="@(person.IconImage??"")">
+            <link rel="shortcut icon" type="ico" href="@(logo.Settings_Icon_Path??"")" />
+            <link rel="apple-touch-icon" href="@(logo.Settings_Icon_Path??"")">
         }
     }
     <meta property="og:type" content="website">

@@ -28,7 +28,7 @@ namespace Data.Dto
         public string Settings_title_Logo { get; set; }
         //***====================================================================================***//
         [Display(Name = " آیکون  ")]
-        public string Settings_Icon_Path { get; set; }
+        public IFormFile Settings_Icon_Path { get; set; }
         //***====================================================================================***//
 
         #endregion

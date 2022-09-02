@@ -1,6 +1,4 @@
-﻿
-
-@model SettingsLogoDto
+﻿@model SettingsLogoDto
 
 @{
     ViewData["Title"] = $"  ویرایش  لوگو  ✨ {Model.Settings_title_Logo} ";
@@ -15,8 +13,10 @@
         <form id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row was-validated"
               asp-action="Edit" method="post" enctype="multipart/form-data">
             <input hidden asp-for="Id" />
-            <input hidden value="@ViewBag.Settings_Image_Logo" name="_Image" />
-            <input hidden value="@ViewBag.Settings_Image_Logo_Footer" name="_Image" />
+            <input hidden value="@ViewBag.Settings_Image_Logo" name="_Settings_Image_Logo" />
+            <input hidden value="@ViewBag.Settings_Image_Logo_Footer" name="_Settings_Image_Logo_Footer" />
+            <input hidden value="@ViewBag.Settings_Icon_Path" name="_Settings_Icon_Path" />
+
 
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <!--begin::کناری column-->
@@ -160,6 +160,7 @@
                     <!--end::Card body-->
                 </div>
                 <!--end::Thumbnail settings-->
+
             </div>
             <!--end::کناری column-->
             <!--begin::Main column-->
@@ -225,6 +226,19 @@
 
                                     </div>
                                     <!--end::Input group-->
+                                    <!--begin::Input group-->
+                                    <div class="mb-10 fv-row">
+                                        <!--begin::Tags-->
+                                        <label class="required form-label"> آیکن را وارد نمائید.</label>
+
+                                        <!--end::Input-->
+                                        <img src="@ViewData["Settings_Icon_Path"]" width="150" height="150" />
+                                        <label asp-for="Settings_Icon_Path" class="control-label"></label>
+                                        <div class="image-upload-wrap">
+                                            <input type="file" asp-for="Settings_Icon_Path" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <!--end::Input group-->
                                 </div>
                                 <!--end::Card header-->
                             </div>
@@ -259,5 +273,7 @@
     <!--end::Container-->
 </div>
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

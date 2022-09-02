@@ -2,6 +2,10 @@
 @model WebLog
 @{
     ViewData["Title"] = Model.Title_Meta;
+    ViewData["keywords"] = Model.Keyword_Meta;
+    ViewData["description"] = Model.Desc_Meta;
+    ViewData["ogurl"] = "https://blog.tie.co.ir/Service/" + Model.Url_Meta;
+    ViewData["imageOg"] = "https://blog.tie.co.ir" + Model.Image_Meta;
 }
 
 <!-- Start Banner Area -->

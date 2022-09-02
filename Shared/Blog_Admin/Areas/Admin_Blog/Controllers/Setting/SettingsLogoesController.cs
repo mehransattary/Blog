@@ -76,13 +76,14 @@ namespace ProMe_Admin.Controllers
             #region SettingsLogoDto + Settings_Image_Logo + Settings_Image_Logo_Footer
             ViewBag.Settings_Image_Logo = settingsLogo.Settings_Image_Logo ?? "/images/default.png";
             ViewBag.Settings_Image_Logo_Footer = settingsLogo.Settings_Image_Logo_Footer ?? "/images/default.png";
+            ViewBag.Settings_Icon_Path = settingsLogo.Settings_Icon_Path ?? "/images/default.png";
 
 
             var settingsLogoDto = new SettingsLogoDto()
             {
                 Id = settingsLogo.Id,
                 Settings_alt_Logo = settingsLogo.Settings_alt_Logo,
-                Settings_Icon_Path = settingsLogo.Settings_Icon_Path,
+        
                 Settings_title_Logo = settingsLogo.Settings_title_Logo,
                 UserId = settingsLogo.UserId,
                 CreateDate = settingsLogo.CreateDate,
@@ -94,7 +95,7 @@ namespace ProMe_Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, SettingsLogoDto SettingsLogoDto, string _Settings_Image_Logo, string _Settings_Image_Logo_Footer, CancellationToken cancellationToken)
+        public async Task<IActionResult> Edit(int id, SettingsLogoDto SettingsLogoDto, string _Settings_Image_Logo, string _Settings_Image_Logo_Footer,string Settings_Icon_Path, CancellationToken cancellationToken)
         {
             if (id != SettingsLogoDto.Id)
             {
@@ -108,7 +109,7 @@ namespace ProMe_Admin.Controllers
                 {
                     SettingsLogoDto.UserId = userManager.GetUserId(User);
 
-                    await settingsLogoesService.UpdateSettingsLogoAsync(SettingsLogoDto, _Settings_Image_Logo, _Settings_Image_Logo_Footer, cancellationToken);
+                    await settingsLogoesService.UpdateSettingsLogoAsync(SettingsLogoDto, _Settings_Image_Logo, _Settings_Image_Logo_Footer, Settings_Icon_Path, cancellationToken);
                 }
                 catch (DbUpdateConcurrencyException)
                 {

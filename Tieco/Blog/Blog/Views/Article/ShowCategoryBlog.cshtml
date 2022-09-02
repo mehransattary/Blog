@@ -4,6 +4,10 @@
 
     var categoriesBlogs = ViewData["categoriesBlogs"] as WebLog_Category;
     ViewData["Title"] = categoriesBlogs.TitleEnglish_Meta;
+    ViewData["keywords"] = ViewBag.Keyword_Meta;
+    ViewData["description"] = ViewBag.Desc_Meta;
+    ViewData["ogurl"] = "https://tie.co.ir/category/" + ViewBag.Url_Meta;
+    ViewData["imageOg"] = "https://tie.co.ir/WebLog_Category" + ViewBag.Image_Meta;
 }
 <div class="axil-breadcrumb-area breadcrumb-style-1 bg-color-grey" style="background-image:url(@categoriesBlogs.WebLog_Category_Image);background-size:cover;background-position:center">
     <div class="container">

@@ -1,9 +1,8 @@
 ﻿@inject Microsoft.AspNetCore.Identity.UserManager<Microsoft.AspNetCore.Identity.IdentityUser> userManager;
-@inject ISettingsLogoesService logoService;
+@inject Service.Repository.Interface.ISettingsLogoesService logoService;
 @{
-    var userId = userManager.GetUserId(User);
 
-    var logo = logoService.ShowAllSettingsLogo(userId);
+    var logo = logoService.ShowAllSettingsLogo();
 }
 <!--begin::کناری-->
 <div id="kt_aside" class="aside bg-primary" data-kt-drawer="true" data-kt-drawer-name="aside" data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true" data-kt-drawer-width="auto" data-kt-drawer-direction="start" data-kt-drawer-toggle="#kt_aside_toggle">

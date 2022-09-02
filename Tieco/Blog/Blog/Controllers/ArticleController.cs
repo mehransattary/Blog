@@ -33,7 +33,10 @@ namespace Blog.Controllers
             var categoriesBlogs = await weblogCategoryService.ShowAllWeblogCategoryByUrlAsync(url, cancellationToken);
             var groupsBlogs =  categoriesBlogs.webLog_Groups.ToPagedList(currentPage, 6);
             ViewData["categoriesBlogs"] = categoriesBlogs;
-
+            ViewBag.Keyword_Meta = categoriesBlogs.Keyword_Meta;
+            ViewBag.Desc_Meta = categoriesBlogs.Desc_Meta;
+            ViewBag.Url_Meta= categoriesBlogs.Url_Meta;
+            ViewBag.Image_Met= categoriesBlogs.Image_Meta;
             ViewBag.categoryName = categoriesBlogs.Title_Meta;
             ViewBag.categoryUrl = categoriesBlogs.Url_Meta;
             return View(groupsBlogs);
@@ -45,7 +48,10 @@ namespace Blog.Controllers
             var groupBlogs = await weblogGroupService.ShowAllWeblogGroupByUrlAsync(url, cancellationToken);
             var blogs = groupBlogs.WebLogs.ToPagedList(currentPage, 6);
             ViewData["groupBlogs"] = groupBlogs;
-
+            ViewBag.Keyword_Meta = groupBlogs.Keyword_Meta;
+            ViewBag.Desc_Meta = groupBlogs.Desc_Meta;
+            ViewBag.Url_Meta = groupBlogs.Url_Meta;
+            ViewBag.Image_Met = groupBlogs.Image_Meta;
             ViewBag.groupName = groupBlogs.Title_Meta;
             ViewBag.groupUrl = groupBlogs.Url_Meta;
             ViewBag.categoryName = groupBlogs.WebLog_Category.Title_Meta;
