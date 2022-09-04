@@ -354,7 +354,9 @@ namespace Service.Repository
               LastUpdateDate = x.LastUpdateDate,
               CreateDate = x.CreateDate,
               webLog_Groups=x.webLog_Groups,
-              WebLog_Category_ImageHome=x.WebLog_Category_ImageHome
+              WebLog_Category_ImageHome=x.WebLog_Category_ImageHome,
+              WebLog_Category_ShortDescription=x.WebLog_Category_ShortDescription,
+              Url_Meta=x.Url_Meta
 
 
           }).OrderByDescending(x=>x.WebLog_Category_Order).ToListAsync(cancellationToken);

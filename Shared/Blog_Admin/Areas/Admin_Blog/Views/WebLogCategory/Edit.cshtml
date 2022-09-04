@@ -444,6 +444,18 @@
                                                         <!--begin::Input group-->
                                                         <div class="mb-10 fv-row">
                                                             <!--begin::Tags-->
+                                                            <label class=" form-label" asp-for="WebLog_Category_ShortDescription"> </label>
+                                                            <!--end::Tags-->
+                                                            <!--begin::Input-->
+                                                            <textarea class="form-control mb-2" asp-for="WebLog_Category_ShortDescription"></textarea>                                        <!--end::Input-->
+
+                                                            <span asp-validation-for="WebLog_Category_ShortDescription" class="text-danger"></span>
+
+                                                        </div>
+                                                        <!--end::Input group-->
+                                                        <!--begin::Input group-->
+                                                        <div class="mb-10 fv-row">
+                                                            <!--begin::Tags-->
                                                             <label class="required form-label" asp-for="WebLog_Category_IsShow"> </label>
                                                             <!--end::Tags-->
                                                             <!--begin::Input-->

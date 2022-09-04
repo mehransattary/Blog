@@ -7,9 +7,22 @@
     ViewData["ogurl"] = "https://blog.tie.co.ir/Service/" + Model.Url_Meta;
     ViewData["imageOg"] = "https://blog.tie.co.ir" + Model.Image_Meta;
 }
+<div class="axil-breadcrumb-area breadcrumb-style-1 bg-color-grey" style="background-image:url(@Model.Weblog_Image);background-size:cover;background-position:center">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="inner text-right">
+                    <h1 class="page-title">
+                        @Model.Title_Meta
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<!-- Start Banner Area -->
-<div class="banner banner-single-post post-formate post-standard alignwide">
+<!-- End Banner Area -->
+<div class="axil-post-list-area axil-section-gap bg-color-white">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -21,6 +34,7 @@
 
                         </a>
                     </li>
+
                     <li class="nav-item">
                         <a href="/category/@ViewBag.categoryUrl" class="nav-link text-secondary">
                             @ViewBag.categoryName
@@ -40,11 +54,13 @@
                             @ViewBag.blogName
                         </a>
                     </li>
+
                 </ul>
             </div>
             <div class="col-lg-12">
                 <!-- Start Single Slide  -->
                 <div class="content-block">
+
                     <!-- Start Post Thumbnail  -->
                     <div class="post-thumbnail">
                         <img src="@Model.Weblog_Image" alt="@Model.Weblog_Title_One" title="@Model.Weblog_Title_Two">
@@ -56,7 +72,7 @@
                             <div class="post-cat-list">
                                 <a class="hover-flip-item-wrapper" href="@Model.Url_Meta" title="@Model.Weblog_Title_Two">
                                     <span class="hover-flip-item">
-                                        <span data-text="  @Model.Title_Meta">
+                                        <span data-text="@Model.Title_Meta">
                                             @Model.Title_Meta
                                         </span>
                                     </span>
@@ -66,35 +82,16 @@
                         <h1 class="title">
                             @Model.Weblog_Title_One
                         </h1>
-                        <!-- Post Meta  -->
-                        <div class="post-meta-wrapper">
-                            <div class="post-meta">
 
-                                <div class="content">
-                                    <h6 class="post-author-name">
-                                        <a class="hover-flip-item-wrapper" href="author.html">
-                                            <span class="hover-flip-item">
-                                                <span data-text="@Model.Weblog_Writer">  @Model.Weblog_Writer</span>
-                                            </span>
-                                        </a>
-                                    </h6>
-                                    <ul class="post-meta-list">
-                                        <li>@Model.LastUpdateDate.ToShamsi()</li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                        </div>
                     </div>
                     <!-- End Post Content  -->
                 </div>
                 <!-- End Single Slide  -->
             </div>
-
         </div>
+
     </div>
 </div>
-<!-- End Banner Area -->
 <!-- Start Post Single Wrapper  -->
 <div class="post-single-wrapper axil-section-gap bg-color-white">
     <div class="container">

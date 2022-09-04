@@ -3,7 +3,7 @@
 @{
 
     var blogBlogs = ViewData["groupBlogs"] as WebLog_Group;
-    ViewData["Title"] = blogBlogs.TitleEnglish_Meta;
+    ViewData["Title"] = blogBlogs.Title_Meta;
     ViewData["keywords"] = ViewBag.Keyword_Meta;
     ViewData["description"] = ViewBag.Desc_Meta;
     ViewData["ogurl"] = "https://tie.co.ir/group/" + ViewBag.Url_Meta;
@@ -47,20 +47,14 @@
 
                         </a>
                     </li>
-                   
+
                     <li class="nav-item">
-                        <a href="/category/@ViewBag.categoryUrl" class="nav-link text-secondary">
+                        <a href="/category/@ViewBag.categoryUrl" class="nav-link active">
                             @ViewBag.categoryName
-                            <span class="fa fa-long-arrow-left text-danger"></span>
 
                         </a>
                     </li>
-              
-                    <li class="nav-item">
-                        <a href="/group/@ViewBag.groupUrl" class="nav-link active">
-                            @ViewBag.groupName
-                        </a>
-                    </li>
+
                 </ul>
             </div>
         </div>

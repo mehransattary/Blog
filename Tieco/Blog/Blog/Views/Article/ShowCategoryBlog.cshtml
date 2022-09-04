@@ -3,7 +3,7 @@
 @{ 
 
     var categoriesBlogs = ViewData["categoriesBlogs"] as WebLog_Category;
-    ViewData["Title"] = categoriesBlogs.TitleEnglish_Meta;
+    ViewData["Title"] = categoriesBlogs.Title_Meta;
     ViewData["keywords"] = ViewBag.Keyword_Meta;
     ViewData["description"] = ViewBag.Desc_Meta;
     ViewData["ogurl"] = "https://tie.co.ir/category/" + ViewBag.Url_Meta;
